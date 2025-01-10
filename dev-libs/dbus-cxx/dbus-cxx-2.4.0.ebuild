@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="dbus c++ API library. Developer said it's threadsafe. c++17 required."
 HOMEPAGE="https://dbus-cxx.github.io/index.html"
-SRC_URI="https://github.com/dbus-cxx/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/dbus-cxx/dbus-cxx/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( BSD LGPL-3 )"
 SLOT="0"
