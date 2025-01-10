@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dbus-cxx/dbus-cxx/archive/refs/tags/${PV}.tar.gz -> 
 
 LICENSE="|| ( BSD LGPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~arm ~ppc64 ~ppc ~riscv ~alpha ~hppa ~ia64 ~sparc"
+KEYWORDS="~amd64"
 IUSE="qt glib tools tests doc examples site"
 
 DEPEND="
