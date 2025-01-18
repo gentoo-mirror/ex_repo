@@ -1,0 +1,29 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 33a3de5..218df39 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -311,7 +311,7 @@ if (QUILL_MASTER_PROJECT OR QUILL_ENABLE_INSTALL)
+     set(pkgconfig ${PROJECT_BINARY_DIR}/quill.pc)
+     set(targets_export_name quill-targets)
+ 
+-    set(QUILL_CMAKE_DIR ${CMAKE_INSTALL_LIBDIR}/cmake/quill CACHE STRING
++    set(QUILL_CMAKE_DIR ${CMAKE_INSTALL_DATADIR}/cmake/quill CACHE STRING
+             "Installation directory for cmake files, relative to ${CMAKE_INSTALL_PREFIX}.")
+ 
+     set(QUILL_LIB_DIR ${CMAKE_INSTALL_LIBDIR} CACHE STRING
+@@ -320,7 +320,7 @@ if (QUILL_MASTER_PROJECT OR QUILL_ENABLE_INSTALL)
+     set(QUILL_INC_DIR ${CMAKE_INSTALL_INCLUDEDIR} CACHE STRING
+             "Installation directory for include files, relative to ${CMAKE_INSTALL_PREFIX}.")
+ 
+-    set(QUILL_PKGCONFIG_DIR ${CMAKE_INSTALL_PREFIX}/pkgconfig CACHE PATH
++          set(QUILL_PKGCONFIG_DIR ${CMAKE_INSTALL_DATADIR}/pkgconfig CACHE PATH
+             "Installation directory for pkgconfig (.pc) files, relative to ${CMAKE_INSTALL_PREFIX}.")
+ 
+     if (WIN32)
+@@ -388,4 +388,4 @@ endif ()
+ 
+ if (QUILL_DOCS_GEN)
+     add_subdirectory(docs)
+-endif ()
+\ No newline at end of file
++endif ()
