@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<catmetadata>
+	<longdescription lang="en">
+		The dev-cmake category contains CMake modules. https://cmake.org/cmake/help/book/mastering-cmake/chapter/Modules.html
+	</longdescription>
+	<longdescription lang="ua">
+		Ця категорія, dev-cmake, містить модулі CMake. https://cmake.org/cmake/help/book/mastering-cmake/chapter/Modules.html
+	</longdescription>
+</catmetadata>
