@@ -11,4 +11,4 @@ RDEPEND=
 REQUIRED_USE=
 SLOT=0
 SRC_URI=https://github.com/Arniiiii/CPM.cmake/archive/4d245d2e584298071e5f7723fc8fc6f02f79f9b5.tar.gz -> cpm-cmake-1.0_pre20250121.tar.gz
-_md5_=e37649d159e567a982931a33ffc658d7
+_md5_=ff31a7b05061d041eba68389f578fe03

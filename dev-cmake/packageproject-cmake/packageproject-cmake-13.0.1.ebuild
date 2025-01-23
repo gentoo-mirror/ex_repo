@@ -26,8 +26,13 @@ RDEPEND="${DEPEND}"
 
 BDEPEND="
 	dev-build/cmake
-	test? ( dev-cmake/cpm-cmake )
+	test? ( dev-cmake/cpm-cmake dev-libs/libfmt )
 "
+
+PATCHES=(
+	"${FILESDIR}/0001_status_CPM_DOWNLOAD_LOCATION.patch"
+	"${FILESDIR}/0002_cxxopts_linking.patch"
+)
 
 S="${WORKDIR}/PackageProject.cmake-${PV}"
 
@@ -43,25 +48,27 @@ src_configure() {
 	cmake_src_configure
 
 	if use test; then
-		CMAKE_USE_DIR=${S}/test BUILD_DIR=${WORKDIR}/${P}_build_test
+		CMAKE_USE_DIR=${S}/test BUILD_DIR=${S}_build_test
 		local mycmakeargs=(
-			-DCPM_DOWNLOAD_LOCATION=${EPREFIX}/usr/share/cmake/CPM.cmake
 			-DTEST_INSTALLED_VERSION=OFF
 			-DTEST_INSTALLED_VERSION_PACKAGEPROJECT=OFF
+			-DCPM_DOWNLOAD_LOCATION=${EPREFIX}/usr/share/cmake/CPM.cmake
+			-DCPM_LOCAL_PACKAGES_ONLY=1
 		)
+		einfo "CMake configure args for testing are: ${mycmakeargs}"
 		cmake_src_configure
 	fi
 }
 
 src_compile() {
 	if use test; then
-		CMAKE_USE_DIR=${S}/test BUILD_DIR=${WORKDIR}/${P}_build_test
+		CMAKE_USE_DIR=${S}/test BUILD_DIR=${S}_build_test
 		cmake_src_compile
 	fi
 }
 
 src_test() {
-	CMAKE_USE_DIR=${S}/test BUILD_DIR=${WORKDIR}/${P}_build_test
+	CMAKE_USE_DIR=${S}/test BUILD_DIR=${S}_build_test
 	cmake_src_test
 }
 
@@ -70,5 +77,6 @@ src_install() {
 		einstalldocs
 	fi
 
+	CMAKE_USE_DIR=${S} BUILD_DIR=${S}_build
 	cmake_src_install
 }

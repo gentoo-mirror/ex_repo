@@ -27,6 +27,10 @@ BDEPEND="
 dev-build/cmake
 "
 
+PATCHES=(
+	"${FILESDIR}/0001_status_included.patch"
+)
+
 S="${WORKDIR}/CPM.cmake-${CPM_CMAKE_COMMIT}"
 
 src_install() {
