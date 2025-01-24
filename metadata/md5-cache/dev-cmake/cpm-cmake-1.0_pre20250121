@@ -1,5 +1,5 @@
 BDEPEND=dev-build/cmake
-DEFINED_PHASES=install
+DEFINED_PHASES=install postinst
 DEPEND=
 DESCRIPTION=A cmake not package manager. Essentially, it's about 'how to do bundled dependencies better', though it sucks when you have anything remotely complex. Arniiiii's fork. Don't use CPM in your projects. I've used it and now regret about it. https://michael.orlitzky.com/articles/motherfuckers_need_package_management.xhtml
 EAPI=8
@@ -11,4 +11,4 @@ RDEPEND=
 REQUIRED_USE=
 SLOT=0
 SRC_URI=https://github.com/Arniiiii/CPM.cmake/archive/4d245d2e584298071e5f7723fc8fc6f02f79f9b5.tar.gz -> cpm-cmake-1.0_pre20250121.tar.gz
-_md5_=ff31a7b05061d041eba68389f578fe03
+_md5_=e2288224f0ff8b5171156dca1d112894

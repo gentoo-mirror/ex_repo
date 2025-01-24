@@ -34,10 +34,25 @@ PATCHES=(
 S="${WORKDIR}/CPM.cmake-${CPM_CMAKE_COMMIT}"
 
 src_install() {
-	insinto /usr/share/cmake
+	insinto ${EPREFIX}/usr/share/cmake
 	doins ${S}/cmake/CPM.cmake
 
 	if use doc; then
 		einstalldocs
 	fi
 }
+
+pkg_postinst() {
+	einfo "If you want to use it, patch a project's `getCPM.cmake` so that you can "
+	einfo "override its CPM_DOWNLOAD_LOCATION. Then, at configuring add next argument:"
+	einfo "-DCPM_DOWNLOAD_LOCATION=/usr/share/cmake/CPM.cmake . If you write an"
+	einfo "ebuild, then "
+	einfo "-DCPM_DOWNLOAD_LOCATION=\$\{EPREFIX\}/usr/share/cmake/CPM.cmake is prefered"
+	einfo "                                                                           "
+	einfo "Also, don't use CPM if you can. Essentially, it's about 'how to do bundled "
+	einfo "dependencies better', though it sucks when you have anything remotely      "
+	einfo "complex. I've used it and now regret about it. Check an article at"
+	einfo "https://michael.orlitzky.com/articles/motherfuckers_need_package_management"
+	einfo ".xhtml"
+}
+
