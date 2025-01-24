@@ -27,10 +27,6 @@ BDEPEND="
 	test? ( dev-cmake/cpm-cmake dev-libs/libfmt )
 "
 
-PATCHES=(
-	"${FILESDIR}/0001_status_CPM_DOWNLOAD_LOCATION.patch"
-)
-
 S="${WORKDIR}/PackageProject.cmake-${PV}"
 
 src_configure() {
