@@ -1,10 +1,8 @@
-
 # Copyright 2025 Arniiiii lg3dx6fd@gmail.com
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-# it's just a CMake script that installs another CMake script to folder with CMake utility modules (usually /usr/share/cmake/AddBoost.cmake ), thus not cmake-multilib.
 inherit cmake
 
 DESCRIPTION="Amazing script for installing your projects!"
@@ -43,6 +41,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DPackageProject.cmake_INSTALL=YES
+		-DPACKAGE_PROJECT_ROOT_PATH=${EPREFIX}/usr/share/cmake/PackageProjectFiles
 	)
 
 	cmake_src_configure
