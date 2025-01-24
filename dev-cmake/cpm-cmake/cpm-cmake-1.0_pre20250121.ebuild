@@ -43,7 +43,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "If you want to use it, patch a project's `getCPM.cmake` so that you can "
+	einfo "If you want to use it, patch a project's \`getCPM.cmake\` so that you can "
 	einfo "override its CPM_DOWNLOAD_LOCATION. Then, at configuring add next argument:"
 	einfo "-DCPM_DOWNLOAD_LOCATION=/usr/share/cmake/CPM.cmake . If you write an"
 	einfo "ebuild, then "

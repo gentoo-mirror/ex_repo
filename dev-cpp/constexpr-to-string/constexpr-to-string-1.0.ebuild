@@ -9,13 +9,9 @@ inherit cmake
 DESCRIPTION="C++14 code to convert integers to strings at compile-time "
 HOMEPAGE="https://github.com/Arniiiii/constexpr-to-string-cmake"
 
-CPM_COMMIT_ARNIIIII="4d245d2e584298071e5f7723fc8fc6f02f79f9b5"
-PACKAGEPROJECT_VER="1.13.0"
 
 SRC_URI="
 	https://github.com/Arniiiii/constexpr-to-string-cmake/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz
-	https://raw.githubusercontent.com/Arniiiii/CPM.cmake/${CPM_COMMIT_ARNIIIII}/cmake/CPM.cmake -> CPM-${CPM_COMMIT_ARNIIIII}.cmake
-	https://github.com/TheLartians/PackageProject.cmake/archive/refs/tags/v${PACKAGEPROJECT_VER}.tar.gz -> PackageProject.cmake-${PACKAGEPROJECT_VER}.tar.gz
 "
 
 LICENSE="MIT"
@@ -39,18 +35,16 @@ dev-build/cmake
 
 S="${WORKDIR}/constexpr-to-string-cmake-${PV}"
 
-src_unpack() {
-	default
-	cp ${DISTDIR}/CPM-${CPM_COMMIT_ARNIIIII}.cmake ${S}/CPM.cmake || die
-}
+PATCHES=(
+	"${FILESDIR}/0001_constexpr-to-string_fix_finding_package_project.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
 		-DCPM_LOCAL_PACKAGES_ONLY=1
 		-DCPM_DOWNLOAD_ALL=0
 		-DCPM_USE_LOCAL_PACKAGES=0
-		-DCPM_DOWNLOAD_LOCATION=${S}/CPM.cmake
-		-DCPM_PackageProject.cmake_SOURCE=${WORKDIR}/PackageProject.cmake-${PACKAGEPROJECT_VER}
+		-DCPM_DOWNLOAD_LOCATION=${EPREFIX}/usr/share/cmake/CPM.cmake
 	)
 	cmake_src_configure
 }

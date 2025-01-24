@@ -49,8 +49,8 @@ src_configure() {
 }
 
 pkg_postinst() {
-	einfo "You can use the package in CMake via `find_package(certify)`."
+	einfo "You can use the package in CMake via \`find_package(certify)\`."
 	einfo "Remember, if you use CPM, just add to configuration flags "
-	einfo "`-DCPM_LOCAL_PACKAGES_ONLY=1` and everything is going to be ok."
+	einfo "\`-DCPM_LOCAL_PACKAGES_ONLY=1\` and everything is going to be ok."
 }
 
