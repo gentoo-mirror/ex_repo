@@ -52,11 +52,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo "You can use the package in CMake via"
-	einfo "\`find_package(AddBoost.cmake)\`."
-	einfo "Notice that there's no version, since \`project\` in cmake is"
-	einfo "somewhat broken: if \`VERSION\` is specified, it adds "
-	einfo "\`LANGUAGES C CXX\` by default, which is not ok actually."
+	einfo "\`find_package(AddBoost.cmake VERSION xy.z.w)\`."
 	einfo "Remember, if you use CPM, just add to configuration flags "
-	einfo "\`-DCPM_LOCAL_PACKAGES_ONLY=1\`, remove VERSION and"
-	einfo "everything is going to be ok."
+	einfo "\`-DCPM_LOCAL_PACKAGES_ONLY=1\` and everything is going to be ok."
 }
