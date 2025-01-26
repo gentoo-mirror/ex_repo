@@ -33,6 +33,11 @@ PATCHES=(
 
 S="${WORKDIR}/CPM.cmake-${CPM_CMAKE_COMMIT}"
 
+src_prepare() {
+	default
+	sed -i ${S}/cmake/CPM.cmake -e "s/1.0.0-development-version/${PV}/g" || die
+}
+
 src_install() {
 	insinto ${EPREFIX}/usr/share/cmake
 	doins ${S}/cmake/CPM.cmake
