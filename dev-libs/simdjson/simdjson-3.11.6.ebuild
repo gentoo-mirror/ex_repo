@@ -20,7 +20,7 @@ SRC_URI="
 LICENSE="Apache-2.0 Boost-1.0 BSD MIT"
 SLOT="0/24"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="+all-impls test tools"
+IUSE="+all-impls test tools +singleheader static-libs +shared-libs"
 
 BDEPEND="
 	sys-apps/file
@@ -31,7 +31,7 @@ DEPEND="
 	tools? ( >=dev-libs/cxxopts-3.2:= )
 "
 
-REQUIRED_USE="test? ( tools )"
+REQUIRED_USE="test? ( tools ) || ( static-libs shared-libs )"
 RESTRICT="!test? ( test )"
 
 PATCHES=(
@@ -49,7 +49,6 @@ DOCS=(
 )
 
 src_prepare() {
-	# Need to make sure that CPM finds the data package
 	sed -e 's:-Werror ::' -i cmake/developer-options.cmake || die
 	sed -e '/Werror/ d ; /Werror/ d ' -i tests/ondemand/compilation_failure_tests/CMakeLists.txt || die
 	sed -e "s:^c++ :$(tc-getCXX) :" -i singleheader/README.md || die
@@ -63,6 +62,9 @@ src_configure() {
 		-DCPM_DOWNLOAD_LOCATION=${EPREFIX}/usr/share/cmake/CPM.cmake
 		-DCPM_simdjson-data_SOURCE=${WORKDIR}/simdjson-data-${SIMDJSON_DATA_COMMIT}
 		-Wno-dev
+		-DSIMDJSON_SINGLEHEADER=$(usex singleheader ON OFF)
+		-DSIMDJSON_BUILD_STATIC_LIB=$(usex static-libs ON OFF)
+		-DBUILD_SHARED_LIBS=$(usex shared-libs ON OFF)
 		--log-level=DEBUG
 		-DFETCHCONTENT_QUIET=OFF
 	)

@@ -1,0 +1,80 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6bdc7051..bee34aea 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -55,7 +55,7 @@ endif()
+ if(is_top_project)
+   option(SIMDJSON_DEVELOPER_MODE "Enable targets for developing simdjson" OFF)
+   option(BUILD_SHARED_LIBS "Build simdjson as a shared library" OFF)
+-  option(SIMDJSON_SINGLEHEADER "Disable singleheader generation" ON)
++  option(SIMDJSON_SINGLEHEADER "Enable singleheader generation" ON)
+ endif()
+ 
+ include(cmake/handle-deprecations.cmake)
+@@ -65,14 +65,47 @@ include(cmake/developer-options.cmake)
+ 
+ set(SIMDJSON_SOURCES src/simdjson.cpp)
+ 
+-add_library(simdjson ${SIMDJSON_SOURCES})
+-add_library(simdjson::simdjson ALIAS simdjson)
+-set(SIMDJSON_LIBRARIES simdjson)
++if(SIMDJSON_SINGLEHEADER)
++  
++  add_subdirectory(singleheader)
++
++  add_library(simdjson 
++    ${CMAKE_CURRENT_BINARY_DIR}/singleheader/simdjson.h
++    ${CMAKE_CURRENT_BINARY_DIR}/singleheader/simdjson.cpp
++  )
++  add_library(simdjson::simdjson ALIAS simdjson)
++  target_include_directories(simdjson PUBLIC 
++    $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/singleheader}>
++    $<INSTALL_INTERFACE:include>
++  )
++  set(SIMDJSON_LIBRARIES simdjson)
++  
++  if(SIMDJSON_BUILD_STATIC_LIB)
++    add_library(simdjson_static STATIC 
++      ${CMAKE_CURRENT_LIST_DIR}/singleheader/simdjson.h
++      ${CMAKE_CURRENT_LIST_DIR}/singleheader/simdjson.cpp
++    )
++    add_library(simdjson::simdjson_static ALIAS simdjson_static)
++    target_include_directories(simdjson PUBLIC 
++      $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/singleheader}> 
++      $<INSTALL_INTERFACE:include>
++    )
++    list(APPEND SIMDJSON_LIBRARIES simdjson_static)
++  endif()
++else()
++
++  add_library(simdjson ${SIMDJSON_SOURCES})
++  add_library(simdjson::simdjson ALIAS simdjson)
++  set(SIMDJSON_LIBRARIES simdjson)
++
++  if(SIMDJSON_BUILD_STATIC_LIB)
++
++    add_library(simdjson_static STATIC ${SIMDJSON_SOURCES})
++    add_library(simdjson::simdjson_static ALIAS simdjson_static)
++    list(APPEND SIMDJSON_LIBRARIES simdjson_static)
++
++  endif()
+ 
+-if(SIMDJSON_BUILD_STATIC_LIB)
+-  add_library(simdjson_static STATIC ${SIMDJSON_SOURCES})
+-  add_library(simdjson::simdjson_static ALIAS simdjson_static)
+-  list(APPEND SIMDJSON_LIBRARIES simdjson_static)
+ endif()
+ 
+ set_target_properties(
+@@ -295,11 +328,6 @@ add_subdirectory(tools)  ## This needs to be before tests because of cxxopts
+ # most of the data has been moved to https://github.com/simdjson/simdjson-data
+ add_subdirectory(jsonexamples)
+ 
+-if(SIMDJSON_SINGLEHEADER)
+-add_subdirectory(singleheader)
+-endif()
+-
+-
+ 
+ #
+ # Compile tools / tests / benchmarks
