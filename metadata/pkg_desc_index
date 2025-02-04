@@ -1,0 +1,13 @@
+dev-build/bazel 7.2.1: Fast and correct automated build system
+dev-cmake/addboost-cmake 3.7.1: Yet another CMake script for finding or bundling Boost.
+dev-cmake/cpm-cmake 1.0_pre20250121-r1: A cmake not package manager. Essentially, it's about 'how to do bundled dependencies better', though it sucks when you have anything remotely complex. Arniiiii's fork. Don't use CPM in your projects. I've used it and now regret about it. https://michael.orlitzky.com/articles/motherfuckers_need_package_management.xhtml
+dev-cmake/format-cmake 1.8.3: Yet another CMake script for formatting via cmake-format and clang-format using a cmake build target.
+dev-cmake/packageproject-cmake 13.0.5: Amazing script for installing your projects!
+dev-cpp/boost-certify 0.2.2: Boost.Certify is a Boost.ASIO-based TLS certificate verification library. Here's a ebuild of the fork to make it more usable from CMake and make tests pass.
+dev-cpp/constexpr-to-string 1.0: C++14 code to convert integers to strings at compile-time
+dev-cpp/kokkos 4.1.0: C++ Performance Portability Programming EcoSystem
+dev-cpp/quill 8.0.0: Asynchronous Low Latency C++ Logging Library
+dev-libs/boost 1.87.0: Famous Boost libraries for C++, but built via CMake, not b2
+dev-libs/cppgenerate 0.2: A library for generating C++ code from C++
+dev-libs/dbus-cxx 2.4.0: dbus c++ API library. Developer said it's threadsafe. c++17 required.
+dev-libs/simdjson 3.11.6: SIMD accelerated C++ JSON library
