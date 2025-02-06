@@ -7,7 +7,7 @@ First of all, get a machine with gentoo. Then:
 
 `emerge eselect-repository`
 
-`eselect repository add ex_repo git https://github.com/Arniiiii/ex_repo.git `
+(optional) `eselect repository add ex_repo git https://github.com/Arniiiii/ex_repo.git `
 
 `eselect repository enable ex_repo`
 
