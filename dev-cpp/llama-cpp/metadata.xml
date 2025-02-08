@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">ggerganov/llama.cpp</remote-id>
+		<bugs-to>https://github.com/ggerganov/llama.cpp/issues</bugs-to>
+		<changelog>https://github.com/ggerganov/llama.cpp/releases</changelog>
+		<doc>https://github.com/ggerganov/llama.cpp/wiki</doc>
+	</upstream>
+	<maintainer type="person">
+		<email>lg3dx6fd@gmail.com</email>
+		<name>Arniiiii</name>
+	</maintainer>
+  <use>
+		<flag name="static">static build?</flag>
+		<flag name="cpu">ggml: enable CPU backend</flag>
+		<flag name="accelerate">ggml: enable Accelerate framework</flag>
+		<flag name="blas">ggml: use BLAS; for using specific vendor check https://wiki.gentoo.org/wiki/Blas-lapack-switch</flag>
+		<flag name="llamafile">ggml: use LLAMAFILE</flag>
+		<flag name="cann">ggml: use CANN</flag>
+		<flag name="cuda">ggml: use CUDA ; use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables: GGML_CUDA_PEER_MAX_BATCH_SIZE ggml: max. batch size for using peer access, default: 128</flag>
+		<flag name="musa">ggml: use MUSA</flag>
+		<flag name="cuda_force_mmq">ggml: use mmq kernels instead of cuBLAS</flag>
+		<flag name="cuda_force_cublas">ggml: always use cuBLAS instead of mmq kernels</flag>
+		<flag name="cuda_f16">ggml: use 16 bit floats for some calculations</flag>
+		<flag name="cuda_no_peer_copy">ggml: do not use peer to peer copies</flag>
+		<flag name="cuda_no_vmm">ggml: do not try to use CUDA VMM</flag>
+		<flag name="cuda_fa_all_quants">ggml: compile all quants for FlashAttention</flag>
+		<flag name="cuda_graphs">ggml: use CUDA graphs (llama.cpp only)</flag>
+		<flag name="hip">ggml: use HIP</flag>
+		<flag name="hip_graphs">ggml: use HIP graph, experimental, slow</flag>
+		<flag name="hip_no_vmm">ggml: do not try to use HIP VMM</flag>
+		<flag name="hip_uma">ggml: use HIP unified memory architecture</flag>
+		<flag name="vulkan">ggml: use Vulkan ; use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables:  GGML_VULKAN_SHADERS_GEN_TOOLCHAIN "" "ggml: toolchain file for vulkan-shaders-gen"</flag>
+		<flag name="vulkan_check_results">ggml: run Vulkan op checks</flag>
+		<flag name="vulkan_debug">ggml: enable Vulkan debug output</flag>
+		<flag name="vulkan_memory_debug">ggml: enable Vulkan memory debug output</flag>
+		<flag name="vulkan_shader_debug_info">ggml: enable Vulkan shader debug info</flag>
+		<flag name="vulkan_perf">ggml: enable Vulkan perf output</flag>
+		<flag name="vulkan_validate">ggml: enable Vulkan validation</flag>
+		<flag name="vulkan_run_tests">ggml: run Vulkan tests</flag>
+		<flag name="kompute">ggml: use Kompute</flag>
+		<flag name="metal">ggml: use Metal; use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables: ggml: metal minimum macOS version GGML_METAL_MACOSX_VERSION_MIN ; ggml: metal standard version (-std flag) GGML_METAL_STD</flag>
+		<flag name="metal_use_bf16">ggml: use bfloat if available</flag>
+		<flag name="metal_ndebug">ggml: disable Metal debugging</flag>
+		<flag name="metal_shader_debug">ggml: compile Metal with -fno-fast-math</flag>
+		<flag name="metal_embed_library">ggml: embed Metal library</flag>
+		<flag name="openmp">ggml: use OpenMP</flag>
+		<flag name="rpc">ggml: use RPC</flag>
+		<flag name="sycl">ggml: use SYCL ;   use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables: GGML_SYCL_TARGET "INTEL" "ggml: sycl target device" ; GGML_SYCL_DEVICE_ARCH "" "ggml: sycl device architecture"</flag>
+		<flag name="sycl_f16">ggml: use 16 bit floats for sycl calculations</flag>
+
+		<flag name="sycl_target_nvidia">sycl_target_nvidia</flag>
+		<flag name="sycl_target_amdgpu">sycl_target_amdgpu</flag>
+		<flag name="sycl_target_intelgpu">sycl_target_intelgpu</flag>
+		<flag name="sycl_via_oneapi">sycl_via_oneapi</flag>
+		<flag name="sycl_via_onemkl">sycl_via_onemkl</flag>
+		<flag name="opencl">ggml: use OpenCL</flag>
+		<flag name="opencl_profiling">ggml: use OpenCL profiling (increases overhead)</flag>
+		<flag name="opencl_embed_kernels">ggml: embed kernels</flag>
+		<flag name="opencl_use_adreno_kernels">ggml: use optimized kernels for Adreno</flag>
+		<flag name="test">ggml: build tests; "llama: build tests"</flag>
+		<flag name="examples">ggml: build examples; "llama: build examples"</flag>
+		<flag name="server">ggml: build examples ; "llama: build server example"</flag>
+  </use>
+</pkgmetadata>
