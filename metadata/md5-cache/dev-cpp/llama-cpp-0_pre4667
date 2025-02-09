@@ -13,4 +13,4 @@ REQUIRED_USE=blis? ( blas ) android? ( !llamafile !openmp ) msvc? ( !cpu_flags_x
 SLOT=0
 SRC_URI=https://github.com/ggerganov/llama.cpp/archive/refs/tags/b4667.tar.gz -> llama.cpp-b4667.tar.gz
 _eclasses_=toolchain-funcs	14648d8795f7779e11e1bc7cf08b7536	multilib	b2a329026f2e404e9e371097dda47f96	flag-o-matic	357f1a896fbedcd06e5ce55419c49eb9	multiprocessing	1e32df7deee68372153dca65f4a7c21f	ninja-utils	2df4e452cea39a9ec8fb543ce059f8d6	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	cmake	10a50dfaf728b802fcfd37f8d0da9056	out-of-source-utils	dbf9e34ee8964084651e25907fa8f52c	multibuild	4650a65187015567b4e041bb9bfdb364	multilib-build	9ac26ea006828266d235e2f0135429b5	multilib-minimal	e9f54d75b074edc47d36994bbc1e2123	cmake-multilib	37d23064f303dcf23453353ab8c77059	cuda	283d0f298f6c196c755a0f8d50daca85
-_md5_=ba1c3e4f952d23a2be7235c7db226a87
+_md5_=edd7769c3e8eea9650d8c39dc519ce6d

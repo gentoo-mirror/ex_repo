@@ -224,7 +224,9 @@ PATCHES=(
 S="${WORKDIR}/llama.cpp-${MY_PV}"
 
 src_prepare() {
-	cuda_src_prepare
+	if use cuda; then
+		cuda_src_prepare
+	fi
 	cmake_src_prepare
 }
 
