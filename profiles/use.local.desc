@@ -12,7 +12,7 @@ dev-cpp/llama-cpp:accelerate - ggml: enable Accelerate framework
 dev-cpp/llama-cpp:blas - ggml: use BLAS; for using specific vendor check https://wiki.gentoo.org/wiki/Blas-lapack-switch
 dev-cpp/llama-cpp:cann - ggml: use CANN
 dev-cpp/llama-cpp:cpu - ggml: enable CPU backend; it will add `-march=native` by itself. CPU_FLAGS_* consistency is expected to be user's problem
-dev-cpp/llama-cpp:cuda - ggml: use CUDA ; use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables: GGML_CUDA_PEER_MAX_BATCH_SIZE ggml: max. batch size for using peer access, default: 128
+dev-cpp/llama-cpp:cuda - ggml: use CUDA ; use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables: CMAKE_CUDA_ARCHITECTURES ( use next command to find native architecture: `nvidia-smi --query-gpu=compute_cap --format=csv | tail -n 1 | sed -e 's/\.//g'` ) ; GGML_CUDA_PEER_MAX_BATCH_SIZE ggml: max. batch size for using peer access, default: 128
 dev-cpp/llama-cpp:cuda_f16 - ggml: use 16 bit floats for some calculations
 dev-cpp/llama-cpp:cuda_fa_all_quants - ggml: compile all quants for FlashAttention
 dev-cpp/llama-cpp:cuda_force_cublas - ggml: always use cuBLAS instead of mmq kernels
