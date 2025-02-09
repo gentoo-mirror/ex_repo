@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit cmake-multilib cuda
+ROCM_VERSION=6.3
+
+inherit cmake-multilib cuda rocm
 
 DESCRIPTION="Inference of Meta's LLaMA model (and others) in pure C/C++"
 HOMEPAGE="https://github.com/ggerganov/llama.cpp"
@@ -233,6 +235,13 @@ src_prepare() {
 }
 
 src_configure() {
+	if use hip; then
+		HIPCC=$(hipconfig -l)/clang
+		HIPCXX=$(hipconfig -l)/clang++
+		# export DEVICE_LIB_PATH=${EPREFIX}/usr/lib/amdgcn/bitcode # not sure what to do with that
+		HIP_PATH=$(hipconfig -R)
+	fi
+
     local mycmakeargs=(
         -DGGML_LTO="$(usex lto ON OFF)"
 
@@ -358,13 +367,27 @@ src_configure() {
 		mycmakeargs+=( -DGGML_BLAD_VENDOR=FLAME )
 	fi
 
+	if use hip; then
+		mycmakeargs+=( -DAMDGPU_TARGETS=$(get_amdgpu_flags) )
+	fi
+
     cmake-multilib_src_configure
 }
 
 src_test() {
-    if use cuda ; then
+    if use cuda; then
         addpredict /dev/nvidiactl
+
+		# we need write access to this to run the tests
+		addwrite /dev/nvidia0
+		addwrite /dev/nvidiactl
+		addwrite /dev/nvidia-uvm
+		addwrite /dev/nvidia-uvm-tools
     fi
+
+	if use hip; then
+		check_amdgpu
+	fi
     # cd "${BUILD_DIR}" || die # why this exists?
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"${BUILD_DIR}/bin"
     cmake-multilib_src_test

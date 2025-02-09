@@ -31,7 +31,7 @@
 		<flag name="hip">ggml: use HIP</flag>
 		<flag name="hip_graphs">ggml: use HIP graph, experimental, slow</flag>
 		<flag name="hip_no_vmm">ggml: do not try to use HIP VMM</flag>
-		<flag name="hip_uma">ggml: use HIP unified memory architecture</flag>
+		<flag name="hip_uma">ggml: use HIP unified memory architecture : from docs/build.md : On Linux it is also possible to use unified memory architecture (UMA) to share main memory between the CPU and integrated GPU by setting -DGGML_HIP_UMA=ON. However, this hurts performance for non-integrated GPUs (but enables working with integrated GPUs).</flag>
 		<flag name="vulkan">ggml: use Vulkan ; use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables:  GGML_VULKAN_SHADERS_GEN_TOOLCHAIN "" "ggml: toolchain file for vulkan-shaders-gen"</flag>
 		<flag name="vulkan_check_results">ggml: run Vulkan op checks</flag>
 		<flag name="vulkan_debug">ggml: enable Vulkan debug output</flag>
