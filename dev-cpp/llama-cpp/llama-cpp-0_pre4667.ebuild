@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake-multilib cuda
 
 DESCRIPTION="Inference of Meta's LLaMA model (and others) in pure C/C++"
 HOMEPAGE="https://github.com/ggerganov/llama.cpp"
@@ -223,10 +223,14 @@ PATCHES=(
 
 S="${WORKDIR}/llama.cpp-${MY_PV}"
 
-src_configure() {
-    # Force nvcc to use gcc-13
-    export NVCC_CCBIN='/usr/bin/gcc-13'
+src_prepare() {
+	if use cuda; then
+		cuda_src_prepare
+	fi
+	cmake_src_prepare
+}
 
+src_configure() {
     local mycmakeargs=(
         -DGGML_LTO="$(usex lto ON OFF)"
 
