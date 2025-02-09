@@ -39,8 +39,6 @@ blis
 
 +llamafile
 
-+cpu
-
 cann
 
 musa
@@ -87,6 +85,10 @@ metal_ndebug
 metal_shader_debug
 +metal_embed_library
 
+
++cpu
+
+cpu_native
 
 cpu_flags_x86_avx
 cpu_flags_x86_avx_vnni
@@ -242,7 +244,7 @@ src_configure() {
         -DLLAMA_CURL="$(usex curl ON OFF)"
 
 		-DLLAMA_BUILD_TESTS=$(usex test ON OFF)
-		-DLLAMA_BUILD_EXAMPLE=$(usex examples ON OFF)
+		-DLLAMA_BUILD_EXAMPLES=$(usex examples ON OFF)
 		-DLLAMA_BUILD_SERVER=$(usex server ON OFF)
 		-DLLAMA_BUILD_COMMON=ON
         # -DLLAMA_BUILD_SERVER=OFF # why
@@ -254,6 +256,9 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=$(usex static OFF ON)
 
 		-DGGML_CPU=$(usex cpu ON OFF)
+
+		-DGGML_NATIVE=$(usex cpu_native ON OFF)
+
 		-DGGML_CPU_AARCH64=$(usex arm64 ON OFF)
 		-DGGML_CPU_HBM=$(usex hbm ON OFF)
 		-DGGML_AVX=$(usex cpu_flags_x86_avx ON OFF)
@@ -337,13 +342,16 @@ src_configure() {
 		-DGGML_OPENCL_USE_ADRENO_KERNELS=$(usex opencl_use_adreno_kernels ON OFF)
 
 		# -DGGML_BUILD_TESTS=$(usex test ON OFF) # broken option
-		-DGGML_BUILD_EXAMPLES=$(usex examples ON OFF)
+		# -DGGML_BUILD_EXAMPLES=$(usex examples ON OFF) # broken option
 
 	# Gentoo users enable ccache via e.g. FEATURES=ccache or
 	# other means. We don't want the build system to enable it for us.
 		-DGGML_CCACHE=OFF
 
 
+		# defaults aren't so good
+		--log-level=DEBUG
+		-DFETCHCONTENT_QUIET=OFF
     )
 
 	if use blis; then
