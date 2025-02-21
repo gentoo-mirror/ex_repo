@@ -225,6 +225,9 @@ PATCHES=(
 	"${FILESDIR}/0001_GGML_CANN_option_has_to_do_something.patch"
 )
 
+RESTRICT="userpriv"
+
+
 S="${WORKDIR}/llama.cpp-${MY_PV}"
 
 src_prepare() {
@@ -383,6 +386,7 @@ src_test() {
 		addwrite /dev/nvidiactl
 		addwrite /dev/nvidia-uvm
 		addwrite /dev/nvidia-uvm-tools
+		cuda_add_sandbox
     fi
 
 	if use hip; then
