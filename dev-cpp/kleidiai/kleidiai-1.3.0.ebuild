@@ -38,6 +38,7 @@ RESTRICT="
 
 PATCHES=(
 	"${FILESDIR}/0000_fix_bundling_dependencies.patch"
+	"${FILESDIR}/0001_install_it.patch"
 )
 
 S="${WORKDIR}/kleidiai-v${PV}"
