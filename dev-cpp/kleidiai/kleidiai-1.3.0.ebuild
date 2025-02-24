@@ -37,9 +37,7 @@ RESTRICT="
 "
 
 PATCHES=(
-	"${FILESDIR}/0000_fix_bundling_dependencies.patch"
-	"${FILESDIR}/0001_install_it.patch"
-	"${FILESDIR}/0002_fix_include.patch"
+	"${FILESDIR}/0004_make_it_use_installed_gtest_and_google_benchmark_and_make_it_install_the_project.patch"
 )
 
 S="${WORKDIR}/kleidiai-v${PV}"
