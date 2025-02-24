@@ -113,6 +113,8 @@ cpu_flags_x86_sse41
 cpu_flags_x86_sse42
 cpu_flags_x86_ssse3
 
+kleidiai
+
 cpu_flags_loong_lasx
 cpu_flags_loong_lsx
 
@@ -221,8 +223,9 @@ RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/0000_add_sse_flags.patch"
 	"${FILESDIR}/0001_GGML_CANN_option_has_to_do_something.patch"
+	"${FILESDIR}/0002_add_sse_flags.patch"
+	"${FILESDIR}/0003_fix_bundling_kleidiai.patch"
 )
 
 RESTRICT="userpriv"
@@ -246,14 +249,14 @@ src_configure() {
 	fi
 
     local mycmakeargs=(
-        -DGGML_LTO="$(usex lto ON OFF)"
+        -DGGML_LTO=$(usex lto ON OFF)
 
 		# add these via user's /etc/portage/make.conf as i.e.`-fsanitize=address`
         -DLLAMA_SANITIZE_THREAD=OFF
         -DLLAMA_SANITIZE_ADDRESS=OFF
         -DLLAMA_SANITIZE_UNDEFINED=OFF
 
-        -DLLAMA_CURL="$(usex curl ON OFF)"
+        -DLLAMA_CURL=$(usex curl ON OFF)
 
 		-DLLAMA_BUILD_TESTS=$(usex test ON OFF)
 		-DLLAMA_BUILD_EXAMPLES=$(usex examples ON OFF)
@@ -273,6 +276,7 @@ src_configure() {
 
 		-DGGML_CPU_AARCH64=$(usex arm64 ON OFF)
 		-DGGML_CPU_HBM=$(usex hbm ON OFF)
+		-DGGML_CPU_KLEIDIAI=$(usex kleidiai ON OFF)
 		-DGGML_AVX=$(usex cpu_flags_x86_avx ON OFF)
 		-DGGML_AVX_VNNI=$(usex cpu_flags_x86_avx_vnni ON OFF)
 		-DGGML_AVX2=$(usex cpu_flags_x86_avx2 ON OFF)

@@ -6,6 +6,7 @@ index 75b5ea3..04df6fb 100644
  
  option(GGML_CPU_HBM          "ggml: use memkind for CPU HBM" OFF)
  option(GGML_CPU_AARCH64      "ggml: use runtime weight conversion of Q4_0 to Q4_X_X" ON)
+ option(GGML_CPU_KLEIDIAI     "ggml: use KleidiAI optimized kernels if applicable" OFF)
 +option(GGML_SSE              "ggml: enable SSE"              OFF)
 +option(GGML_SSE2             "ggml: enable SSE2"             OFF)
 +option(GGML_SSE3             "ggml: enable SSE3"             OFF)
