@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7759cfa..309be07 100644
+index 7759cfa..5fd1b6e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -352,3 +352,22 @@ if(KLEIDIAI_BUILD_BENCHMARK)
@@ -11,9 +11,9 @@ index 7759cfa..309be07 100644
 +find_package(PackageProject.cmake)
 +
 +packageProject(
-+  NAME ${PROJECT_NAME}
++  NAME kleidiai
 +  VERSION ${PROJECT_VERSION}
-+  NAMESPACE ${PROJECT_NAME}
++  NAMESPACE kleidiai
 +  BINARY_DIR ${PROJECT_BINARY_DIR}
 +  INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include
 +  INCLUDE_DESTINATION include/${PROJECT_NAME}
