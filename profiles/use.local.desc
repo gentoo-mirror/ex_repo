@@ -25,6 +25,7 @@ dev-cpp/llama-cpp:hip - ggml: use HIP
 dev-cpp/llama-cpp:hip_graphs - ggml: use HIP graph, experimental, slow
 dev-cpp/llama-cpp:hip_no_vmm - ggml: do not try to use HIP VMM
 dev-cpp/llama-cpp:hip_uma - ggml: use HIP unified memory architecture : from docs/build.md : On Linux it is also possible to use unified memory architecture (UMA) to share main memory between the CPU and integrated GPU by setting -DGGML_HIP_UMA=ON. However, this hurts performance for non-integrated GPUs (but enables working with integrated GPUs).
+dev-cpp/llama-cpp:kleidiai - ggml: use kleidiai optimized kernels if applicable" GUYS ON ARM64 or ARM, enable this!!!!!!!!!
 dev-cpp/llama-cpp:kompute - ggml: use Kompute
 dev-cpp/llama-cpp:llamafile - ggml: use LLAMAFILE
 dev-cpp/llama-cpp:metal - ggml: use Metal; use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables: ggml: metal minimum macOS version GGML_METAL_MACOSX_VERSION_MIN ; ggml: metal standard version (-std flag) GGML_METAL_STD

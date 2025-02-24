@@ -7,7 +7,7 @@ dev-cpp/boost-certify 0.2.2: Boost.Certify is a Boost.ASIO-based TLS certificate
 dev-cpp/constexpr-to-string 1.0: C++14 code to convert integers to strings at compile-time
 dev-cpp/kleidiai 1.3.0: KleidiAI is an open-source library that provides optimized performance-critical routines, also known as micro-kernels, for artificial intelligence (AI) workloads tailored for Arm® CPUs.
 dev-cpp/kokkos 4.1.0: C++ Performance Portability Programming EcoSystem
-dev-cpp/llama-cpp 0_pre4676: Inference of Meta's LLaMA model (and others) in pure C/C++
+dev-cpp/llama-cpp 0_pre4749: Inference of Meta's LLaMA model (and others) in pure C/C++
 dev-cpp/quill 8.0.0: Asynchronous Low Latency C++ Logging Library
 dev-libs/boost 1.87.0: Famous Boost libraries for C++, but built via CMake, not b2
 dev-libs/cppgenerate 0.2: A library for generating C++ code from C++
