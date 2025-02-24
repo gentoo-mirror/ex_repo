@@ -1,0 +1,100 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7759cfa..fdaf1ce 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -237,7 +237,7 @@ target_compile_options(kleidiai
+ if(KLEIDIAI_BUILD_TESTS)
+     include(FetchGTest)
+     enable_testing()
+-    include(GoogleTest)
++    # include(GoogleTest)
+ 
+     add_library(kleidiai_test_framework
+         test/common/data_type.cpp
+@@ -314,6 +314,7 @@ if(KLEIDIAI_BUILD_TESTS)
+         PRIVATE GTest::gtest_main
+     )
+ 
++    target_include_directories(kleidiai_test PRIVATE ${GTEST_INCLUDE_DIRS})
+ 
+     # Cross-compiling is a common use case which creates a conflict if DISCOVERY_MODE is set to POST_BUILD (by default)
+     # since the host platform does not match the target. Setting the mode to PRE_TEST avoids this conflict. This feature
+@@ -349,6 +350,26 @@ if(KLEIDIAI_BUILD_BENCHMARK)
+         benchmark::benchmark)
+ 
+     set(KLEIDIAI_BENCHMARK_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+-    target_include_directories(kleidiai_benchmark
+-        PRIVATE KLEIDIAI_BENCHMARK_INCLUDE_DIR)
++    # why would you need this?
++    # target_include_directories(kleidiai_benchmark
++    #     PRIVATE KLEIDIAI_BENCHMARK_INCLUDE_DIR)
+ endif()
++
++
++find_package(PackageProject.cmake)
++
++packageProject(
++  NAME ${PROJECT_NAME}
++  VERSION ${PROJECT_VERSION}
++  NAMESPACE ${PROJECT_NAME}
++  BINARY_DIR ${PROJECT_BINARY_DIR}
++  INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include
++  INCLUDE_DESTINATION include/${PROJECT_NAME}
++  VERSION_HEADER "${VERSION_HEADER_LOCATION}" EXPORT_HEADER "${EXPORT_HEADER_LOCATION}"
++  COMPATIBILITY "AnyNewerVersion" DISABLE_VERSION_SUFFIX ON
++  # cmake-format:off DO *NOT* divide this like to different lines. It will destroy a lot of stuff
++  # related to making this project not only installable, but usable via `find_package(the_project)`
++  DEPENDENCIES
++    ""
++  # cmake-format:on
++)
+diff --git a/cmake/FetchGBench.cmake b/cmake/FetchGBench.cmake
+index 2de00d4..b77daca 100644
+--- a/cmake/FetchGBench.cmake
++++ b/cmake/FetchGBench.cmake
+@@ -1,18 +1 @@
+-#
+-# SPDX-FileCopyrightText: Copyright 2024 Arm Limited and/or its affiliates <open-source-office@arm.com>
+-#
+-# SPDX-License-Identifier: Apache-2.0
+-#
+-include(FetchContent)
+-
+-# Set timestamp of extracted contents to time of extraction.
+-if(POLICY CMP0135)
+-    cmake_policy(SET CMP0135 NEW)
+-endif()
+-
+-fetchcontent_declare(googlebench
+-    URL         ${CMAKE_CURRENT_SOURCE_DIR}/third_party/benchmark-v1.8.4.zip
+-    URL_HASH    SHA256=84c49c4c07074f36fbf8b4f182ed7d75191a6fa72756ab4a17848455499f4286
+-)
+-
+-fetchcontent_makeavailable(googlebench)
++find_package(benchmark 1.8.4 REQUIRED)
+diff --git a/cmake/FetchGTest.cmake b/cmake/FetchGTest.cmake
+index 6089594..cbacef9 100644
+--- a/cmake/FetchGTest.cmake
++++ b/cmake/FetchGTest.cmake
+@@ -1,20 +1 @@
+-#
+-# SPDX-FileCopyrightText: Copyright 2024 Arm Limited and/or its affiliates <open-source-office@arm.com>
+-#
+-# SPDX-License-Identifier: Apache-2.0
+-#
+-include(FetchContent)
+-
+-# Set timestamp of extracted contents to time of extraction.
+-if(POLICY CMP0135)
+-    cmake_policy(SET CMP0135 NEW)
+-endif()
+-
+-fetchcontent_declare(googletest
+-    URL         ${CMAKE_CURRENT_SOURCE_DIR}/third_party/googletest-v1.14.0.zip
+-    URL_HASH    SHA256=1f357c27ca988c3f7c6b4bf68a9395005ac6761f034046e9dde0896e3aba00e4
+-)
+-
+-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+-
+-fetchcontent_makeavailable(googletest)
++find_package(GTest 1.14.0 REQUIRED)
