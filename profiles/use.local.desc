@@ -75,3 +75,8 @@ dev-libs/boost:boost_thread_win32 - Threading API, pthread or win32. Defaults to
 dev-libs/boost:mpi - Set to ON if Boost libraries depending on MPI should be built. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
 dev-libs/boost:python - Set to ON if Boost libraries depending on Python should be built. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
 dev-libs/boost:static - Set to ON if Boost libraries should be build as static libraries. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
+dev-libs/simdjson:all-impls - Enable all (possibly supported by CHOST) implementations rather than only of them.
+dev-libs/simdjson:shared-libs - Make shared library. If you are on windows, enable only one of `static-libs` and `shared-libs`
+dev-libs/simdjson:singleheader - Make simdjson library out of amalgamated one simdjson.hpp and one simdjson.cpp, instead of whole bunch of files in include/ and src/ . Expected to be more stable.
+dev-libs/simdjson:static-libs - Make static library. If you are on windows, enable only one of `static-libs` and `shared-libs`
+dev-libs/simdjson:tools - Build and install extra command line tools
