@@ -8,7 +8,7 @@
 	<use>
 		<flag name="tools">Build and install extra command line tools</flag>
 		<flag name="all-impls">Enable all (possibly supported by CHOST) implementations rather than only of them.</flag>
-		<flag name="singleheader">Make simdjson library out of amalgamated one simdjson.hpp and one simdjson.cpp, instead of whole bunch of files in include/ and src/ . Expected to be more stable.<flag>
+    <flag name="singleheader">Make simdjson library out of amalgamated one simdjson.hpp and one simdjson.cpp, instead of whole bunch of files in include/ and src/ . Expected to be more stable.</flag>
 		<flag name="static-libs">Make static library. If you are on windows, enable only one of `static-libs` and `shared-libs`</flag>
 		<flag name="shared-libs">Make shared library. If you are on windows, enable only one of `static-libs` and `shared-libs`</flag>
 	</use>
