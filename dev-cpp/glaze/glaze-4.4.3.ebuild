@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib toolchain-funcs
+inherit cmake-multilib
 
 DESCRIPTION="Extremely fast, in memory, JSON and interface library for modern C++ "
 HOMEPAGE="https://github.com/stephenberry/glaze"
