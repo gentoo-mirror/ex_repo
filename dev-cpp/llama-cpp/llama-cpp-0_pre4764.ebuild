@@ -121,7 +121,7 @@ cpu_flags_loong_lsx
 cpu_flags_riscv_rvv
 "
 
-# since this is too hard to do
+# since this is too hard to do right now
 # sycl
 # sycl_f16
 # sycl_target_nvidia
@@ -136,6 +136,7 @@ cpu_flags_riscv_rvv
 # android stuff added according to their docs.
 # a lot of !flag ( !subflags ) statements placed for binpkg correctness
 REQUIRED_USE="
+	test? ( curl )
 	blis? ( blas )
 	android? (
 		!llamafile
@@ -226,9 +227,10 @@ PATCHES=(
 	"${FILESDIR}/0001_GGML_CANN_option_has_to_do_something.patch"
 	"${FILESDIR}/0002_add_sse_flags.patch"
 	"${FILESDIR}/0003_fix_bundling_kleidiai.patch"
+	"${FILESDIR}/0004_fix_test_chat.patch"
 )
 
-RESTRICT="userpriv"
+RESTRICT="test? ( userpriv )"
 
 
 S="${WORKDIR}/llama.cpp-${MY_PV}"
