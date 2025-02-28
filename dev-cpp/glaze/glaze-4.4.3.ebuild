@@ -24,7 +24,11 @@ REQUIRED_USE="
 "
 
 DEPEND="
-	test? ( dev-cpp/ut2-glaze dev-cpp/asio )
+	test? (
+		dev-cpp/ut2-glaze
+		dev-cpp/asio
+		>=dev-cpp/eigen-3.4
+	)
 "
 
 RDEPEND="${DEPEND}"
