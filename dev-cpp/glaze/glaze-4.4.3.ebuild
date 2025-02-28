@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit cmake-multilib
+inherit cmake
 
 DESCRIPTION="Extremely fast, in memory, JSON and interface library for modern C++ "
 HOMEPAGE="https://github.com/stephenberry/glaze"
@@ -56,7 +56,7 @@ src_configure() {
 		--log-level=DEBUG
 	)
 
-	cmake-multilib_src_configure
+	cmake_src_configure
 
 }
 
@@ -65,5 +65,5 @@ src_install() {
 		einstalldocs
 	fi
 
-	cmake-multilib_src_install
+	cmake_src_install
 }
