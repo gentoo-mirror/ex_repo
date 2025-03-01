@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="proxy">
+		<email>lg3dx6fd@gmail.com</email>
+		<name>Arniiiii</name>
+		<description>Just a guy that likes C++ and uses CMake.</description>
+	</maintainer>
+	<longdescription>
+		A cmake not package manager. Essentially, it's about 'how to do bundled dependencies better', though it sucks when you have anything remotely complex. Arniiiii's fork. Don't use CPM in your projects. I've used it and now regret about it. https://michael.orlitzky.com/articles/motherfuckers_need_package_management.xhtml
+	</longdescription>
+	<use>
+		<flag name="doc">Install related README.md</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Arniiiii/CPM.cmake</remote-id>
+	</upstream>
+</pkgmetadata>

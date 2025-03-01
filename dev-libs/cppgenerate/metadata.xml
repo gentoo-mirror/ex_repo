@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="proxy">
+		<email>lg3dx6fd@gmail.com</email>
+		<name>Arniiiii</name>
+		<description>Just a guy that likes C++ and uses CMake.</description>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">rm5248/libcppgenerate</remote-id>
+	</upstream>
+</pkgmetadata>

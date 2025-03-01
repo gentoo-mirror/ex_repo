@@ -12,15 +12,20 @@
 		<name>Arniiiii</name>
 	</maintainer>
 	<use>
+		<flag name="android">Enable if you build for android</flag>
+		<flag name="msvc">Enable if you build with MSVC</flag>
 		<flag name="static">static build?</flag>
 		<flag name="cpu">ggml: enable CPU backend</flag>
 		<flag name="cpu_native">ggml: enable CPU backend; it will add `-march=native` by itself. CPU_FLAGS_* consistency is expected to be user's problem </flag>
+		<flag name="hbm">ggml: use memkind for CPU HBM ( High Bandwidth Memory , check wikipedia.) ; a hardware-related feature</flag>
 		<flag name="accelerate">ggml: enable Accelerate framework</flag>
 		<flag name="blas">ggml: use BLAS; for using specific vendor check https://wiki.gentoo.org/wiki/Blas-lapack-switch</flag>
+		<flag name="blis">ggml: use BLIS ( https://github.com/flame/blis )</flag>
 		<flag name="llamafile">ggml: use LLAMAFILE</flag>
 		<flag name="cann">ggml: use CANN</flag>
 		<flag name="cuda">ggml: use CUDA ; use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables: CMAKE_CUDA_ARCHITECTURES ( use next command to find native architecture: `nvidia-smi --query-gpu=compute_cap --format=csv | tail -n 1 | sed -e 's/\.//g'` ) ; GGML_CUDA_PEER_MAX_BATCH_SIZE ggml: max. batch size for using peer access, default: 128</flag>
 		<flag name="musa">ggml: use MUSA</flag>
+		<flag name="cuda_unified_memory">ggml: CUDA : unified memory: allow CUDA app use unified memory architecture (UMA) to share main memory between the CPU and integrated GPU </flag>
 		<flag name="cuda_force_mmq">ggml: use mmq kernels instead of cuBLAS</flag>
 		<flag name="cuda_force_cublas">ggml: always use cuBLAS instead of mmq kernels</flag>
 		<flag name="cuda_f16">ggml: use 16 bit floats for some calculations</flag>

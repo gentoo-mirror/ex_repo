@@ -5,7 +5,7 @@ EAPI=8
 
 inherit java-pkg-2 multiprocessing bash-completion-r1
 
-DESCRIPTION="Fast and correct automated build system"
+DESCRIPTION="Yet another build system where developers bundle all dependencies."
 HOMEPAGE="https://bazel.build/"
 
 SRC_URI="https://github.com/bazelbuild/bazel/releases/download/${PV}/${P}-dist.zip"

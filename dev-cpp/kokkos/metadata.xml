@@ -3,7 +3,7 @@
 <pkgmetadata>
   <maintainer type="person">
     <name>Arniiiii</name>
-	<email>lg3dx6fd@gmail.com</email>
+    <email>lg3dx6fd@gmail.com</email>
   </maintainer>
   <use>
     <flag name="openmp">Enable the OpenMP execution space. Requires the compiler to support OpenMP (e.g., -fopenmp).</flag>
@@ -14,9 +14,9 @@
     <flag name="serial">Enable the Serial execution space.(Single thread without parallelization support)</flag>
   </use>
   <upstream>
-	  <bugs-to>https://github.com/kokkos/kokkos/issues</bugs-to>
-	  <changelog>https://github.com/kokkos/kokkos/blob/master/CHANGELOG.md</changelog>
+    <remote-id type="github">kokkos/kokkos</remote-id>
+    <bugs-to>https://github.com/kokkos/kokkos/issues</bugs-to>
+    <changelog>https://github.com/kokkos/kokkos/blob/master/CHANGELOG.md</changelog>
     <doc>https://kokkos.github.io/kokkos-core-wiki/index.html</doc>
   </upstream>
 </pkgmetadata>
-

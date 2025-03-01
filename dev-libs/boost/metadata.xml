@@ -4,11 +4,8 @@
 	<maintainer type="person" proxied="proxy">
 		<email>lg3dx6fd@gmail.com</email>
 		<name>Arniiiii</name>
-		<description>Just a guy that likes C++ and uses CMake, not related to boost.</description>
+		<description>Just a guy that likes C++ and uses CMake.</description>
 	</maintainer>
-	<longdescription>
-		Famous Boost libraries for C++, but built via CMake, not b2
-	</longdescription>
 	<use>
 		<flag name="mpi">Set to ON if Boost libraries depending on MPI should be built. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
 		<flag name="python">Set to ON if Boost libraries depending on Python should be built. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
@@ -21,7 +18,7 @@
 		<flag name="boost_locale_posix">When ON, enables the POSIX backend. Defaults to ON on POSIX systems, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
 		<flag name="boost_locale_std">When ON, enables the std::locale backend. Defaults to ON. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
 		<flag name="boost_locale_winapi">When ON, enables the Windows API backend. Defaults to ON under Windows, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
-		<flag name="boost_thread_posix">Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.</flag>
+		<flag name="boost_thread_pthread">Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.</flag>
 		<flag name="boost_thread_win32">Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.</flag>
 		<flag name="boost_iostream_zlib">When ON, enables ZLib support. Defaults to ON when zlib is found, OFF otherwise.</flag>
 		<flag name="boost_iostream_bzip2">When ON, enables BZip2 support. Defaults to ON when libbzip2 is found, OFF otherwise.</flag>

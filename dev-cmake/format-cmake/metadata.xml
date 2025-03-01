@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="proxy">
+		<email>lg3dx6fd@gmail.com</email>
+		<name>Arniiiii</name>
+		<description>Just a guy that likes C++ and uses CMake.</description>
+	</maintainer>
+	<longdescription>
+			Yet another CMake script for formatting via cmake-format and clang-format using a cmake build target.
+	</longdescription>
+	<use>
+		<flag name="doc">Install related README.md</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">TheLartians/Format.cmake</remote-id>
+	</upstream>
+</pkgmetadata>

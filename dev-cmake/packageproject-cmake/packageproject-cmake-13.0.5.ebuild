@@ -5,29 +5,27 @@ EAPI=8
 
 inherit cmake
 
-DESCRIPTION="Amazing script for installing your projects!"
+DESCRIPTION="Amazing script for installing your projects in CMake!"
 HOMEPAGE="https://github.com/Arniiiii/PackageProject.cmake"
 SRC_URI="https://github.com/Arniiiii/PackageProject.cmake/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+
+S="${WORKDIR}/PackageProject.cmake-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="doc test"
 
-REQUIRED_USE="
-"
+# REQUIRED_USE=""
 
-DEPEND="
-"
+# DEPEND=""
 
-RDEPEND="${DEPEND}"
+# RDEPEND="${DEPEND}"
 
 BDEPEND="
 	dev-build/cmake
 	test? ( dev-cmake/cpm-cmake dev-libs/libfmt )
 "
-
-S="${WORKDIR}/PackageProject.cmake-${PV}"
 
 src_configure() {
 		# Gentoo users enable ccache via e.g. FEATURES=ccache or
@@ -81,4 +79,3 @@ pkg_postinst() {
 	einfo "Remember, if you use CPM, just add to configuration flags "
 	einfo "\`-DCPM_LOCAL_PACKAGES_ONLY=1\` and everything is going to be ok."
 }
-

@@ -13,8 +13,8 @@ HOMEPAGE="
 	https://github.com/simdjson/simdjson
 "
 SRC_URI="
-	https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
-	https://github.com/${PN}/${PN}-data/archive/${SIMDJSON_DATA_COMMIT}.tar.gz -> ${PN}-data-${SIMDJSON_DATA_COMMIT}.tar.gz
+https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.gh.tar.gz
+https://github.com/${PN}/${PN}-data/archive/${SIMDJSON_DATA_COMMIT}.tar.gz -> ${PN}-data-${SIMDJSON_DATA_COMMIT}.tar.gz
 "
 
 LICENSE="Apache-2.0 Boost-1.0 BSD MIT"
