@@ -21,7 +21,7 @@ IUSE="test doc"
 
 # REQUIRED_USE=""
 
-# RESTRICT=""
+RESTRICT="!test? ( test )"
 
 # PROPERTIES=""
 

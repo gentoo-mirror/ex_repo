@@ -231,7 +231,7 @@ PATCHES=(
 	"${FILESDIR}/0004_fix_test_chat.patch"
 )
 
-RESTRICT="test? ( userpriv )"
+RESTRICT="!test? ( test ) test? ( userpriv )"
 
 src_prepare() {
 	if use cuda; then

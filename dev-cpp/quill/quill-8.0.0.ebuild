@@ -17,7 +17,7 @@ IUSE="examples test	extensive-test benchmarks valgrind doc"
 
 REQUIRED_USE="extensive-test? ( test )"
 
-# RESTRICT=""
+RESTRICT="!test? ( test )"
 
 # # it has libfmt bundled in a good way. It doesn't seem to have other dependencies.
 # DEPEND=""

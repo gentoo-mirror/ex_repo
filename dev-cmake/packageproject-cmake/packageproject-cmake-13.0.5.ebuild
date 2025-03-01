@@ -22,6 +22,8 @@ IUSE="doc test"
 
 # RDEPEND="${DEPEND}"
 
+RESTRICT="!test? ( test )"
+
 BDEPEND="
 	dev-build/cmake
 	test? ( dev-cmake/cpm-cmake dev-libs/libfmt )
