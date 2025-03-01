@@ -53,14 +53,14 @@
 		<flag name="metal-embed-library">ggml: embed Metal library</flag>
 		<flag name="openmp">ggml: use OpenMP</flag>
 		<flag name="rpc">ggml: use RPC</flag>
-		<flag name="sycl">ggml: use SYCL ;   use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables: GGML_SYCL_TARGET "INTEL" "ggml: sycl target device" ; GGML_SYCL_DEVICE_ARCH "" "ggml: sycl device architecture"</flag>
-		<flag name="sycl-f16">ggml: use 16 bit floats for sycl calculations</flag>
-
-		<flag name="sycl-target-nvidia">sycl-target-nvidia</flag>
-		<flag name="sycl-target-amdgpu">sycl-target-amdgpu</flag>
-		<flag name="sycl-target-intelgpu">sycl-target-intelgpu</flag>
-		<flag name="sycl-via-openapi">sycl-via-openapi</flag>
-		<flag name="sycl-via-opemkl">sycl-via-opemkl</flag>
+		<!-- <flag name="sycl">ggml: use SYCL ;   use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables: GGML_SYCL_TARGET "INTEL" "ggml: sycl target device" ; GGML_SYCL_DEVICE_ARCH "" "ggml: sycl device architecture"</flag> -->
+		<!-- <flag name="sycl-f16">ggml: use 16 bit floats for sycl calculations</flag> -->
+		<!---->
+		<!-- <flag name="sycl-target-nvidia">sycl-target-nvidia</flag> -->
+		<!-- <flag name="sycl-target-amdgpu">sycl-target-amdgpu</flag> -->
+		<!-- <flag name="sycl-target-intelgpu">sycl-target-intelgpu</flag> -->
+		<!-- <flag name="sycl-via-openapi">sycl-via-openapi</flag> -->
+		<!-- <flag name="sycl-via-opemkl">sycl-via-opemkl</flag> -->
 		<flag name="opencl">ggml: use OpenCL</flag>
 		<flag name="opencl-profiling">ggml: use OpenCL profiling (increases overhead)</flag>
 		<flag name="opencl-embed-kernels">ggml: embed kernels</flag>
