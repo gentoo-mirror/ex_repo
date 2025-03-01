@@ -26,76 +26,69 @@ dev-cpp/llama-cpp:blas - ggml: use BLAS; for using specific vendor check https:/
 dev-cpp/llama-cpp:blis - ggml: use BLIS ( https://github.com/flame/blis )
 dev-cpp/llama-cpp:cann - ggml: use CANN
 dev-cpp/llama-cpp:cpu - ggml: enable CPU backend
-dev-cpp/llama-cpp:cpu_native - ggml: enable CPU backend; it will add `-march=native` by itself. CPU_FLAGS_* consistency is expected to be user's problem
+dev-cpp/llama-cpp:cpu-native - ggml: enable CPU backend; it will add `-march=native` by itself. CPU_FLAGS_* consistency is expected to be user's problem
 dev-cpp/llama-cpp:cuda - ggml: use CUDA ; use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables: CMAKE_CUDA_ARCHITECTURES ( use next command to find native architecture: `nvidia-smi --query-gpu=compute_cap --format=csv | tail -n 1 | sed -e 's/\.//g'` ) ; GGML_CUDA_PEER_MAX_BATCH_SIZE ggml: max. batch size for using peer access, default: 128
-dev-cpp/llama-cpp:cuda_f16 - ggml: use 16 bit floats for some calculations
-dev-cpp/llama-cpp:cuda_fa_all_quants - ggml: compile all quants for FlashAttention
-dev-cpp/llama-cpp:cuda_force_cublas - ggml: always use cuBLAS instead of mmq kernels
-dev-cpp/llama-cpp:cuda_force_mmq - ggml: use mmq kernels instead of cuBLAS
-dev-cpp/llama-cpp:cuda_graphs - ggml: use CUDA graphs (llama.cpp only)
-dev-cpp/llama-cpp:cuda_no_peer_copy - ggml: do not use peer to peer copies
-dev-cpp/llama-cpp:cuda_no_vmm - ggml: do not try to use CUDA VMM
-dev-cpp/llama-cpp:cuda_unified_memory - ggml: CUDA : unified memory: allow CUDA app use unified memory architecture (UMA) to share main memory between the CPU and integrated GPU
+dev-cpp/llama-cpp:cuda-f16 - ggml: use 16 bit floats for some calculations
+dev-cpp/llama-cpp:cuda-fa-all-quants - ggml: compile all quants for FlashAttention
+dev-cpp/llama-cpp:cuda-force-cublas - ggml: always use cuBLAS instead of mmq kernels
+dev-cpp/llama-cpp:cuda-force-mmq - ggml: use mmq kernels instead of cuBLAS
+dev-cpp/llama-cpp:cuda-graphs - ggml: use CUDA graphs (llama.cpp only)
+dev-cpp/llama-cpp:cuda-no-peer-copy - ggml: do not use peer to peer copies
+dev-cpp/llama-cpp:cuda-no-vmm - ggml: do not try to use CUDA VMM
+dev-cpp/llama-cpp:cuda-unified-memory - ggml: CUDA : unified memory: allow CUDA app use unified memory architecture (UMA) to share main memory between the CPU and integrated GPU
 dev-cpp/llama-cpp:examples - ggml: build examples; "llama: build examples"
 dev-cpp/llama-cpp:hbm - ggml: use memkind for CPU HBM ( High Bandwidth Memory , check wikipedia.) ; a hardware-related feature
 dev-cpp/llama-cpp:hip - ggml: use HIP
-dev-cpp/llama-cpp:hip_graphs - ggml: use HIP graph, experimental, slow
-dev-cpp/llama-cpp:hip_no_vmm - ggml: do not try to use HIP VMM
-dev-cpp/llama-cpp:hip_uma - ggml: use HIP unified memory architecture : from docs/build.md : On Linux it is also possible to use unified memory architecture (UMA) to share main memory between the CPU and integrated GPU by setting -DGGML_HIP_UMA=ON. However, this hurts performance for non-integrated GPUs (but enables working with integrated GPUs).
+dev-cpp/llama-cpp:hip-graphs - ggml: use HIP graph, experimental, slow
+dev-cpp/llama-cpp:hip-no-vmm - ggml: do not try to use HIP VMM
+dev-cpp/llama-cpp:hip-uma - ggml: use HIP unified memory architecture : from docs/build.md : On Linux it is also possible to use unified memory architecture (UMA) to share main memory between the CPU and integrated GPU by setting -DGGML_HIP_UMA=ON. However, this hurts performance for non-integrated GPUs (but enables working with integrated GPUs).
 dev-cpp/llama-cpp:kleidiai - ggml: use kleidiai optimized kernels if applicable" GUYS ON ARM64 or ARM, enable this!!!!!!!!!
 dev-cpp/llama-cpp:kompute - ggml: use Kompute
 dev-cpp/llama-cpp:llamafile - ggml: use LLAMAFILE
 dev-cpp/llama-cpp:metal - ggml: use Metal; use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables: ggml: metal minimum macOS version GGML_METAL_MACOSX_VERSION_MIN ; ggml: metal standard version (-std flag) GGML_METAL_STD
-dev-cpp/llama-cpp:metal_embed_library - ggml: embed Metal library
-dev-cpp/llama-cpp:metal_ndebug - ggml: disable Metal debugging
-dev-cpp/llama-cpp:metal_shader_debug - ggml: compile Metal with -fno-fast-math
-dev-cpp/llama-cpp:metal_use_bf16 - ggml: use bfloat if available
+dev-cpp/llama-cpp:metal-embed-library - ggml: embed Metal library
+dev-cpp/llama-cpp:metal-ndebug - ggml: disable Metal debugging
+dev-cpp/llama-cpp:metal-shader-debug - ggml: compile Metal with -fno-fast-math
+dev-cpp/llama-cpp:metal-use-bf16 - ggml: use bfloat if available
 dev-cpp/llama-cpp:msvc - Enable if you build with MSVC
 dev-cpp/llama-cpp:musa - ggml: use MUSA
 dev-cpp/llama-cpp:opencl - ggml: use OpenCL
-dev-cpp/llama-cpp:opencl_embed_kernels - ggml: embed kernels
-dev-cpp/llama-cpp:opencl_profiling - ggml: use OpenCL profiling (increases overhead)
-dev-cpp/llama-cpp:opencl_use_adreno_kernels - ggml: use optimized kernels for Adreno
+dev-cpp/llama-cpp:opencl-embed-kernels - ggml: embed kernels
+dev-cpp/llama-cpp:opencl-profiling - ggml: use OpenCL profiling (increases overhead)
+dev-cpp/llama-cpp:opencl-use-adreno-kernels - ggml: use optimized kernels for Adreno
 dev-cpp/llama-cpp:openmp - ggml: use OpenMP
 dev-cpp/llama-cpp:rpc - ggml: use RPC
 dev-cpp/llama-cpp:server - ggml: build examples ; "llama: build server example"
 dev-cpp/llama-cpp:static - static build?
-dev-cpp/llama-cpp:sycl - ggml: use SYCL ; use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables: GGML_SYCL_TARGET "INTEL" "ggml: sycl target device" ; GGML_SYCL_DEVICE_ARCH "" "ggml: sycl device architecture"
-dev-cpp/llama-cpp:sycl_f16 - ggml: use 16 bit floats for sycl calculations
-dev-cpp/llama-cpp:sycl_target_amdgpu - sycl_target_amdgpu
-dev-cpp/llama-cpp:sycl_target_intelgpu - sycl_target_intelgpu
-dev-cpp/llama-cpp:sycl_target_nvidia - sycl_target_nvidia
-dev-cpp/llama-cpp:sycl_via_oneapi - sycl_via_oneapi
-dev-cpp/llama-cpp:sycl_via_onemkl - sycl_via_onemkl
 dev-cpp/llama-cpp:test - ggml: build tests; "llama: build tests"
 dev-cpp/llama-cpp:vulkan - ggml: use Vulkan ; use CMAKE_EXTRA_CACHE_FILE env variable (check https://gitweb.gentoo.org/repo/gentoo.git/tree/eclass/cmake.eclass ) to specify next variables: GGML_VULKAN_SHADERS_GEN_TOOLCHAIN "" "ggml: toolchain file for vulkan-shaders-gen"
-dev-cpp/llama-cpp:vulkan_check_results - ggml: run Vulkan op checks
-dev-cpp/llama-cpp:vulkan_debug - ggml: enable Vulkan debug output
-dev-cpp/llama-cpp:vulkan_memory_debug - ggml: enable Vulkan memory debug output
-dev-cpp/llama-cpp:vulkan_perf - ggml: enable Vulkan perf output
-dev-cpp/llama-cpp:vulkan_run_tests - ggml: run Vulkan tests
-dev-cpp/llama-cpp:vulkan_shader_debug_info - ggml: enable Vulkan shader debug info
-dev-cpp/llama-cpp:vulkan_validate - ggml: enable Vulkan validation
+dev-cpp/llama-cpp:vulkan-check-results - ggml: run Vulkan op checks
+dev-cpp/llama-cpp:vulkan-debug - ggml: enable Vulkan debug output
+dev-cpp/llama-cpp:vulkan-memory-debug - ggml: enable Vulkan memory debug output
+dev-cpp/llama-cpp:vulkan-perf - ggml: enable Vulkan perf output
+dev-cpp/llama-cpp:vulkan-run-tests - ggml: run Vulkan tests
+dev-cpp/llama-cpp:vulkan-shader-debug-info - ggml: enable Vulkan shader debug info
+dev-cpp/llama-cpp:vulkan-validate - ggml: enable Vulkan validation
 dev-cpp/quill:benchmarks - Build benchmarks
 dev-cpp/quill:doc - Install README files
 dev-cpp/quill:examples - Build examples
-dev-cpp/quill:extensive_test - Build extensive_tests
+dev-cpp/quill:extensive-test - Build extensive_tests
 dev-cpp/quill:valgrind - Test with valgrind
 dev-cpp/ut2-glaze:doc - Install README files.
-dev-libs/boost:boost_context_fcontext - Boost.Context implementation. Default on not-windows OS. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html
-dev-libs/boost:boost_context_ucontext - Boost.Context implementation. Deprecated. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html
-dev-libs/boost:boost_context_winfib - Boost.Context implementation. Windows only. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html
-dev-libs/boost:boost_iostream_bzip2 - When ON, enables BZip2 support. Defaults to ON when libbzip2 is found, OFF otherwise.
-dev-libs/boost:boost_iostream_lzma - When ON, enables LZMA support. Defaults to ON when liblzma is found, OFF otherwise.
-dev-libs/boost:boost_iostream_zlib - When ON, enables ZLib support. Defaults to ON when zlib is found, OFF otherwise.
-dev-libs/boost:boost_iostream_zstd - When ON, enables Zstd support. Defaults to ON when libzstd is found, OFF otherwise.
-dev-libs/boost:boost_locale_iconv - When ON, enables the Iconv backend. Defaults to ON when iconv is found, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
-dev-libs/boost:boost_locale_icu - When ON, enables the ICU backend. Defaults to ON when ICU is found, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
-dev-libs/boost:boost_locale_posix - When ON, enables the POSIX backend. Defaults to ON on POSIX systems, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
-dev-libs/boost:boost_locale_std - When ON, enables the std::locale backend. Defaults to ON. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
-dev-libs/boost:boost_locale_winapi - When ON, enables the Windows API backend. Defaults to ON under Windows, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
-dev-libs/boost:boost_thread_pthread - Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.
-dev-libs/boost:boost_thread_win32 - Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.
+dev-libs/boost:boost-context-fcontext - Boost.Context implementation. Default on not-windows OS. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html
+dev-libs/boost:boost-context-ucontext - Boost.Context implementation. Deprecated. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html
+dev-libs/boost:boost-context-winfib - Boost.Context implementation. Windows only. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html
+dev-libs/boost:boost-iostream-bzip2 - When ON, enables BZip2 support. Defaults to ON when libbzip2 is found, OFF otherwise.
+dev-libs/boost:boost-iostream-lzma - When ON, enables LZMA support. Defaults to ON when liblzma is found, OFF otherwise.
+dev-libs/boost:boost-iostream-zlib - When ON, enables ZLib support. Defaults to ON when zlib is found, OFF otherwise.
+dev-libs/boost:boost-iostream-zstd - When ON, enables Zstd support. Defaults to ON when libzstd is found, OFF otherwise.
+dev-libs/boost:boost-locale-iconv - When ON, enables the Iconv backend. Defaults to ON when iconv is found, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
+dev-libs/boost:boost-locale-icu - When ON, enables the ICU backend. Defaults to ON when ICU is found, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
+dev-libs/boost:boost-locale-posix - When ON, enables the POSIX backend. Defaults to ON on POSIX systems, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
+dev-libs/boost:boost-locale-std - When ON, enables the std::locale backend. Defaults to ON. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
+dev-libs/boost:boost-locale-winapi - When ON, enables the Windows API backend. Defaults to ON under Windows, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
+dev-libs/boost:boost-thread-pthread - Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.
+dev-libs/boost:boost-thread-win32 - Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.
 dev-libs/boost:mpi - Set to ON if Boost libraries depending on MPI should be built. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
 dev-libs/boost:python - Set to ON if Boost libraries depending on Python should be built. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
 dev-libs/boost:static - Set to ON if Boost libraries should be build as static libraries. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
