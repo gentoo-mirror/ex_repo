@@ -3,7 +3,7 @@
 
 EAPI=8
 
-inherit java-pkg-2 toolchain-funcs multiprocessing
+inherit java-pkg-2 multiprocessing bash-completion-r1
 
 DESCRIPTION="Fast and correct automated build system"
 HOMEPAGE="https://bazel.build/"

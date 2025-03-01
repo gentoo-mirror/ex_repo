@@ -13,6 +13,7 @@ SRC_URI="https://github.com/Arniiiii/CPM.cmake/archive/${CPM_CMAKE_COMMIT}.tar.g
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
+S="${WORKDIR}/CPM.cmake-${CPM_CMAKE_COMMIT}"
 IUSE="doc"
 
 REQUIRED_USE="
@@ -31,16 +32,15 @@ PATCHES=(
 	"${FILESDIR}/0001_status_included.patch"
 )
 
-S="${WORKDIR}/CPM.cmake-${CPM_CMAKE_COMMIT}"
 
 src_prepare() {
 	default
-	sed -i ${S}/cmake/CPM.cmake -e "s/1.0.0-development-version/${PV}/g" || die
+	sed -i "${S}/cmake/CPM.cmake" -e "s/1.0.0-development-version/${PV}/g" || die
 }
 
 src_install() {
 	insinto /usr/share/cmake
-	doins ${S}/cmake/CPM.cmake
+	doins "${S}/cmake/CPM.cmake"
 
 	if use doc; then
 		einstalldocs

@@ -59,8 +59,8 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DSIMDJSON_ENABLE_THREADS:BOOL=ON
-		-DCPM_DOWNLOAD_LOCATION=${EPREFIX}/usr/share/cmake/CPM.cmake
-		-DCPM_simdjson-data_SOURCE=${WORKDIR}/simdjson-data-${SIMDJSON_DATA_COMMIT}
+		-DCPM_DOWNLOAD_LOCATION="${EPREFIX}/usr/share/cmake/CPM.cmake"
+		-DCPM_simdjson-data_SOURCE="${WORKDIR}/simdjson-data-${SIMDJSON_DATA_COMMIT}"
 		-Wno-dev
 		-DSIMDJSON_SINGLEHEADER=$(usex singleheader ON OFF)
 		-DSIMDJSON_BUILD_STATIC_LIB=$(usex static-libs ON OFF)

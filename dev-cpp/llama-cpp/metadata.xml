@@ -11,7 +11,7 @@
 		<email>lg3dx6fd@gmail.com</email>
 		<name>Arniiiii</name>
 	</maintainer>
-  <use>
+	<use>
 		<flag name="static">static build?</flag>
 		<flag name="cpu">ggml: enable CPU backend</flag>
 		<flag name="cpu_native">ggml: enable CPU backend; it will add `-march=native` by itself. CPU_FLAGS_* consistency is expected to be user's problem </flag>
@@ -64,5 +64,5 @@
 		<flag name="examples">ggml: build examples; "llama: build examples"</flag>
 		<flag name="server">ggml: build examples ; "llama: build server example"</flag>
 		<flag name="kleidiai">ggml: use kleidiai optimized kernels if applicable" GUYS ON ARM64 or ARM, enable this!!!!!!!!!</flag>
-  </use>
+	</use>
 </pkgmetadata>

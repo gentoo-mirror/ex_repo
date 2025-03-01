@@ -7,7 +7,7 @@ inherit cmake
 
 DESCRIPTION="Extremely fast, in memory, JSON and interface library for modern C++ "
 HOMEPAGE="https://github.com/stephenberry/glaze"
-SRC_URI="https://github.com/stephenberry/glaze/archive/refs/tags/v${PV}.tar.gz"
+SRC_URI="https://github.com/stephenberry/glaze/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -37,6 +37,8 @@ BDEPEND="
 	dev-build/cmake
 "
 
+S="${WORKDIR}/glaze-${PV}"
+
 RESTRICT="
 "
 
@@ -45,7 +47,6 @@ PATCHES=(
 	"${FILESDIR}/0001_fix_bundling_asio.patch"
 )
 
-S="${WORKDIR}/glaze-${PV}"
 
 src_configure() {
 	local mycmakeargs=(
