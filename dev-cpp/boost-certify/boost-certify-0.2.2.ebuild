@@ -42,7 +42,7 @@ src_configure() {
 		-Dcertify_BUILD_EXAMPLES=$(usex examples ON OFF)
 		-Dcertify_BUILD_TESTS=$(usex test ON OFF)
 		-DCPM_LOCAL_PACKAGES_ONLY=1
-		-DCPM_DOWNLOAD_LOCATION=${EPREFIX}/usr/share/cmake/CPM.cmake
+		-DCPM_DOWNLOAD_LOCATION="${EPREFIX}/usr/share/cmake/CPM.cmake"
 		--log-level=DEBUG
 	)
 	cmake_src_configure

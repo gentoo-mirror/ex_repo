@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/refs/tags/${MY_PV}.tar.gz -> ${P
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 -x86"
+KEYWORDS="-x86"
 IUSE="+serial +openmp cuda threads hip sycl test"
 RESTRICT="!test? ( test )"
 
@@ -32,7 +32,7 @@ openmp? (
 cuda? (
 	|| (
 		dev-util/nvidia-cuda-toolkit
-		>=sys-devel/clang-10
+		>=llvm-core/clang-10
 	)
 )
 hip? (

@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <name>Gerodote</name>
+    <name>Arniiiii</name>
+	<email>lg3dx6fd@gmail.com</email>
   </maintainer>
   <use>
     <flag name="openmp">Enable the OpenMP execution space. Requires the compiler to support OpenMP (e.g., -fopenmp).</flag>

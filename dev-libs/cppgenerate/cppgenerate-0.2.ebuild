@@ -11,13 +11,15 @@ SRC_URI="https://github.com/rm5248/libcppgenerate/archive/refs/tags/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+
+S="${WORKDIR}/libcppgenerate-${P}"
+
 KEYWORDS="~amd64 ~arm64 ~arm ~ppc64 ~ppc ~riscv ~alpha ~hppa ~sparc"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-S="${WORKDIR}/libcppgenerate-${P}"
 
 PATCHES=(
 	"${FILESDIR}/multiarch.patch"
