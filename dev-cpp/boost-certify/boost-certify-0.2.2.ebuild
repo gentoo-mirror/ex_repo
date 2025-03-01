@@ -22,7 +22,7 @@ IUSE="examples test"
 
 # REQUIRED_USE=""
 
-# RESTRICT=""
+RESTRICT="!test? ( test )"
 
 # PROPERTIES=""
 

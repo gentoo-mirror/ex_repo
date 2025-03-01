@@ -24,6 +24,8 @@ IUSE="
 
 # REQUIRED_USE=""
 
+RESTRICT="!test? ( test )"
+
 DEPEND="
 	test? ( >=dev-cpp/gtest-1.14.0 )
 	benchmark? ( >=dev-cpp/benchmark-1.8.4 )

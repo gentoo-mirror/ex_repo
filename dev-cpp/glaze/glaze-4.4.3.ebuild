@@ -23,6 +23,8 @@ IUSE="
 	doc
 "
 
+RESTRICT="!test? ( test )"
+
 # REQUIRED_USE=""
 
 DEPEND="
