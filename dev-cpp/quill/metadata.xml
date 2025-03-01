@@ -8,7 +8,7 @@
 	</maintainer>
 	<use>
 		<flag name="examples">Build examples</flag>
-		<flag name="extensive_test">Build extensive_tests</flag>
+		<flag name="extensive-test">Build extensive_tests</flag>
 		<flag name="benchmarks">Build benchmarks</flag>
 		<flag name="doc">Install README files</flag>
 		<flag name="valgrind">Test with valgrind</flag>

@@ -48,28 +48,28 @@ cann
 musa
 
 cuda
-cuda_force_mmq
-cuda_force_cublas
-+cuda_unified_memory
-cuda_f16
-cuda_no_peer_copy
-cuda_no_vmm
-cuda_fa_all_quants
-+cuda_graphs
+cuda-force-mmq
+cuda-force-cublas
++cuda-unified-memory
+cuda-f16
+cuda-no-peer-copy
+cuda-no-vmm
+cuda-fa-all-quants
++cuda-graphs
 
 hip
-hip_graphs
-+hip_no_vmm
-hip_uma
+hip-graphs
++hip-no-vmm
+hip-uma
 
 vulkan
-vulkan_check_results
-vulkan_debug
-vulkan_memory_debug
-vulkan_shader_debug_info
-vulkan_perf
-vulkan_validate
-vulkan_run_tests
+vulkan-check-results
+vulkan-debug
+vulkan-memory-debug
+vulkan-shader-debug-info
+vulkan-perf
+vulkan-validate
+vulkan-run-tests
 
 kompute
 
@@ -78,19 +78,19 @@ kompute
 rpc
 
 opencl
-opencl_profiling
-+opencl_embed_kernels
-+opencl_use_adreno_kernels
+opencl-profiling
++opencl-embed-kernels
++opencl-use-adreno-kernels
 
 metal
-metal_use_bf16
-metal_ndebug
-metal_shader_debug
-+metal_embed_library
+metal-use-bf16
+metal-ndebug
+metal-shader-debug
++metal-embed-library
 
 +cpu
 
-cpu_native
+cpu-native
 
 cpu_flags_x86_avx
 cpu_flags_x86_avx_vnni
@@ -123,12 +123,12 @@ cpu_flags_riscv_rvv
 
 # since this is too hard to do right now
 # sycl
-# sycl_f16
-# sycl_target_nvidia
-# sycl_target_amdgpu
-# sycl_target_intelgpu
-# sycl_via_oneapi
-# sycl_via_onemkl
+# sycl-f16
+# sycl-target-nvidia
+# sycl-target-amdgpu
+# sycl-target-intelgpu
+# sycl-via-openapi
+# sycl-via-opemkl
 # "
 
 # in MSVC F16C and FMA is implied with AVX2/AVX512
@@ -137,6 +137,7 @@ cpu_flags_riscv_rvv
 # a lot of !flag ( !subflags ) statements placed for binpkg correctness
 REQUIRED_USE="
 	test? ( curl )
+	vulkan-run-tests? ( test )
 	blis? ( blas )
 	android? (
 		!llamafile
@@ -150,33 +151,33 @@ REQUIRED_USE="
 		!cpu_flags_x86_amx_bf16
 	)
 	!cuda? (
-		!cuda_force_mmq
-		!cuda_force_cublas
-		!cuda_unified_memory
-		!cuda_f16
-		!cuda_no_peer_copy
-		!cuda_no_vmm
-		!cuda_fa_all_quants
-		!cuda_graphs
+		!cuda-force-mmq
+		!cuda-force-cublas
+		!cuda-unified-memory
+		!cuda-f16
+		!cuda-no-peer-copy
+		!cuda-no-vmm
+		!cuda-fa-all-quants
+		!cuda-graphs
 	)
 	!hip? (
-		!hip_graphs
-		!hip_no_vmm
-		!hip_uma
+		!hip-graphs
+		!hip-no-vmm
+		!hip-uma
 	)
 	!vulkan? (
-		!vulkan_check_results
-		!vulkan_debug
-		!vulkan_memory_debug
-		!vulkan_shader_debug_info
-		!vulkan_perf
-		!vulkan_validate
-		!vulkan_run_tests
+		!vulkan-check-results
+		!vulkan-debug
+		!vulkan-memory-debug
+		!vulkan-shader-debug-info
+		!vulkan-perf
+		!vulkan-validate
+		!vulkan-run-tests
 	)
 	!opencl? (
-		!opencl_profiling
-		!opencl_embed_kernels
-		!opencl_use_adreno_kernels
+		!opencl-profiling
+		!opencl-embed-kernels
+		!opencl-use-adreno-kernels
 	)
 	!cpu? (
 		!cpu_flags_x86_avx
@@ -215,9 +216,9 @@ DEPEND="
 	curl? ( net-misc/curl )
 "
 # since this is too hard right now.
-# 	sycl_target_nvidia? ( dev-util/nvidia-cuda-toolkit )
-# 	sycl_target_amdgpu? ( dev-util/nvidia-cuda-toolkit )
-# 	sycl_target_intelgpu? ( dev-util/nvidia-cuda-toolkit )
+# 	sycl-target-nvidia? ( dev-util/nvidia-cuda-toolkit )
+# 	sycl-target-amdgpu? ( dev-util/nvidia-cuda-toolkit )
+# 	sycl-target-intelgpu? ( dev-util/nvidia-cuda-toolkit )
 # "
 
 RDEPEND="${DEPEND}"
@@ -271,7 +272,7 @@ src_configure() {
 
 		-DGGML_CPU=$(usex cpu ON OFF)
 
-		-DGGML_NATIVE=$(usex cpu_native ON OFF)
+		-DGGML_NATIVE=$(usex cpu-native ON OFF)
 
 		-DGGML_CPU_AARCH64=$(usex arm64 ON OFF)
 		-DGGML_CPU_HBM=$(usex hbm ON OFF)
@@ -311,37 +312,37 @@ src_configure() {
 		-DGGML_MUSA=$(usex musa ON OFF)
 
 		-DGGML_CUDA=$(usex cuda ON OFF)
-		-DGGML_CUDA_FORCE_MMQ=$(usex cuda_force_mmq ON OFF)
-		-DGGML_CUDA_FORCE_CUBLAS=$(usex cuda_force_cublas ON OFF)
-		-DGGML_CUDA_F16=$(usex cuda_f16 ON OFF)
-		-DGGML_CUDA_NO_PEER_COPY=$(usex cuda_no_peer_copy ON OFF)
-		-DGGML_CUDA_NO_VMM=$(usex cuda_no_vmm ON OFF)
-		-DGGML_CUDA_FA_ALL_QUANTS=$(usex cuda_fa_all_quants ON OFF)
-		-DGGML_CUDA_GRAPHS=$(usex cuda_graphs ON OFF)
+		-DGGML_CUDA_FORCE_MMQ=$(usex cuda-force-mmq ON OFF)
+		-DGGML_CUDA_FORCE_CUBLAS=$(usex cuda-force-cublas ON OFF)
+		-DGGML_CUDA_F16=$(usex cuda-f16 ON OFF)
+		-DGGML_CUDA_NO_PEER_COPY=$(usex cuda-no-peer-copy ON OFF)
+		-DGGML_CUDA_NO_VMM=$(usex cuda-no-vmm ON OFF)
+		-DGGML_CUDA_FA_ALL_QUANTS=$(usex cuda-fa-all-quants ON OFF)
+		-DGGML_CUDA_GRAPHS=$(usex cuda-graphs ON OFF)
 		# CPU+GPU Unified Memory
-		-DGGML_CUDA_ENABLE_UNIFIED_MEMORY=$(usex cuda_unified_memory 1 0)
+		-DGGML_CUDA_ENABLE_UNIFIED_MEMORY=$(usex cuda-unified-memory 1 0)
 
 		-DGGML_HIP=$(usex hip ON OFF)
-		-DGGML_HIP_GRAPHS=$(usex hip_graphs ON OFF)
-		-DGGML_HIP_NO_VMM=$(usex hip_no_vmm ON OFF)
-		-DGGML_HIP_UMA=$(usex hip_uma ON OFF)
+		-DGGML_HIP_GRAPHS=$(usex hip-graphs ON OFF)
+		-DGGML_HIP_NO_VMM=$(usex hip-no-vmm ON OFF)
+		-DGGML_HIP_UMA=$(usex hip-uma ON OFF)
 
 		-DGGML_VULKAN=$(usex vulkan ON OFF)
-		-DGGML_VULKAN_CHECK_RESULTS=$(usex vulkan_check_results ON OFF)
-		-DGGML_VULKAN_DEBUG=$(usex vulkan_debug ON OFF)
-		-DGGML_VULKAN_MEMORY_DEBUG=$(usex vulkan_memory_debug ON OFF)
-		-DGGML_VULKAN_SHADER_DEBUG_INFO=$(usex vulkan_shader_debug_info ON OFF)
-		-DGGML_VULKAN_PERF=$(usex vulkan_perf ON OFF)
-		-DGGML_VULKAN_VALIDATE=$(usex vulkan_validate ON OFF)
-		-DGGML_VULKAN_RUN_TESTS=$(usex vulkan_run_tests ON OFF)
+		-DGGML_VULKAN_CHECK_RESULTS=$(usex vulkan-check-results ON OFF)
+		-DGGML_VULKAN_DEBUG=$(usex vulkan-debug ON OFF)
+		-DGGML_VULKAN_MEMORY_DEBUG=$(usex vulkan-memory-debug ON OFF)
+		-DGGML_VULKAN_SHADER_DEBUG_INFO=$(usex vulkan-shader-debug-info ON OFF)
+		-DGGML_VULKAN_PERF=$(usex vulkan-perf ON OFF)
+		-DGGML_VULKAN_VALIDATE=$(usex vulkan-validate ON OFF)
+		-DGGML_VULKAN_RUN_TESTS=$(usex vulkan-run-tests ON OFF)
 
 		-DGGML_KOMPUTE=$(usex kompute ON OFF)
 
 		-DGGML_METAL=$(usex metal ON OFF)
-		-DGGML_METAL_USE_BF16=$(usex metal_use_bf16 ON OFF)
-		-DGGML_METAL_NDEBUG=$(usex metal_ndebug ON OFF)
-		-DGGML_METAL_SHADER_DEBUG=$(usex metal_shader_debug ON OFF)
-		-DGGML_METAL_EMBED_LIBRARY=$(usex metal_embed_library ON OFF)
+		-DGGML_METAL_USE_BF16=$(usex metal-use-bf16 ON OFF)
+		-DGGML_METAL_NDEBUG=$(usex metal-ndebug ON OFF)
+		-DGGML_METAL_SHADER_DEBUG=$(usex metal-shader-debug ON OFF)
+		-DGGML_METAL_EMBED_LIBRARY=$(usex metal-embed-library ON OFF)
 
 		-DGGML_OPENMP=$(usex openmp ON OFF)
 
@@ -349,12 +350,12 @@ src_configure() {
 
 		-DGGML_SYCL=OFF
 		# -DGGML_SYCL=$(usex sycl ON OFF)
-		# -DGGML_SYCL_F16=$(usex sycl_f16 ON OFF)
+		# -DGGML_SYCL_F16=$(usex sycl-f16 ON OFF)
 
 		-DGGML_OPENCL=$(usex opencl ON OFF)
-		-DGGML_OPENCL_PROFILING=$(usex opencl_profiling ON OFF)
-		-DGGML_OPENCL_EMBED_KERNELS=$(usex opencl_embed_kernels ON OFF)
-		-DGGML_OPENCL_USE_ADRENO_KERNELS=$(usex opencl_use_adreno_kernels ON OFF)
+		-DGGML_OPENCL_PROFILING=$(usex opencl-profiling ON OFF)
+		-DGGML_OPENCL_EMBED_KERNELS=$(usex opencl-embed-kernels ON OFF)
+		-DGGML_OPENCL_USE_ADRENO_KERNELS=$(usex opencl-use-adreno-kernels ON OFF)
 
 		# -DGGML_BUILD_TESTS=$(usex test ON OFF) # broken option
 		# -DGGML_BUILD_EXAMPLES=$(usex examples ON OFF) # broken option
