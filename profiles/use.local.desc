@@ -2,6 +2,18 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
+dev-build/bazel:examples - Install examples (you compile them rn in any case)
+dev-build/bazel:tools - Install additional tools (you compile them rn in any case)
+dev-cmake/addboost-cmake:doc - Install related README.md
+dev-cmake/cpm-cmake:doc - Install related README.md
+dev-cmake/format-cmake:doc - Install related README.md
+dev-cmake/packageproject-cmake:doc - Install related README.md
+dev-cpp/boost-certify:examples - Build examples
+dev-cpp/glaze:doc - Install README files
+dev-cpp/glaze:examples - Build examples (not install)
+dev-cpp/glaze:fuzzing - Build fuzzers (not install)
+dev-cpp/kleidiai:benchmark - Build benchmarks (not install)
+dev-cpp/kleidiai:clang-tidy - Check the project with clang-tidy. Don't enable unless you are a developer.
 dev-cpp/kokkos:cuda - Enable the CUDA execution space. Any Kokkos application compiled for CUDA embeds CUDA code via template metaprogramming. Thus, the whole application must be built with a CUDA-capable compiler. (At the moment, the only such compilers are NVIDIA’s NVCC and Clang 10.0+)
 dev-cpp/kokkos:hip - Enable the HIP execution space. Requires a compiler capable of understanding HIP.
 dev-cpp/kokkos:openmp - Enable the OpenMP execution space. Requires the compiler to support OpenMP (e.g., -fopenmp).
@@ -9,7 +21,9 @@ dev-cpp/kokkos:serial - Enable the Serial execution space.(Single thread without
 dev-cpp/kokkos:sycl - Enable the SYCL execution space. Requires a compiler capable of understanding SYCL.
 dev-cpp/kokkos:threads - Enable the C++ Threads execution space. (aka multithread support)
 dev-cpp/llama-cpp:accelerate - ggml: enable Accelerate framework
+dev-cpp/llama-cpp:android - Enable if you build for android
 dev-cpp/llama-cpp:blas - ggml: use BLAS; for using specific vendor check https://wiki.gentoo.org/wiki/Blas-lapack-switch
+dev-cpp/llama-cpp:blis - ggml: use BLIS ( https://github.com/flame/blis )
 dev-cpp/llama-cpp:cann - ggml: use CANN
 dev-cpp/llama-cpp:cpu - ggml: enable CPU backend
 dev-cpp/llama-cpp:cpu_native - ggml: enable CPU backend; it will add `-march=native` by itself. CPU_FLAGS_* consistency is expected to be user's problem
@@ -21,7 +35,9 @@ dev-cpp/llama-cpp:cuda_force_mmq - ggml: use mmq kernels instead of cuBLAS
 dev-cpp/llama-cpp:cuda_graphs - ggml: use CUDA graphs (llama.cpp only)
 dev-cpp/llama-cpp:cuda_no_peer_copy - ggml: do not use peer to peer copies
 dev-cpp/llama-cpp:cuda_no_vmm - ggml: do not try to use CUDA VMM
+dev-cpp/llama-cpp:cuda_unified_memory - ggml: CUDA : unified memory: allow CUDA app use unified memory architecture (UMA) to share main memory between the CPU and integrated GPU
 dev-cpp/llama-cpp:examples - ggml: build examples; "llama: build examples"
+dev-cpp/llama-cpp:hbm - ggml: use memkind for CPU HBM ( High Bandwidth Memory , check wikipedia.) ; a hardware-related feature
 dev-cpp/llama-cpp:hip - ggml: use HIP
 dev-cpp/llama-cpp:hip_graphs - ggml: use HIP graph, experimental, slow
 dev-cpp/llama-cpp:hip_no_vmm - ggml: do not try to use HIP VMM
@@ -34,6 +50,7 @@ dev-cpp/llama-cpp:metal_embed_library - ggml: embed Metal library
 dev-cpp/llama-cpp:metal_ndebug - ggml: disable Metal debugging
 dev-cpp/llama-cpp:metal_shader_debug - ggml: compile Metal with -fno-fast-math
 dev-cpp/llama-cpp:metal_use_bf16 - ggml: use bfloat if available
+dev-cpp/llama-cpp:msvc - Enable if you build with MSVC
 dev-cpp/llama-cpp:musa - ggml: use MUSA
 dev-cpp/llama-cpp:opencl - ggml: use OpenCL
 dev-cpp/llama-cpp:opencl_embed_kernels - ggml: embed kernels
@@ -59,6 +76,12 @@ dev-cpp/llama-cpp:vulkan_perf - ggml: enable Vulkan perf output
 dev-cpp/llama-cpp:vulkan_run_tests - ggml: run Vulkan tests
 dev-cpp/llama-cpp:vulkan_shader_debug_info - ggml: enable Vulkan shader debug info
 dev-cpp/llama-cpp:vulkan_validate - ggml: enable Vulkan validation
+dev-cpp/quill:benchmarks - Build benchmarks
+dev-cpp/quill:doc - Install README files
+dev-cpp/quill:examples - Build examples
+dev-cpp/quill:extensive_test - Build extensive_tests
+dev-cpp/quill:valgrind - Test with valgrind
+dev-cpp/ut2-glaze:doc - Install README files.
 dev-libs/boost:boost_context_fcontext - Boost.Context implementation. Default on not-windows OS. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html
 dev-libs/boost:boost_context_ucontext - Boost.Context implementation. Deprecated. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html
 dev-libs/boost:boost_context_winfib - Boost.Context implementation. Windows only. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html
@@ -71,7 +94,7 @@ dev-libs/boost:boost_locale_icu - When ON, enables the ICU backend. Defaults to 
 dev-libs/boost:boost_locale_posix - When ON, enables the POSIX backend. Defaults to ON on POSIX systems, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
 dev-libs/boost:boost_locale_std - When ON, enables the std::locale backend. Defaults to ON. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
 dev-libs/boost:boost_locale_winapi - When ON, enables the Windows API backend. Defaults to ON under Windows, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
-dev-libs/boost:boost_thread_posix - Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.
+dev-libs/boost:boost_thread_pthread - Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.
 dev-libs/boost:boost_thread_win32 - Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.
 dev-libs/boost:mpi - Set to ON if Boost libraries depending on MPI should be built. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
 dev-libs/boost:python - Set to ON if Boost libraries depending on Python should be built. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
