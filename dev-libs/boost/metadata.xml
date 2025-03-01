@@ -10,20 +10,20 @@
 		<flag name="mpi">Set to ON if Boost libraries depending on MPI should be built. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
 		<flag name="python">Set to ON if Boost libraries depending on Python should be built. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
 		<flag name="static">Set to ON if Boost libraries should be build as static libraries. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
-		<flag name="boost_context_fcontext">Boost.Context implementation. Default on not-windows OS. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html</flag>
-		<flag name="boost_context_ucontext">Boost.Context implementation. Deprecated. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html</flag>
-		<flag name="boost_context_winfib">Boost.Context implementation. Windows only. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html</flag>
-		<flag name="boost_locale_icu">When ON, enables the ICU backend. Defaults to ON when ICU is found, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
-		<flag name="boost_locale_iconv">When ON, enables the Iconv backend. Defaults to ON when iconv is found, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
-		<flag name="boost_locale_posix">When ON, enables the POSIX backend. Defaults to ON on POSIX systems, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
-		<flag name="boost_locale_std">When ON, enables the std::locale backend. Defaults to ON. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
-		<flag name="boost_locale_winapi">When ON, enables the Windows API backend. Defaults to ON under Windows, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
-		<flag name="boost_thread_pthread">Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.</flag>
-		<flag name="boost_thread_win32">Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.</flag>
-		<flag name="boost_iostream_zlib">When ON, enables ZLib support. Defaults to ON when zlib is found, OFF otherwise.</flag>
-		<flag name="boost_iostream_bzip2">When ON, enables BZip2 support. Defaults to ON when libbzip2 is found, OFF otherwise.</flag>
-		<flag name="boost_iostream_lzma">When ON, enables LZMA support. Defaults to ON when liblzma is found, OFF otherwise.</flag>
-		<flag name="boost_iostream_zstd">When ON, enables Zstd support. Defaults to ON when libzstd is found, OFF otherwise.</flag>
+		<flag name="boost-context-fcontext">Boost.Context implementation. Default on not-windows OS. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html</flag>
+		<flag name="boost-context-ucontext">Boost.Context implementation. Deprecated. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html</flag>
+		<flag name="boost-context-winfib">Boost.Context implementation. Windows only. https://www.boost.org/doc/libs/1_87_0/libs/context/doc/html/context/cc/implementations__fcontext_t__ucontext_t_and_winfiber.html</flag>
+		<flag name="boost-locale-icu">When ON, enables the ICU backend. Defaults to ON when ICU is found, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
+		<flag name="boost-locale-iconv">When ON, enables the Iconv backend. Defaults to ON when iconv is found, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
+		<flag name="boost-locale-posix">When ON, enables the POSIX backend. Defaults to ON on POSIX systems, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
+		<flag name="boost-locale-std">When ON, enables the std::locale backend. Defaults to ON. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
+		<flag name="boost-locale-winapi">When ON, enables the Windows API backend. Defaults to ON under Windows, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file</flag>
+		<flag name="boost-thread-pthread">Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.</flag>
+		<flag name="boost-thread-win32">Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.</flag>
+		<flag name="boost-iostream-zlib">When ON, enables ZLib support. Defaults to ON when zlib is found, OFF otherwise.</flag>
+		<flag name="boost-iostream-bzip2">When ON, enables BZip2 support. Defaults to ON when libbzip2 is found, OFF otherwise.</flag>
+		<flag name="boost-iostream-lzma">When ON, enables LZMA support. Defaults to ON when liblzma is found, OFF otherwise.</flag>
+		<flag name="boost-iostream-zstd">When ON, enables Zstd support. Defaults to ON when libzstd is found, OFF otherwise.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">boostorg/boost</remote-id>

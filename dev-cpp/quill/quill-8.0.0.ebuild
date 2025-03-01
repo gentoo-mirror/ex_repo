@@ -13,11 +13,11 @@ SRC_URI="https://github.com/odygrd/quill/archive/refs/tags/v${PV}.tar.gz -> ${P}
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="examples test	extensive_test benchmarks valgrind doc"
+IUSE="examples test	extensive-test benchmarks valgrind doc"
 
-# REQUIRED_USE=""
+REQUIRED_USE="extensive-test? ( test )"
 
-# RESTRIC=""
+# RESTRICT=""
 
 # # it has libfmt bundled in a good way. It doesn't seem to have other dependencies.
 # DEPEND=""
@@ -43,7 +43,7 @@ src_configure() {
 		-DQUILL_BUILD_BENCHMARKS=$(usex benchmarks true false)
 		-DQUILL_DOCS_GEN=$(usex doc ON OFF)
 		-DQUILL_USE_VALGRIND=$(usex valgrind ON OFF)
-		-DQUILL_ENABLE_EXTENSIVE_TESTS=$(usex extensive_test ON OFF)
+		-DQUILL_ENABLE_EXTENSIVE_TESTS=$(usex extensive-test ON OFF)
 		-DQUILL_ENABLE_INSTALL=ON
 	)
 
