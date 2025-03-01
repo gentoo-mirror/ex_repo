@@ -5,12 +5,15 @@ EAPI=8
 
 inherit cmake-multilib
 
-DESCRIPTION="KleidiAI is an open-source library that provides optimized performance-critical routines, also known as micro-kernels, for artificial intelligence (AI) workloads tailored for Arm® CPUs."
+DESCRIPTION="Computational micro-kernels for Arm® CPUs. AI-related."
 HOMEPAGE="https://gitlab.arm.com/kleidi/kleidiai"
-SRC_URI="https://gitlab.arm.com/kleidi/kleidiai/-/archive/v${PV}/kleidiai-v${PV}.tar.gz"
+SRC_URI="https://gitlab.arm.com/kleidi/kleidiai/-/archive/v${PV}/kleidiai-v${PV}.tar.bz2"
+
+S="${WORKDIR}/kleidiai-v${PV}"
 
 LICENSE="Apache-2.0 BSD"
 SLOT="0"
+
 KEYWORDS="~arm ~arm64 ~arm64-macos"
 
 IUSE="
@@ -19,8 +22,7 @@ IUSE="
 	clang-tidy
 "
 
-REQUIRED_USE="
-"
+# REQUIRED_USE=""
 
 DEPEND="
 	test? ( >=dev-cpp/gtest-1.14.0 )
@@ -30,17 +32,14 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 BDEPEND="
- 	clang-tidy? ( llvm-core/clang[extra] )
+	clang-tidy? ( llvm-core/clang[extra] )
 "
 
-RESTRICT="
-"
+# RESTRICT=""
 
 PATCHES=(
 	"${FILESDIR}/0004_make_it_use_installed_gtest_and_google_benchmark_and_make_it_install_the_project.patch"
 )
-
-S="${WORKDIR}/kleidiai-v${PV}"
 
 src_configure() {
 	local mycmakeargs=(

@@ -9,17 +9,16 @@ DESCRIPTION="A library for generating C++ code from C++ "
 HOMEPAGE="https://github.com/rm5248/libcppgenerate"
 SRC_URI="https://github.com/rm5248/libcppgenerate/archive/refs/tags/${P}.tar.gz"
 
+S="${WORKDIR}/libcppgenerate-${P}"
+
 LICENSE="Apache-2.0"
 SLOT="0"
 
-S="${WORKDIR}/libcppgenerate-${P}"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc"
 
-KEYWORDS="~amd64 ~arm64 ~arm ~ppc64 ~ppc ~riscv ~alpha ~hppa ~sparc"
-
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
-
+# DEPEND=""
+# RDEPEND="${DEPEND}"
+# BDEPEND=""
 
 PATCHES=(
 	"${FILESDIR}/multiarch.patch"

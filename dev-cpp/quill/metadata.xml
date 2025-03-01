@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="proxy">
+		<email>lg3dx6fd@gmail.com</email>
+		<name>Arniiiii</name>
+		<description>Just a guy that likes C++ and uses CMake.</description>
+	</maintainer>
+	<use>
+		<flag name="examples">Build examples</flag>
+		<flag name="extensive_test">Build extensive_tests</flag>
+		<flag name="benchmarks">Build benchmarks</flag>
+		<flag name="doc">Install README files</flag>
+		<flag name="valgrind">Test with valgrind</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">odygrd/quill</remote-id>
+	</upstream>
+</pkgmetadata>

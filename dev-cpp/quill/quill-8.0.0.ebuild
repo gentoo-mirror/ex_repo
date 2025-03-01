@@ -6,7 +6,7 @@ EAPI=8
 # it's a header-only lib, thus not cmake-multilib. However, examples, tests and benchmarks...
 inherit cmake
 
-DESCRIPTION="Asynchronous Low Latency C++ Logging Library "
+DESCRIPTION="Asynchronous Low Latency C++ Logging Library"
 HOMEPAGE="https://github.com/odygrd/quill"
 SRC_URI="https://github.com/odygrd/quill/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -15,14 +15,14 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
 IUSE="examples test	extensive_test benchmarks valgrind doc"
 
-REQUIRED_USE="
-"
+# REQUIRED_USE=""
 
-# it has libfmt bundled in a good way. It doesn't seem to have other dependencies.
-DEPEND="
-"
+# RESTRIC=""
 
-RDEPEND="${DEPEND}"
+# # it has libfmt bundled in a good way. It doesn't seem to have other dependencies.
+# DEPEND=""
+
+# RDEPEND="${DEPEND}"
 
 BDEPEND="
 dev-build/cmake

@@ -14,9 +14,11 @@ MY_PV="b${PV#0_pre}"
 
 SRC_URI="https://github.com/ggerganov/llama.cpp/archive/refs/tags/${MY_PV}.tar.gz -> llama.cpp-${MY_PV}.tar.gz"
 
+S="${WORKDIR}/llama.cpp-${MY_PV}"
+
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-macos ~x64-macos ~arm ~arm64 ~arm64-macos ~riscv ~loong"
+KEYWORDS="~amd64 ~arm ~arm64 ~arm64-macos ~loong ~riscv ~x64-macos ~x86 ~x86-macos"
 
 # CPU_FLAGS_x86_fma doesn't exist, thus place everything here.
 IUSE="
@@ -80,13 +82,11 @@ opencl_profiling
 +opencl_embed_kernels
 +opencl_use_adreno_kernels
 
-
 metal
 metal_use_bf16
 metal_ndebug
 metal_shader_debug
 +metal_embed_library
-
 
 +cpu
 
@@ -232,9 +232,6 @@ PATCHES=(
 
 RESTRICT="test? ( userpriv )"
 
-
-S="${WORKDIR}/llama.cpp-${MY_PV}"
-
 src_prepare() {
 	if use cuda; then
 		cuda_src_prepare
@@ -250,25 +247,25 @@ src_configure() {
 		HIP_PATH=$(hipconfig -R)
 	fi
 
-    local mycmakeargs=(
-        -DGGML_LTO=$(usex lto ON OFF)
+	local mycmakeargs=(
+		-DGGML_LTO=$(usex lto ON OFF)
 
 		# add these via user's /etc/portage/make.conf as i.e.`-fsanitize=address`
-        -DLLAMA_SANITIZE_THREAD=OFF
-        -DLLAMA_SANITIZE_ADDRESS=OFF
-        -DLLAMA_SANITIZE_UNDEFINED=OFF
+		-DLLAMA_SANITIZE_THREAD=OFF
+		-DLLAMA_SANITIZE_ADDRESS=OFF
+		-DLLAMA_SANITIZE_UNDEFINED=OFF
 
-        -DLLAMA_CURL=$(usex curl ON OFF)
+		-DLLAMA_CURL=$(usex curl ON OFF)
 
 		-DLLAMA_BUILD_TESTS=$(usex test ON OFF)
 		-DLLAMA_BUILD_EXAMPLES=$(usex examples ON OFF)
 		-DLLAMA_BUILD_SERVER=$(usex server ON OFF)
 		-DLLAMA_BUILD_COMMON=ON
-        # -DLLAMA_BUILD_SERVER=OFF # why
-        # -DCMAKE_SKIP_BUILD_RPATH=ON # why?
-        -DBUILD_NUMBER="${MY_PV}"
-        # -DCMAKE_INSTALL_PREFIX=${EPREFIX}/opt/${PN} # why would you need that?
-        # -DCMAKE_CUDA_ARCHITECTURES="75" # I guess this should be set by user.
+		# -DLLAMA_BUILD_SERVER=OFF # why
+		# -DCMAKE_SKIP_BUILD_RPATH=ON # why?
+		-DBUILD_NUMBER="${MY_PV}"
+		# -DCMAKE_INSTALL_PREFIX=${EPREFIX}/opt/${PN} # why would you need that?
+		# -DCMAKE_CUDA_ARCHITECTURES="75" # I guess this should be set by user.
 
 		-DBUILD_SHARED_LIBS=$(usex static OFF ON)
 
@@ -362,15 +359,14 @@ src_configure() {
 		# -DGGML_BUILD_TESTS=$(usex test ON OFF) # broken option
 		# -DGGML_BUILD_EXAMPLES=$(usex examples ON OFF) # broken option
 
-	# Gentoo users enable ccache via e.g. FEATURES=ccache or
-	# other means. We don't want the build system to enable it for us.
+		# Gentoo users enable ccache via e.g. FEATURES=ccache or
+		# other means. We don't want the build system to enable it for us.
 		-DGGML_CCACHE=OFF
-
 
 		# defaults aren't so good
 		--log-level=DEBUG
 		-DFETCHCONTENT_QUIET=OFF
-    )
+	)
 
 	if use blis; then
 		mycmakeargs+=( -DGGML_BLAD_VENDOR=FLAME )
@@ -380,12 +376,12 @@ src_configure() {
 		mycmakeargs+=( -DAMDGPU_TARGETS=$(get_amdgpu_flags) )
 	fi
 
-    cmake-multilib_src_configure
+	cmake-multilib_src_configure
 }
 
 src_test() {
-    if use cuda; then
-        addpredict /dev/nvidiactl
+	if use cuda; then
+		addpredict /dev/nvidiactl
 
 		# we need write access to this to run the tests
 		addwrite /dev/nvidia0
@@ -393,14 +389,12 @@ src_test() {
 		addwrite /dev/nvidia-uvm
 		addwrite /dev/nvidia-uvm-tools
 		cuda_add_sandbox
-    fi
+	fi
 
 	if use hip; then
 		check_amdgpu
 	fi
-    # cd "${BUILD_DIR}" || die # why this exists?
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"${BUILD_DIR}/bin"
-    cmake-multilib_src_test
+	# cd "${BUILD_DIR}" || die # why this exists?
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"${BUILD_DIR}/bin"
+	cmake-multilib_src_test
 }
-
-# TODO : Add install functionality for all the binaries in "build/bin" dir with install destination being "/opt/llama.cpp/"
