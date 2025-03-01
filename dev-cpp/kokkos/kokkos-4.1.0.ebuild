@@ -26,7 +26,7 @@ sys-apps/hwloc:=
 openmp? (
 	|| (
 		sys-devel/gcc[openmp]
-		sys-devel/clang
+		llvm-core/clang
 	)
 )
 cuda? (

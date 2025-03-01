@@ -14,7 +14,7 @@
   <use>
 		<flag name="static">static build?</flag>
 		<flag name="cpu">ggml: enable CPU backend</flag>
-		<flag name="cpu">ggml: enable CPU backend; it will add `-march=native` by itself. CPU_FLAGS_* consistency is expected to be user's problem </flag>
+		<flag name="cpu_native">ggml: enable CPU backend; it will add `-march=native` by itself. CPU_FLAGS_* consistency is expected to be user's problem </flag>
 		<flag name="accelerate">ggml: enable Accelerate framework</flag>
 		<flag name="blas">ggml: use BLAS; for using specific vendor check https://wiki.gentoo.org/wiki/Blas-lapack-switch</flag>
 		<flag name="llamafile">ggml: use LLAMAFILE</flag>

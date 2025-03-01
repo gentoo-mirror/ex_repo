@@ -39,7 +39,7 @@ src_prepare() {
 }
 
 src_install() {
-	insinto ${EPREFIX}/usr/share/cmake
+	insinto /usr/share/cmake
 	doins ${S}/cmake/CPM.cmake
 
 	if use doc; then
