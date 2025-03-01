@@ -1,4 +1,4 @@
-dev-build/bazel 7.2.1: Fast and correct automated build system
+dev-build/bazel 8.1.1: Fast and correct automated build system
 dev-cmake/addboost-cmake 3.7.1: Yet another CMake script for finding or bundling Boost.
 dev-cmake/cpm-cmake 1.0_pre20250121-r1: A cmake not package manager. Essentially, it's about 'how to do bundled dependencies better', though it sucks when you have anything remotely complex. Arniiiii's fork. Don't use CPM in your projects. I've used it and now regret about it. https://michael.orlitzky.com/articles/motherfuckers_need_package_management.xhtml
 dev-cmake/format-cmake 1.8.3: Yet another CMake script for formatting via cmake-format and clang-format using a cmake build target.
