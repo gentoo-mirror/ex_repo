@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rm5248/libcppgenerate/archive/refs/tags/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~arm ~ppc64 ~ppc ~riscv ~alpha ~hppa ~ia64 ~sparc"
+KEYWORDS="~amd64 ~arm64 ~arm ~ppc64 ~ppc ~riscv ~alpha ~hppa ~sparc"
 
 DEPEND=""
 RDEPEND="${DEPEND}"

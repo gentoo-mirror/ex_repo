@@ -27,7 +27,7 @@ DEPEND="
 		dev-libs/popt
 	)
 	doc? (
-		app-doc/doxygen
+		app-text/doxygen
 		media-gfx/graphviz
 		dev-libs/libxslt
 	)
@@ -41,7 +41,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 BDEPEND="
-	dev-util/cmake
+	dev-build/cmake
 "
 
 

@@ -75,13 +75,11 @@ src_configure() {
 		mycmakeargs+=( -DBOOST_LOCALE_ENABLE_WINAPI=ON )
 	fi
 
-
 	if use boost_thread_pthread; then
 		mycmakeargs+=( -DBOOST_THREAD_THREADAPI=pthread )
 	else
 		mycmakeargs+=( -DBOOST_THREAD_THREADAPI=win32 )
 	fi
-
 
 	cmake-multilib_src_configure
 
