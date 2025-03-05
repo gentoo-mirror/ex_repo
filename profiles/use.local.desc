@@ -87,11 +87,24 @@ dev-libs/boost:boost-locale-icu - When ON, enables the ICU backend. Defaults to 
 dev-libs/boost:boost-locale-posix - When ON, enables the POSIX backend. Defaults to ON on POSIX systems, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
 dev-libs/boost:boost-locale-std - When ON, enables the std::locale backend. Defaults to ON. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
 dev-libs/boost:boost-locale-winapi - When ON, enables the Windows API backend. Defaults to ON under Windows, OFF otherwise. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
+dev-libs/boost:boost-stacktrace-addr2line - Boost.Stacktrace: build boost_stacktrace_addr2line
+dev-libs/boost:boost-stacktrace-backtrace - Boost.Stacktrace: build boost_stacktrace_backtrace
+dev-libs/boost:boost-stacktrace-basic - Boost.Stacktrace: build boost_stacktrace_basic
+dev-libs/boost:boost-stacktrace-from-exception - Boost.Stacktrace: build boost_stacktrace_from_exception
+dev-libs/boost:boost-stacktrace-windbg - Boost.Stacktrace: build boost_stacktrace_windbg
+dev-libs/boost:boost-stacktrace-windbg-cached - Boost.Stacktrace: build boost_stacktrace_windbg_cached
 dev-libs/boost:boost-thread-pthread - Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.
 dev-libs/boost:boost-thread-win32 - Threading API, pthread or win32. Defaults to win32 under Windows, pthread otherwise.
+dev-libs/boost:bzip2 - yet another USE flag for compability with gentoo's ebuild. Requires boost-iostream-bzip2
+dev-libs/boost:context - yet another USE flag for compability with gentoo's ebuild. Requires any boost-context-* flag.
+dev-libs/boost:lzma - yet another USE flag for compability with gentoo's ebuild. Requires boost-iostream-lzma
 dev-libs/boost:mpi - Set to ON if Boost libraries depending on MPI should be built. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
+dev-libs/boost:numpy - lol, yet another USE flag for compability with gentoo's ebuild. Always enabled. If you try disable it, get destroyed.
 dev-libs/boost:python - Set to ON if Boost libraries depending on Python should be built. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
+dev-libs/boost:stacktrace - yet another USE flag for compability with gentoo's ebuild. If disabled, then makes BOOST_STACKTRACE_ENABLE_NOOp (backtraces are nothing).
 dev-libs/boost:static - Set to ON if Boost libraries should be build as static libraries. https://github.com/boostorg/cmake/tree/7f5336b3bf8067bb40da4e8b9940c133271e938a?tab=readme-ov-file
+dev-libs/boost:zlib - yet another USE flag for compability with gentoo's ebuild. Requires boost-iostream-zlib
+dev-libs/boost:zstd - yet another USE flag for compability with gentoo's ebuild. Requires boost-iostream-zstd
 dev-libs/simdjson:all-impls - Enable all (possibly supported by CHOST) implementations rather than only of them.
 dev-libs/simdjson:shared-libs - Make shared library. If you are on windows, enable only one of `static-libs` and `shared-libs`
 dev-libs/simdjson:singleheader - Make simdjson library out of amalgamated one simdjson.hpp and one simdjson.cpp, instead of whole bunch of files in include/ and src/ . Expected to be more stable.
