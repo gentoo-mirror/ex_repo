@@ -3,7 +3,9 @@
 
 EAPI=8
 
-inherit cmake-multilib
+PYTHON_COMPAT=( python3_{10..13} )
+
+inherit cmake-multilib python-r1
 
 DESCRIPTION="Famous Boost libraries for C++, but built via CMake, not b2"
 HOMEPAGE="https://www.boost.org/"
@@ -12,13 +14,72 @@ SRC_URI="https://github.com/boostorg/boost/releases/download/boost-${PV}/boost-$
 LICENSE="Boost-1.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris"
-IUSE="mpi +python static +boost-context-fcontext boost-context-ucontext boost-context-winfib +boost-locale-icu boost-locale-iconv boost-locale-posix boost-locale-std boost-locale-winapi +boost-thread-pthread boost-thread-win32 +boost-iostream-zlib +boost-iostream-bzip2 +boost-iostream-lzma +boost-iostream-zstd"
+
+# compatibility USE flags: nls, icu, bzip2, zlib, lzma, zstd, context, stacktrace, numpy
+IUSE="
++nls
++icu
++bzip2
++zlib
++lzma
++zstd
++context
++stacktrace
++numpy
+
+mpi
++python
+static
+
++boost-context-fcontext
+boost-context-ucontext
+boost-context-winfib
+
++boost-locale-icu
+boost-locale-iconv
+boost-locale-posix
+boost-locale-std
+boost-locale-winapi
+
++boost-thread-pthread
+boost-thread-win32
+
++boost-iostream-zlib
++boost-iostream-bzip2
++boost-iostream-lzma
++boost-iostream-zstd
+
++boost-stacktrace-backtrace
+boost-stacktrace-addr2line
+boost-stacktrace-basic
+boost-stacktrace-windbg
+boost-stacktrace-windbg-cached
+boost-stacktrace-from-exception
+"
 
 REQUIRED_USE="
-	^^ ( boost-context-fcontext boost-context-ucontext boost-context-winfib )
-	^^ ( boost-locale-icu boost-locale-iconv boost-locale-posix boost-locale-std boost-locale-winapi )
+	bzip2? ( boost-iostream-bzip2 )
+	zlib? ( boost-iostream-zlib )
+	lzma? ( boost-iostream-lzma )
+	zstd? ( boost-iostream-zstd )
+	icu? ( boost-locale-icu )
+	context? ( ^^ ( boost-context-fcontext boost-context-ucontext boost-context-winfib ) )
+	nls? ( ^^ ( boost-locale-icu boost-locale-iconv boost-locale-posix boost-locale-std boost-locale-winapi ) )
+	stacktrace? (
+				^^ (
+					boost-stacktrace-backtrace
+					boost-stacktrace-addr2line
+					boost-stacktrace-basic
+					boost-stacktrace-windbg
+					boost-stacktrace-windbg-cached
+					boost-stacktrace-from-exception
+					)
+				)
 	boost-locale-winapi? ( static )
 	^^ ( boost-thread-pthread boost-thread-win32 )
+	python? ( ${PYTHON_REQUIRED_USE} )
+	numpy? ( python )
+	!numpy? ( numpy )
 "
 
 DEPEND="
@@ -28,14 +89,21 @@ DEPEND="
 	boost-iostream-bzip2? ( app-arch/bzip2:=[${MULTILIB_USEDEP}] )
 	boost-iostream-lzma? ( app-arch/xz-utils:=[${MULTILIB_USEDEP}] )
 	boost-iostream-zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
+	mpi? ( virtual/mpi[${MULTILIB_USEDEP},cxx,threads] )
+	python? (
+		${PYTHON_DEPS}
+		numpy? ( dev-python/numpy:=[${PYTHON_USEDEP}] )
+	)
 "
 
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+"
 
 BDEPEND="
 dev-build/cmake
 "
 
+# also, please, check someone this : https://www.boost.org/patches/
 PATCHES=(
 	"${FILESDIR}/0000_boost-1.87.0_iostreams_pkgconfig.patch"
 )
@@ -53,6 +121,13 @@ src_configure() {
 		-DBOOST_IOSTREAMS_ENABLE_BZIP2=$(usex boost-iostream-bzip2 ON OFF)
 		-DBOOST_IOSTREAMS_ENABLE_LZMA=$(usex boost-iostream-lzma ON OFF)
 		-DBOOST_IOSTREAMS_ENABLE_ZSTD=$(usex boost-iostream-zstd ON OFF)
+		-DBOOST_STACKTRACE_ENABLE_NOOP=$(usex stacktrace OFF ON)
+		-DBOOST_STACKTRACE_ENABLE_BACKTRACE=$(usex boost-stacktrace-backtrace ON OFF)
+		-DBOOST_STACKTRACE_ENABLE_ADDR2LINE=$(usex boost-stacktrace-addr2line ON OFF)
+		-DBOOST_STACKTRACE_ENABLE_BASIC=$(usex boost-stacktrace-basic ON OFF)
+		-DBOOST_STACKTRACE_ENABLE_WINDBG=$(usex boost-stacktrace-windbg ON OFF)
+		-DBOOST_STACKTRACE_ENABLE_WINDBG_CACHED=$(usex boost-stacktrace-windbg-cached ON OFF)
+		-DBOOST_STACKTRACE_ENABLE_FROM_EXCEPTION=$(usex boost-stacktrace-from-exception ON OFF)
 	)
 
 	if use boost-context-fcontext; then
