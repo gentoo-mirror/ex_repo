@@ -237,3 +237,28 @@ multilib_src_configure() {
 	fi
 }
 
+multilib_src_compile() {
+	if multilib_native_use python; then
+		python_foreach_impl cmake_src_compile
+	else
+		cmake_src_compile
+	fi
+}
+
+
+multilib_src_test() {
+	if multilib_native_use python; then
+		python_foreach_impl cmake_src_test
+	else
+		cmake_src_test
+	fi
+}
+
+multilib_src_install() {
+	if multilib_native_use python; then
+		python_foreach_impl cmake_src_install
+		python_foreach_impl python_optimize
+	else
+		cmake_src_install
+	fi
+}
