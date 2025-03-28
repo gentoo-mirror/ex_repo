@@ -13,4 +13,5 @@ dev-cpp/quill 8.0.0: Asynchronous Low Latency C++ Logging Library
 dev-cpp/ut2-glaze 0.0.4: A stripped down fork of boost-ext ut2
 dev-libs/boost 1.87.0: Famous Boost libraries for C++, but built via CMake, not b2
 dev-libs/cppgenerate 0.2: A library for generating C++ code from C++
+dev-libs/libbacktrace 1.0_pre20250211: C library that may be linked into a C/C++ program to produce symbolic backtraces
 dev-libs/simdjson 3.12.2: SIMD accelerated C++ JSON library
