@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-inherit cmake-multilib python-single-r1
+inherit cmake-multilib multilib python-r1
 
 MY_PV="${PV/_/.}"
 
@@ -143,9 +143,9 @@ DEPEND="
 	mpi? ( virtual/mpi[${MULTILIB_USEDEP},cxx,threads] )
 	python? (
 		${PYTHON_DEPS}
-		numpy? ( $(python_gen_cond_dep '
+		numpy? (
 			dev-python/numpy:=[${PYTHON_USEDEP}]
-			') )
+		)
 	)
 "
 
@@ -162,10 +162,10 @@ PATCHES=(
 	"${FILESDIR}/0001_debug_logs_from_cmake.patch"
 )
 
-src_configure() {
+multilib_src_configure() {
 	# Gentoo users enable ccache via e.g. FEATURES=ccache or
 	# other means. We don't want the build system to enable it for us.
-	sed -i -e '/find_program(CCACHE_FOUND ccache)/d' CMakeLists.txt || die
+	# sed -i -e '/find_program(CCACHE_FOUND ccache)/d' CMakeLists.txt || die
 
 	local mycmakeargs=(
 		-DBOOST_ENABLE_MPI=$(usex mpi ON OFF)
@@ -187,12 +187,6 @@ src_configure() {
 		-DFETCHCONTENT_QUIET=OFF
 		--log-level=DEBUG
 	)
-
-	if multilib_native_use python; then
-		-DBOOST_ENABLE_PYTHON=ON
-		-DPython_EXECUTABLE="${PYTHON}"
-	fi
-
 	if use boost-context-fcontext; then
 		mycmakeargs+=( -DBOOST_CONTEXT_IMPLEMENTATION=fcontext )
 	elif use boost-context-ucontext; then
@@ -219,6 +213,27 @@ src_configure() {
 		mycmakeargs+=( -DBOOST_THREAD_THREADAPI=win32 )
 	fi
 
-	cmake-multilib_src_configure
+	if multilib_native_use python; then
+		python_configure() {
+			# Set all python variables to load the correct Gentoo paths
+			local mycmakeargs=(
+				"${mycmakeargs[@]}"
+				# python_setup alters PATH and sets this as wrapper
+				# to the correct interpreter we are building for
+				-DBOOST_ENABLE_PYTHON=ON
+				-DPYTHON_DEFAULT_EXECUTABLE="${EPYTHON}"
+			)
+			cmake_src_configure
+		}
 
+		python_foreach_impl python_configure
+	else
+		mycmakeargs+=(
+			-DBOOST_ENABLE_PYTHON=OFF
+			-DPYTHON_EXECUTABLE="no"
+		)
+		cmake_src_configure
+
+	fi
 }
+
