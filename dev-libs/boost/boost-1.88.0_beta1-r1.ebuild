@@ -213,52 +213,51 @@ multilib_src_configure() {
 		mycmakeargs+=( -DBOOST_THREAD_THREADAPI=win32 )
 	fi
 
+	mycmakeargs+=(
+		-DBOOST_ENABLE_PYTHON=OFF
+		-DPYTHON_EXECUTABLE="no"
+	)
+	cmake_src_configure
+
 	if multilib_native_use python; then
 		python_configure() {
 			# Set all python variables to load the correct Gentoo paths
 			local mycmakeargs=(
+				# this is correct, but not minimal, TODODONE: filter the args to minimal required
 				"${mycmakeargs[@]}"
 				# python_setup alters PATH and sets this as wrapper
 				# to the correct interpreter we are building for
 				-DBOOST_ENABLE_PYTHON=ON
 				-DPYTHON_DEFAULT_EXECUTABLE="${EPYTHON}"
+				# filter:
+				-DBOOST_INCLUDE_LIBRARIES=python
 			)
 			cmake_src_configure
 		}
 
 		python_foreach_impl python_configure
-	else
-		mycmakeargs+=(
-			-DBOOST_ENABLE_PYTHON=OFF
-			-DPYTHON_EXECUTABLE="no"
-		)
-		cmake_src_configure
-
 	fi
 }
 
 multilib_src_compile() {
+	cmake_src_compile
 	if multilib_native_use python; then
 		python_foreach_impl cmake_src_compile
-	else
-		cmake_src_compile
 	fi
 }
 
 
 multilib_src_test() {
+	cmake_src_test
 	if multilib_native_use python; then
 		python_foreach_impl cmake_src_test
-	else
-		cmake_src_test
 	fi
 }
 
 multilib_src_install() {
+	cmake_src_install
 	if multilib_native_use python; then
 		python_foreach_impl cmake_src_install
 		python_foreach_impl python_optimize
-	else
-		cmake_src_install
 	fi
 }
