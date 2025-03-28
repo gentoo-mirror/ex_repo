@@ -1,0 +1,24 @@
+diff --git a/libs/context/CMakeLists.txt b/libs/context/CMakeLists.txt
+index b3ad7926..484060cb 100644
+--- a/libs/context/CMakeLists.txt
++++ b/libs/context/CMakeLists.txt
+@@ -29,6 +29,8 @@ unset(_default_binfmt)
+ 
+ math(EXPR _bits "${CMAKE_SIZEOF_VOID_P}*8")
+ 
++message(DEBUG "Bits: ${_bits} CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
++
+ if(CMAKE_SYSTEM_PROCESSOR MATCHES "^[Aa][Rr][Mm]" OR CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
+   set(_default_abi aapcs)
+ elseif(WIN32)
+@@ -53,7 +55,9 @@ unset(_default_abi)
+ set(_all_archs arm arm64 loongarch64 mips32 mips64 power riscv64 s390x i386 x86_64 combined)
+ 
+ # Try at start to auto determine arch from CMake.
+-if(CMAKE_SYSTEM_PROCESSOR IN_LIST _all_archs)
++if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64" AND _bits EQUAL 32)
++  set(_default_arch i386)
++elseif(CMAKE_SYSTEM_PROCESSOR IN_LIST _all_archs)
+   set(_default_arch ${CMAKE_SYSTEM_PROCESSOR})
+ elseif(_bits EQUAL 32)
+   if(CMAKE_SYSTEM_PROCESSOR MATCHES "^[Aa][Rr][Mm]")
