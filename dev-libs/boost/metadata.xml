@@ -30,7 +30,8 @@
 		<flag name="lzma">yet another USE flag for compability with gentoo's ebuild. Requires boost-iostream-lzma</flag>
 		<flag name="zstd">yet another USE flag for compability with gentoo's ebuild. Requires boost-iostream-zstd</flag>
 		<flag name="context">yet another USE flag for compability with gentoo's ebuild. Requires any boost-context-* flag.</flag>
-		<flag name="stacktrace">yet another USE flag for compability with gentoo's ebuild. If disabled, then makes BOOST_STACKTRACE_ENABLE_NOOp (backtraces are nothing).</flag>
+		<flag name="stacktrace">yet another USE flag for compability with gentoo's ebuild. WARNING: you can enable multiple boost-stacktrace-* USE flags, but the logic of what will be the Boost::stacktrace cmake's target is a default priority on top of if the stacktrace backend is possible: windbg -> backtrace -> addr2line -> basic -> noop. At least that how it is now (march 2025)</flag>
+		<flag name="boost-stacktrace-noop">Boost.Stacktrace: build boost_stacktrace_noop</flag>
 		<flag name="boost-stacktrace-backtrace">Boost.Stacktrace: build boost_stacktrace_backtrace</flag>
 		<flag name="boost-stacktrace-addr2line">Boost.Stacktrace: build boost_stacktrace_addr2line</flag>
 		<flag name="boost-stacktrace-basic">Boost.Stacktrace: build boost_stacktrace_basic</flag>
