@@ -190,6 +190,7 @@ src_configure() {
 
 	if multilib_native_use python; then
 		-DBOOST_ENABLE_PYTHON=ON
+		-DPython_EXECUTABLE="${PYTHON}"
 	fi
 
 	if use boost-context-fcontext; then
