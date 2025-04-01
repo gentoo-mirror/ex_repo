@@ -141,7 +141,7 @@ DEPEND="
 	boost-iostream-lzma? ( app-arch/xz-utils:=[${MULTILIB_USEDEP}] )
 	boost-iostream-zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
 	boost-stacktrace-backtrace? ( dev-libs/libbacktrace:=[${MULTILIB_USEDEP}] )
-	mpi? ( virtual/mpi[${MULTILIB_USEDEP},cxx,threads] )
+	mpi? ( virtual/mpi[${MULTILIB_USEDEP},threads] )
 	python? (
 		${PYTHON_DEPS}
 		numpy? (
