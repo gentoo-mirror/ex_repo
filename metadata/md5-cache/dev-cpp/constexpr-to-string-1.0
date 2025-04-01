@@ -1,4 +1,4 @@
-BDEPEND=dev-build/cmake app-alternatives/ninja >=dev-build/cmake-3.20.5
+BDEPEND=dev-cmake/cpm-cmake dev-build/cmake app-alternatives/ninja >=dev-build/cmake-3.20.5
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-libs/boost dev-libs/openssl:0/3
 DESCRIPTION=C++14 code to convert integers to strings at compile-time
@@ -11,4 +11,4 @@ RDEPEND=dev-libs/boost dev-libs/openssl:0/3
 SLOT=0
 SRC_URI=https://github.com/Arniiiii/constexpr-to-string-cmake/archive/refs/tags/1.0.tar.gz -> constexpr-to-string-1.0.tar.gz
 _eclasses_=toolchain-funcs	6afdb6107430c1832ca7e16aacbf8fa1	multilib	b2a329026f2e404e9e371097dda47f96	flag-o-matic	357f1a896fbedcd06e5ce55419c49eb9	multiprocessing	1e32df7deee68372153dca65f4a7c21f	ninja-utils	2df4e452cea39a9ec8fb543ce059f8d6	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	cmake	10a50dfaf728b802fcfd37f8d0da9056
-_md5_=501a5543a07e944472833554bb842dc8
+_md5_=4072d93d3ada25cb813417be927d7f86
