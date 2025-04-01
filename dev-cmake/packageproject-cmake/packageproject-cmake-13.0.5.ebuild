@@ -46,7 +46,7 @@ src_configure() {
 		local mycmakeargs=(
 			-DTEST_INSTALLED_VERSION=OFF
 			-DTEST_INSTALLED_VERSION_PACKAGEPROJECT=OFF
-			-DCPM_DOWNLOAD_LOCATION="${EPREFIX}/usr/share/cmake/CPM.cmake"
+			-DCPM_DOWNLOAD_LOCATION="${BROOT}/usr/share/cmake/CPM.cmake"
 			-DCPM_LOCAL_PACKAGES_ONLY=1
 		)
 		einfo "CMake configure args for testing are: ${mycmakeargs}"
