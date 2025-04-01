@@ -255,7 +255,7 @@ multilib_src_test() {
 
 multilib_src_install() {
 
-		MULTILIB_WRAPPED_HEADERS=( # {{{
+		MULTILIB_WRAPPED_HEADERS=(
 			/usr/include/boost/accumulators/numeric/detail/function4.hpp
 			/usr/include/boost/accumulators/numeric/detail/function_n.hpp
 			/usr/include/boost/accumulators/statistics/rolling_mean.hpp
