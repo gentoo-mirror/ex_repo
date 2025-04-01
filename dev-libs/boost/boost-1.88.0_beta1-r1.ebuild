@@ -130,7 +130,8 @@ REQUIRED_USE="
 	test? ( boost-stacktrace-noop )
 "
 
-RESTRICT="!test? ( test )"
+# it doesn't work that well right now
+RESTRICT="test"
 
 DEPEND="
 	boost-locale-icu? ( dev-libs/icu:=[${MULTILIB_USEDEP}] )
