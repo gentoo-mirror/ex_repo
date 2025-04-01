@@ -50,7 +50,7 @@ pkg_postinst() {
 	einfo "override its CPM_DOWNLOAD_LOCATION. Then, at configuring add next argument:"
 	einfo "-DCPM_DOWNLOAD_LOCATION=/usr/share/cmake/CPM.cmake . If you write an"
 	einfo "ebuild, then "
-	einfo "-DCPM_DOWNLOAD_LOCATION=\$\{EPREFIX\}/usr/share/cmake/CPM.cmake is prefered"
+	einfo "-DCPM_DOWNLOAD_LOCATION=\$\{BROOT\}/usr/share/cmake/CPM.cmake is prefered"
 	einfo "                                                                           "
 	einfo "Also, don't use CPM if you can. Essentially, it's about 'how to do bundled "
 	einfo "dependencies better', though it sucks when you have anything remotely      "

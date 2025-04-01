@@ -34,6 +34,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 BDEPEND="
+dev-cmake/cpm-cmake
 dev-build/cmake
 "
 
@@ -46,7 +47,7 @@ src_configure() {
 		-DCPM_LOCAL_PACKAGES_ONLY=1
 		-DCPM_DOWNLOAD_ALL=0
 		-DCPM_USE_LOCAL_PACKAGES=0
-		-DCPM_DOWNLOAD_LOCATION="${EPREFIX}/usr/share/cmake/CPM.cmake"
+		-DCPM_DOWNLOAD_LOCATION="${BROOT}/usr/share/cmake/CPM.cmake"
 	)
 	cmake_src_configure
 }
