@@ -35,7 +35,7 @@ DEPEND="
 	)
 "
 
-RDEPEND="${DEPEND}"
+# RDEPEND="${DEPEND}"
 
 BDEPEND="
 	dev-build/cmake
