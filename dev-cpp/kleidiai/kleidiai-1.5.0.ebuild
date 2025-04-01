@@ -40,7 +40,7 @@ BDEPEND="
 # RESTRICT=""
 
 PATCHES=(
-	"${FILESDIR}/0004_make_it_use_installed_gtest_and_google_benchmark_and_make_it_install_the_project.patch"
+	"${FILESDIR}/0004_make_it_use_installed_gtest_and_google_benchmark_and_make_it_install_the_project_ver2.patch"
 )
 
 src_configure() {

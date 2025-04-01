@@ -1,21 +1,20 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7759cfa..ff222b3 100644
+index 45c95c3..ecd0e79 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -226,7 +226,8 @@ if((CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64" OR CMAKE_SYSTEM_PROCESSOR STREQUAL
- endif()
+@@ -250,6 +250,7 @@ endif()
  
  target_include_directories(kleidiai
--    PUBLIC  .
-+    PUBLIC  $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
+     PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 +                         $<INSTALL_INTERFACE:include>
  )
  
  target_compile_options(kleidiai
-@@ -352,3 +353,20 @@ if(KLEIDIAI_BUILD_BENCHMARK)
-     target_include_directories(kleidiai_benchmark
-         PRIVATE KLEIDIAI_BENCHMARK_INCLUDE_DIR)
+@@ -372,3 +373,21 @@ if(KLEIDIAI_BUILD_BENCHMARK)
+             benchmark::benchmark
+     )
  endif()
++
 +
 +find_package(PackageProject.cmake)
 +
