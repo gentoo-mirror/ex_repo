@@ -213,7 +213,7 @@ DEPEND="
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	blis? ( sci-libs/blis )
 	opencl? ( virtual/opencl )
-	curl? ( net-misc/curl )
+	kleidiai? ( dev-cpp/kleidiai )
 "
 # since this is too hard right now.
 # 	sycl-target-nvidia? ( dev-util/nvidia-cuda-toolkit )
@@ -221,13 +221,20 @@ DEPEND="
 # 	sycl-target-intelgpu? ( dev-util/nvidia-cuda-toolkit )
 # "
 
-RDEPEND="${DEPEND}"
-BDEPEND="${DEPEND}"
+RDEPEND="
+	blas? ( virtual/blas )
+	cuda? ( dev-util/nvidia-cuda-toolkit )
+	blis? ( sci-libs/blis )
+	opencl? ( virtual/opencl )
+"
+
+BDEPEND="
+"
 
 PATCHES=(
 	"${FILESDIR}/0001_GGML_CANN_option_has_to_do_something.patch"
-	"${FILESDIR}/0002_add_sse_flags.patch"
-	"${FILESDIR}/0003_fix_bundling_kleidiai.patch"
+	"${FILESDIR}/0002_add_sse_flags_ver2.patch"
+	"${FILESDIR}/0003_fix_bundling_kleidiai_ver2.patch"
 	"${FILESDIR}/0004_fix_test_chat.patch"
 )
 
