@@ -1,8 +1,8 @@
 diff --git a/ggml/src/ggml-cpu/CMakeLists.txt b/ggml/src/ggml-cpu/CMakeLists.txt
-index 686ecb0..e63ba27 100644
+index 6386e52..abae702 100644
 --- a/ggml/src/ggml-cpu/CMakeLists.txt
 +++ b/ggml/src/ggml-cpu/CMakeLists.txt
-@@ -321,32 +321,11 @@ function(ggml_add_cpu_backend_variant_impl tag_name)
+@@ -397,33 +397,12 @@ function(ggml_add_cpu_backend_variant_impl tag_name)
      if (GGML_CPU_KLEIDIAI)
          message(STATUS "Using KleidiAI optimized kernels if applicable")
  
@@ -11,10 +11,10 @@ index 686ecb0..e63ba27 100644
 -
 -        # Fetch KleidiAI sources:
 -        include(FetchContent)
--        set(KLEIDIAI_COMMIT_TAG "v1.3.0")
+-        set(KLEIDIAI_COMMIT_TAG "v1.5.0")
 -        set(KLEIDIAI_DOWNLOAD_URL "https://github.com/ARM-software/kleidiai/archive/refs/tags/${KLEIDIAI_COMMIT_TAG}.tar.gz")
--        set(KLEIDIAI_ARCHIVE_MD5  "060bd2dc64642b091f461cc8dd7426d9")
--
+-        set(KLEIDIAI_ARCHIVE_MD5  "ea22e1aefb800e9bc8c74d91633cc58e")
+ 
          if (POLICY CMP0135)
              cmake_policy(SET CMP0135 NEW)
          endif()
@@ -32,11 +32,12 @@ index 686ecb0..e63ba27 100644
 -        if (NOT KLEIDIAI_POPULATED)
 -            message(FATAL_ERROR "KleidiAI source downloaded failed.")
 -        endif()
-+        find_package(kleidiai 1.3.0 REQUIRED)
- 
+-
++        find_package(kleidiai 1.5.0 REQUIRED)
          add_compile_definitions(GGML_USE_CPU_KLEIDIAI)
  
-@@ -363,13 +342,7 @@ function(ggml_add_cpu_backend_variant_impl tag_name)
+         # Remove kleidiai target after fetching it
+@@ -439,13 +418,7 @@ function(ggml_add_cpu_backend_variant_impl tag_name)
              )
  
          # KleidiAI
@@ -51,7 +52,7 @@ index 686ecb0..e63ba27 100644
  
          set(ARCH_FLAGS_TEMP "${ARCH_FLAGS}")
          if (NOT ARCH_FLAGS_TEMP)
-@@ -381,16 +354,6 @@ function(ggml_add_cpu_backend_variant_impl tag_name)
+@@ -457,16 +430,6 @@ function(ggml_add_cpu_backend_variant_impl tag_name)
  
          set(PRIVATE_ARCH_FLAGS ${ARCH_FLAGS})
  
@@ -68,7 +69,7 @@ index 686ecb0..e63ba27 100644
  
          if (NOT I8MM_ENABLED MATCHES -1)
              list(APPEND GGML_KLEIDIAI_SOURCES ${KLEIDIAI_SRC}/kai/ukernels/matmul/matmul_clamp_f32_qsi8d32p_qsi4c32p/kai_matmul_clamp_f32_qsi8d32p4x8_qsi4c32p4x8_16x4_neon_i8mm.c)
-@@ -402,8 +365,6 @@ function(ggml_add_cpu_backend_variant_impl tag_name)
+@@ -478,8 +441,6 @@ function(ggml_add_cpu_backend_variant_impl tag_name)
              set(PRIVATE_ARCH_FLAGS "${PRIVATE_ARCH_FLAGS}+sve+sve2")
          endif()
  
@@ -78,7 +79,7 @@ index 686ecb0..e63ba27 100644
  
      message(STATUS "Adding CPU backend variant ${GGML_CPU_NAME}: ${ARCH_FLAGS} ${ARCH_DEFINITIONS}")
 diff --git a/ggml/src/ggml-cpu/kleidiai/kernels.cpp b/ggml/src/ggml-cpu/kleidiai/kernels.cpp
-index a8a59a8..2680219 100644
+index aacc2bb..941fb95 100644
 --- a/ggml/src/ggml-cpu/kleidiai/kernels.cpp
 +++ b/ggml/src/ggml-cpu/kleidiai/kernels.cpp
 @@ -3,18 +3,18 @@
@@ -113,7 +114,7 @@ index a8a59a8..2680219 100644
  #include "kernels.h"
  
 diff --git a/ggml/src/ggml-cpu/kleidiai/kleidiai.cpp b/ggml/src/ggml-cpu/kleidiai/kleidiai.cpp
-index 66685fd..df9231a 100644
+index 4e89ca0..b4a378e 100644
 --- a/ggml/src/ggml-cpu/kleidiai/kleidiai.cpp
 +++ b/ggml/src/ggml-cpu/kleidiai/kleidiai.cpp
 @@ -28,7 +28,7 @@
