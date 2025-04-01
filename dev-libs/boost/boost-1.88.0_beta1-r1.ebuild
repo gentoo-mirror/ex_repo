@@ -192,7 +192,7 @@ multilib_src_configure() {
 		mycmakeargs+=( -DBOOST_CONTEXT_IMPLEMENTATION=fcontext )
 	elif use boost-context-ucontext; then
 		mycmakeargs+=( -DBOOST_CONTEXT_IMPLEMENTATION=ucontext )
-	else
+	elif use boost-context-winfib; then
 		mycmakeargs+=( -DBOOST_CONTEXT_IMPLEMENTATION=winfib )
 	fi
 
@@ -204,13 +204,13 @@ multilib_src_configure() {
 		mycmakeargs+=( -DBOOST_LOCALE_ENABLE_POSIX=ON )
 	elif use boost-locale-std; then
 		mycmakeargs+=( -DBOOST_LOCALE_ENABLE_STD=ON )
-	else
+	elif use boost-locale-winapi; then
 		mycmakeargs+=( -DBOOST_LOCALE_ENABLE_WINAPI=ON )
 	fi
 
 	if use boost-thread-pthread; then
 		mycmakeargs+=( -DBOOST_THREAD_THREADAPI=pthread )
-	else
+	elif use boost-thread-win32; then
 		mycmakeargs+=( -DBOOST_THREAD_THREADAPI=win32 )
 	fi
 
