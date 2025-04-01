@@ -45,7 +45,8 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/0000_fix_bundling_ut2-glaze.patch"
-	"${FILESDIR}/0001_fix_bundling_asio.patch"
+	"${FILESDIR}/0002_fix_bundling_asio.patch"
+	"${FILESDIR}/0003_no_to_quiet_find_package.patch"
 )
 
 src_configure() {
