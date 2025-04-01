@@ -29,14 +29,17 @@ BDEPEND="
 
 src_prepare() {
 	default
+
 	eautoreconf
 }
 
 multilib_src_configure() {
+
 	# tests are failing with LTO.
 	# https://github.com/ianlancetaylor/libbacktrace/issues/152
 	filter-lto
-	econf --enable-shared \
+
+	ECONF_SOURCE="${S}" econf --enable-shared \
 		$(use_enable static{-libs,})
 }
 
