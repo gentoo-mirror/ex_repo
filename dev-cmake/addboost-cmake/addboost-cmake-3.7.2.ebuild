@@ -34,10 +34,6 @@ BDEPEND="
 "
 
 src_configure() {
-		# Gentoo users enable ccache via e.g. FEATURES=ccache or
-	# other means. We don't want the build system to enable it for us.
-	sed -i -e '/find_program(CCACHE_FOUND ccache)/d' CMakeLists.txt || die
-
 	local mycmakeargs=(
 		-DAddBoost.cmake_INSTALL=YES
 	)
