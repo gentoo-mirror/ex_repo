@@ -5,7 +5,7 @@ dev-cmake/format-cmake 1.8.3: Yet another CMake script for formatting
 dev-cmake/packageproject-cmake 13.0.5: Amazing script for installing your projects in CMake!
 dev-cpp/boost-certify 0.2.2: Boost.ASIO-based TLS certificate verification library.
 dev-cpp/constexpr-to-string 1.0: C++14 code to convert integers to strings at compile-time
-dev-cpp/glaze 5.0.2: Extremely fast, in memory, JSON and interface library for modern C++
+dev-cpp/glaze 5.1.0: Extremely fast, in memory, JSON and interface library for modern C++
 dev-cpp/kleidiai 1.5.0: Computational micro-kernels for Arm® CPUs. AI-related.
 dev-cpp/kokkos 4.1.0: C++ Performance Portability Programming EcoSystem
 dev-cpp/llama-cpp 0_pre5013: Inference of Meta's LLaMA model (and others) in pure C/C++
