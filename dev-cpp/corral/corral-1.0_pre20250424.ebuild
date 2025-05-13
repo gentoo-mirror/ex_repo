@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	test? (
-		dev-cpp/asio
+		dev-libs/boost
 		dev-cpp/catch
 		dev-libs/openssl
 	)
