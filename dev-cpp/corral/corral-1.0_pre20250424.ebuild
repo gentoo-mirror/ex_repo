@@ -34,6 +34,10 @@ DEPEND="
 		dev-cpp/catch
 		dev-libs/openssl
 	)
+	examples? (
+		dev-libs/boost
+		dev-qt/qtbase
+)
 "
 
 # RDEPEND="${DEPEND}"
