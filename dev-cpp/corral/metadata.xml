@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="proxy">
+		<email>lg3dx6fd@gmail.com</email>
+		<name>Arniiiii</name>
+		<description>Just a guy that likes C++ and uses CMake.</description>
+	</maintainer>
+	<longdescription>
+Lightweight structured concurrency for C++20 . https://www.youtube.com/watch?v=aPqMQ7SXSiw
+	</longdescription>
+	<use>
+		<flag name="doc">Install related README.md and doc/ folder</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">hudson-trading/corral</remote-id>
+	</upstream>
+</pkgmetadata>
