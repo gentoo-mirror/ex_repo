@@ -11,6 +11,7 @@ Lightweight structured concurrency for C++20 . https://www.youtube.com/watch?v=a
 	</longdescription>
 	<use>
 		<flag name="doc">Install related README.md and doc/ folder</flag>
+		<flag name="examples">Build examples (not install)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">hudson-trading/corral</remote-id>
