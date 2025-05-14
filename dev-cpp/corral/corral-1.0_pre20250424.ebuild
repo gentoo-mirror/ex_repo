@@ -57,6 +57,7 @@ src_configure() {
 		-DCMAKE_SKIP_INSTALL_RULES=OFF
 		-DBUILD_TESTING=$(usex test ON OFF)
 		-DCORRAL_CATCH2=""
+		-DCORRAL_BOOST="a" # here can be anything not same as ".*://.*"
 		-DCORRAL_EXAMPLES=$(usex examples ON OFF)
 
 		# my default:

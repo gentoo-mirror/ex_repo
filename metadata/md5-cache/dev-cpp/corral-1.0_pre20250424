@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/hudson-trading/corral/archive/f1fc7ab37f9b0f4a8d4d611d15f92f1e89bebd27.tar.gz -> corral-1.0_pre20250424.tar.gz
 _eclasses_=toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	flag-o-matic	b892042b2667b8ac69ec8a2571dc290a	multiprocessing	1e32df7deee68372153dca65f4a7c21f	ninja-utils	2df4e452cea39a9ec8fb543ce059f8d6	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	cmake	b05c1b7b3c9213c155f128f4eadaa49f
-_md5_=915cbe91a6295ad6233c84e23b7dc788
+_md5_=216cddf65414164f29ab4d5bc0d79d73
