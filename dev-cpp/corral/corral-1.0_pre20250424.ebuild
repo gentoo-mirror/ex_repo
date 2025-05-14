@@ -49,6 +49,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/0000_make_tests_be_buildable_only_when_BUILD_TESTING_is_enabled.patch"
+	"${FILESDIR}/0001_examples_expected_to_be_compilable_with_boost_compiled_via_b2.patch"
 )
 
 src_configure() {
