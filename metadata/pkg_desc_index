@@ -1,5 +1,5 @@
 dev-build/bazel 8.1.1: Yet another build system where developers bundle all dependencies.
-dev-cmake/addboost-cmake 3.7.2: Yet another CMake script for finding or bundling Boost.
+dev-cmake/addboost-cmake 3.7.3: Yet another CMake script for finding or bundling Boost.
 dev-cmake/cpm-cmake 1.0_pre20250121-r1: A CMake's NOT package manager. A tool for bundling dependencies in CMake
 dev-cmake/format-cmake 1.8.3: Yet another CMake script for formatting
 dev-cmake/packageproject-cmake 13.0.5: Amazing script for installing your projects in CMake!
