@@ -31,7 +31,7 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	test? (
 		dev-libs/boost
-		dev-cpp/catch
+		<dev-cpp/catch-3.0.0:0
 		dev-libs/openssl
 	)
 	examples? (
