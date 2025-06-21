@@ -1,0 +1,15 @@
+BDEPEND=dev-cmake/cpm-cmake dev-cmake/packageproject-cmake app-alternatives/ninja >=dev-build/cmake-3.20.5
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=test? ( dev-libs/boost <dev-cpp/catch-3.0.0:0 dev-libs/openssl ) examples? ( dev-libs/boost dev-qt/qtbase )
+DESCRIPTION=Lightweight structured concurrency for C++20
+EAPI=8
+HOMEPAGE=https://github.com/hudson-trading/corral
+INHERIT=cmake
+IUSE=test examples doc
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris
+LICENSE=MIT
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/hudson-trading/corral/archive/e1c63b1249580fad2e0f526bb375c7dd74c7046d.tar.gz -> corral-1.0_pre20250521.tar.gz
+_eclasses_=toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	flag-o-matic	b892042b2667b8ac69ec8a2571dc290a	multiprocessing	1e32df7deee68372153dca65f4a7c21f	ninja-utils	2df4e452cea39a9ec8fb543ce059f8d6	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	cmake	b05c1b7b3c9213c155f128f4eadaa49f
+_md5_=a7f03fd6d699b18cda84d07755449dfc
