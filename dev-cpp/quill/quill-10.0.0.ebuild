@@ -31,6 +31,7 @@ dev-build/cmake
 doc? (
 	app-text/doxygen
 	dev-python/sphinx
+	dev-python/breathe
 )
 "
 
