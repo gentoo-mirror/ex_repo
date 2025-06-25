@@ -22,7 +22,9 @@ RESTRICT="!test? ( test )"
 # # it has libfmt bundled in a good way. It doesn't seem to have other dependencies.
 # DEPEND=""
 
-# RDEPEND="${DEPEND}"
+RDEPEND="
+valgrind? ( dev-debug/valgrind )
+"
 
 BDEPEND="
 dev-build/cmake
