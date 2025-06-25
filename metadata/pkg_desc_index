@@ -10,7 +10,7 @@ dev-cpp/glaze 5.1.0: Extremely fast, in memory, JSON and interface library for m
 dev-cpp/kleidiai 1.5.0: Computational micro-kernels for Arm® CPUs. AI-related.
 dev-cpp/kokkos 4.1.0: C++ Performance Portability Programming EcoSystem
 dev-cpp/llama-cpp 0_pre5013: Inference of Meta's LLaMA model (and others) in pure C/C++
-dev-cpp/quill 10.0.0: Asynchronous Low Latency C++ Logging Library
+dev-cpp/quill 10.0.1: Asynchronous Low Latency C++ Logging Library
 dev-cpp/ut2-glaze 0.0.4: A stripped down fork of boost-ext ut2
 dev-libs/boost 1.88.0: Famous Boost libraries for C++, but built via CMake, not b2
 dev-libs/cppgenerate 0.2: A library for generating C++ code from C++
