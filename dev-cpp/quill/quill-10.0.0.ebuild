@@ -26,6 +26,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="
 dev-build/cmake
+doc? ( app-text/doxygen )
 "
 
 PATCHES=(
