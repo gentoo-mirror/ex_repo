@@ -1,4 +1,4 @@
-BDEPEND=dev-build/cmake doc? ( app-text/doxygen dev-python/sphinx dev-python/breathe ) app-alternatives/ninja >=dev-build/cmake-3.20.5
+BDEPEND=dev-build/cmake doc? ( app-text/doxygen dev-python/sphinx dev-python/breathe dev-python/furo ) app-alternatives/ninja >=dev-build/cmake-3.20.5
 DEFINED_PHASES=compile configure install prepare test
 DESCRIPTION=Asynchronous Low Latency C++ Logging Library
 EAPI=8
@@ -12,5 +12,5 @@ REQUIRED_USE=extensive-test? ( test )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/odygrd/quill/archive/refs/tags/v10.0.0.tar.gz -> quill-10.0.0.tar.gz
-_eclasses_=toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	flag-o-matic	b892042b2667b8ac69ec8a2571dc290a	multiprocessing	1e32df7deee68372153dca65f4a7c21f	ninja-utils	2df4e452cea39a9ec8fb543ce059f8d6	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	cmake	460729dc36f68cf03b044bc1d367e34a
-_md5_=4bb108ab042ca8c344d2093118a327dd
+_eclasses_=toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	flag-o-matic	b892042b2667b8ac69ec8a2571dc290a	multiprocessing	1e32df7deee68372153dca65f4a7c21f	ninja-utils	2df4e452cea39a9ec8fb543ce059f8d6	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	cmake	b05c1b7b3c9213c155f128f4eadaa49f
+_md5_=e1b01153e39f1bc50269016619c1c328

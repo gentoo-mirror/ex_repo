@@ -32,6 +32,7 @@ doc? (
 	app-text/doxygen
 	dev-python/sphinx
 	dev-python/breathe
+	dev-python/furo
 )
 "
 
