@@ -29,7 +29,7 @@ dev-build/cmake
 "
 
 PATCHES=(
-	"${FILESDIR}/0000_quill_8.0.0_cmake_and_pkgconfig.patch"
+	"${FILESDIR}/0001_quill_10.0.0_cmake_and_pkgconfig.patch"
 )
 
 src_configure() {
