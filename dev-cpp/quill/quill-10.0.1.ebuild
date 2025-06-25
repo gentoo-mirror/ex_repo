@@ -8,7 +8,9 @@ inherit cmake
 
 DESCRIPTION="Asynchronous Low Latency C++ Logging Library"
 HOMEPAGE="https://github.com/odygrd/quill"
-SRC_URI="https://github.com/odygrd/quill/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/odygrd/quill/archive/a29940ebe1122556fa6d99be1929264469d6ec99.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/quill-a29940ebe1122556fa6d99be1929264469d6ec99"
+# SRC_URI="https://github.com/odygrd/quill/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
