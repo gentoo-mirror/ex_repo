@@ -28,7 +28,10 @@ valgrind? ( dev-debug/valgrind )
 
 BDEPEND="
 dev-build/cmake
-doc? ( app-text/doxygen )
+doc? (
+	app-text/doxygen
+	dev-python/sphinx
+)
 "
 
 PATCHES=(
