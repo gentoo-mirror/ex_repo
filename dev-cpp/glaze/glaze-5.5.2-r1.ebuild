@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}/0003_no_to_quiet_find_package.patch"
 	"${FILESDIR}/0004_fix_bundling_asio_and_add_tests_execution.patch"
 	"${FILESDIR}/0005_fix_erland_cmake_test_option_name.patch"
+	"${FILESDIR}/0007_fix_using_installed_glaze_with_eetf-format_enabled.patch"
 )
 
 src_configure() {
