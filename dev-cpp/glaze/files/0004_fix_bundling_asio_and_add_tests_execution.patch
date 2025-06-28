@@ -1,0 +1,254 @@
+diff --git a/tests/networking_tests/CMakeLists.txt b/tests/networking_tests/CMakeLists.txt
+index 9df9718..064df4b 100644
+--- a/tests/networking_tests/CMakeLists.txt
++++ b/tests/networking_tests/CMakeLists.txt
+@@ -1,10 +1,5 @@
+-FetchContent_Declare(
+-    asio
+-    GIT_REPOSITORY https://github.com/chriskohlhoff/asio.git
+-    GIT_TAG asio-1-32-0
+-    GIT_SHALLOW TRUE
+-)
+-FetchContent_MakeAvailable(asio)
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(asio GLOBAL IMPORTED_TARGET REQUIRED asio)
+ 
+ # HTTP Examples
+ add_subdirectory(http_examples)
+@@ -17,4 +12,4 @@ add_subdirectory(http_server_api_tests)
+ add_subdirectory(https_test)
+ add_subdirectory(repe_test)
+ add_subdirectory(rest_test)
+-add_subdirectory(websocket_test)
+\ No newline at end of file
++add_subdirectory(websocket_test)
+diff --git a/tests/networking_tests/asio_repe/CMakeLists.txt b/tests/networking_tests/asio_repe/CMakeLists.txt
+index 1518b4e..1d5416e 100644
+--- a/tests/networking_tests/asio_repe/CMakeLists.txt
++++ b/tests/networking_tests/asio_repe/CMakeLists.txt
+@@ -1,14 +1,9 @@
+ project(asio_repe)
+ 
+-FetchContent_Declare(
+-    asio
+-    GIT_REPOSITORY https://github.com/chriskohlhoff/asio.git
+-    GIT_TAG asio-1-32-0
+-    GIT_SHALLOW TRUE
+-)
+-FetchContent_MakeAvailable(asio)
+-
+ add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
+ 
+-target_include_directories(${PROJECT_NAME} PRIVATE include ${asio_SOURCE_DIR}/asio/include)
+-target_link_libraries(${PROJECT_NAME} PRIVATE glz_test_exceptions)
+\ No newline at end of file
++target_include_directories(${PROJECT_NAME} PRIVATE include)
++target_link_libraries(${PROJECT_NAME} PRIVATE glz_test_exceptions)
++target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
++
++add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+diff --git a/tests/networking_tests/http_client_test/CMakeLists.txt b/tests/networking_tests/http_client_test/CMakeLists.txt
+index 7ed4e0f..a7674b4 100644
+--- a/tests/networking_tests/http_client_test/CMakeLists.txt
++++ b/tests/networking_tests/http_client_test/CMakeLists.txt
+@@ -2,7 +2,8 @@ project(http_client_test)
+ 
+ add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
+ 
+-target_include_directories(${PROJECT_NAME} PRIVATE include ${asio_SOURCE_DIR}/asio/include)
++target_include_directories(${PROJECT_NAME} PRIVATE include)
+ target_link_libraries(${PROJECT_NAME} PRIVATE glz_test_exceptions)
++target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
+ 
+-add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+\ No newline at end of file
++add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+diff --git a/tests/networking_tests/http_examples/CMakeLists.txt b/tests/networking_tests/http_examples/CMakeLists.txt
+index 2d836f8..8d67649 100644
+--- a/tests/networking_tests/http_examples/CMakeLists.txt
++++ b/tests/networking_tests/http_examples/CMakeLists.txt
+@@ -2,7 +2,8 @@ project(http_examples)
+ 
+ add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
+ 
+-target_include_directories(${PROJECT_NAME} PRIVATE include ${asio_SOURCE_DIR}/asio/include)
++target_include_directories(${PROJECT_NAME} PRIVATE include )
+ target_link_libraries(${PROJECT_NAME} PRIVATE glz_test_exceptions)
++target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
+ 
+-add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+\ No newline at end of file
++add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+diff --git a/tests/networking_tests/http_router_test/CMakeLists.txt b/tests/networking_tests/http_router_test/CMakeLists.txt
+index 5b1e58b..14d8156 100644
+--- a/tests/networking_tests/http_router_test/CMakeLists.txt
++++ b/tests/networking_tests/http_router_test/CMakeLists.txt
+@@ -2,7 +2,8 @@ project(http_router_test)
+ 
+ add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
+ 
+-target_include_directories(${PROJECT_NAME} PRIVATE include ${asio_SOURCE_DIR}/asio/include)
++target_include_directories(${PROJECT_NAME} PRIVATE include )
+ target_link_libraries(${PROJECT_NAME} PRIVATE glz_test_exceptions)
++target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
+ 
+-add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+\ No newline at end of file
++add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+diff --git a/tests/networking_tests/http_server_api_tests/CMakeLists.txt b/tests/networking_tests/http_server_api_tests/CMakeLists.txt
+index 62d93da..225a815 100644
+--- a/tests/networking_tests/http_server_api_tests/CMakeLists.txt
++++ b/tests/networking_tests/http_server_api_tests/CMakeLists.txt
+@@ -2,7 +2,8 @@ project(http_server_api_tests)
+ 
+ add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
+ 
+-target_include_directories(${PROJECT_NAME} PRIVATE include ${asio_SOURCE_DIR}/asio/include)
++target_include_directories(${PROJECT_NAME} PRIVATE include )
+ target_link_libraries(${PROJECT_NAME} PRIVATE glz_test_exceptions)
++target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
+ 
+-add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+\ No newline at end of file
++add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+diff --git a/tests/networking_tests/https_test/CMakeLists.txt b/tests/networking_tests/https_test/CMakeLists.txt
+index 4f4670d..557f697 100644
+--- a/tests/networking_tests/https_test/CMakeLists.txt
++++ b/tests/networking_tests/https_test/CMakeLists.txt
+@@ -5,14 +5,6 @@ project(https_test)
+ # Only build if OpenSSL is available
+ find_package(OpenSSL REQUIRED)
+ 
+-FetchContent_Declare(
+-    asio
+-    GIT_REPOSITORY https://github.com/chriskohlhoff/asio.git
+-    GIT_TAG asio-1-32-0
+-    GIT_SHALLOW TRUE
+-)
+-FetchContent_MakeAvailable(asio)
+-
+ # Test if we can actually compile with OpenSSL headers
+ include(CheckCXXSourceCompiles)
+ set(CMAKE_REQUIRED_LIBRARIES OpenSSL::SSL OpenSSL::Crypto)
+@@ -33,15 +25,19 @@ if(OPENSSL_HEADERS_AVAILABLE)
+         OpenSSL::SSL
+         OpenSSL::Crypto
+     )
++    target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
+     target_compile_definitions(${PROJECT_NAME} PRIVATE GLZ_ENABLE_SSL)
+-    target_include_directories(${PROJECT_NAME} PRIVATE include ${asio_SOURCE_DIR}/asio/include)
++    target_include_directories(${PROJECT_NAME} PRIVATE include )
+     target_compile_definitions(${PROJECT_NAME} PRIVATE SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
+ 
+     # Set C++ standard
+     target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_23)
+-    
++
++
++    add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
++
+     message(STATUS "Self-contained HTTPS test will be built with OpenSSL support")
+     message(STATUS " Certificates will be generated automatically at runtime")
+ else()
+     message(FATAL_ERROR "❌ OpenSSL headers missing - install libssl-dev/openssl-devel")
+-endif()
+\ No newline at end of file
++endif()
+diff --git a/tests/networking_tests/repe_test/CMakeLists.txt b/tests/networking_tests/repe_test/CMakeLists.txt
+index 0575ba7..b2d3974 100644
+--- a/tests/networking_tests/repe_test/CMakeLists.txt
++++ b/tests/networking_tests/repe_test/CMakeLists.txt
+@@ -1,16 +1,9 @@
+ project(repe_test)
+ 
+-FetchContent_Declare(
+-    asio
+-    GIT_REPOSITORY https://github.com/chriskohlhoff/asio.git
+-    GIT_TAG asio-1-32-0
+-    GIT_SHALLOW TRUE
+-)
+-FetchContent_MakeAvailable(asio)
+-
+ add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
+ 
+-target_include_directories(${PROJECT_NAME} PRIVATE include ${asio_SOURCE_DIR}/asio/include)
++target_include_directories(${PROJECT_NAME} PRIVATE include)
+ target_link_libraries(${PROJECT_NAME} PRIVATE glz_test_exceptions)
++target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
+ 
+ add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+diff --git a/tests/networking_tests/rest_test/CMakeLists.txt b/tests/networking_tests/rest_test/CMakeLists.txt
+index 4d5bd58..e71d809 100644
+--- a/tests/networking_tests/rest_test/CMakeLists.txt
++++ b/tests/networking_tests/rest_test/CMakeLists.txt
+@@ -1,23 +1,19 @@
+ project(rest_test)
+ 
+-FetchContent_Declare(
+-    asio
+-    GIT_REPOSITORY https://github.com/chriskohlhoff/asio.git
+-    GIT_TAG asio-1-32-0
+-    GIT_SHALLOW TRUE
+-)
+-FetchContent_MakeAvailable(asio)
+-
+ add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
+ 
+-target_include_directories(${PROJECT_NAME} PRIVATE include ${asio_SOURCE_DIR}/asio/include)
++target_include_directories(${PROJECT_NAME} PRIVATE include)
+ target_link_libraries(${PROJECT_NAME} PRIVATE glz_test_exceptions)
++target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
+ 
+ add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+ 
+ add_executable(rest_registry_test rest_registry_test.cpp)
+ 
+-target_include_directories(rest_registry_test PRIVATE include ${asio_SOURCE_DIR}/asio/include)
++target_include_directories(rest_registry_test PRIVATE include)
+ target_link_libraries(rest_registry_test PRIVATE glz_test_exceptions)
++target_link_libraries(rest_registry_test PRIVATE PkgConfig::asio)
++
++add_test(NAME rest_registry_test COMMAND rest_registry_test)
+ 
+-add_subdirectory(rest_server)
+\ No newline at end of file
++add_subdirectory(rest_server)
+diff --git a/tests/networking_tests/rest_test/rest_server/CMakeLists.txt b/tests/networking_tests/rest_test/rest_server/CMakeLists.txt
+index 3f77da7..ba867b9 100755
+--- a/tests/networking_tests/rest_test/rest_server/CMakeLists.txt
++++ b/tests/networking_tests/rest_test/rest_server/CMakeLists.txt
+@@ -2,8 +2,10 @@ project(rest_server VERSION 1.0 LANGUAGES CXX)
+ 
+ add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
+ 
+-target_include_directories(${PROJECT_NAME} PRIVATE ${asio_SOURCE_DIR}/asio/include)
+ target_link_libraries(${PROJECT_NAME} PRIVATE glz_test_exceptions)
++target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
+ 
+-target_compile_definitions(${PROJECT_NAME} PRIVATE 
+-    SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
+\ No newline at end of file
++target_compile_definitions(${PROJECT_NAME} PRIVATE
++    SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
++
++add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+diff --git a/tests/networking_tests/websocket_test/CMakeLists.txt b/tests/networking_tests/websocket_test/CMakeLists.txt
+index 322423c..20a618a 100644
+--- a/tests/networking_tests/websocket_test/CMakeLists.txt
++++ b/tests/networking_tests/websocket_test/CMakeLists.txt
+@@ -2,8 +2,11 @@ project(websocket_server)
+ 
+ add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
+ 
+-target_include_directories(${PROJECT_NAME} PRIVATE include ${asio_SOURCE_DIR}/asio/include)
++target_include_directories(${PROJECT_NAME} PRIVATE include)
+ target_link_libraries(${PROJECT_NAME} PRIVATE glz_test_exceptions)
++target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
+ 
+-target_compile_definitions(${PROJECT_NAME} PRIVATE 
+-    SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
+\ No newline at end of file
++target_compile_definitions(${PROJECT_NAME} PRIVATE
++    SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
++
++add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
