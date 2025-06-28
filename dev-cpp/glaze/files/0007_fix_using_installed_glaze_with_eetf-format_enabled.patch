@@ -18,7 +18,7 @@ index b6ddfdb..0000000
 \ No newline at end of file
 diff --git a/cmake/install-config.cmake.in b/cmake/install-config.cmake.in
 new file mode 100644
-index 0000000..8616c76
+index 0000000..e24a71f
 --- /dev/null
 +++ b/cmake/install-config.cmake.in
 @@ -0,0 +1,172 @@
@@ -185,7 +185,7 @@ index 0000000..8616c76
 +         --enable-darwin-64bit
 +   ]]
 +
-+   if(NOT ${ERLANG_FOUND})
++   if(NOT ${Erlang_FOUND})
 +      message(
 +      FATAL_ERROR
 +      "Erlang is not found, while glaze was configured with glaze_EETF_FORMAT enabled. It seems you uninstalled Erlang, but then didn't reconfigured glaze with glaze_EETF_FORMAT=0 ."
@@ -195,16 +195,10 @@ index 0000000..8616c76
 +endif()
 +include("${CMAKE_CURRENT_LIST_DIR}/glazeTargets.cmake")
 diff --git a/cmake/install-rules.cmake b/cmake/install-rules.cmake
-index 1db5b74..871e22f 100644
+index 1db5b74..a5c94aa 100644
 --- a/cmake/install-rules.cmake
 +++ b/cmake/install-rules.cmake
-@@ -1,3 +1,5 @@
-+message("FOR THE FUCK SAKE I WAS HERE")
-+
- # Project is configured with no languages, so tell GNUInstallDirs the lib dir
- set(CMAKE_INSTALL_LIBDIR lib CACHE PATH "")
- 
-@@ -32,6 +34,8 @@ set(
+@@ -32,6 +32,8 @@ set(
  )
  mark_as_advanced(glaze_INSTALL_CMAKEDIR)
  
