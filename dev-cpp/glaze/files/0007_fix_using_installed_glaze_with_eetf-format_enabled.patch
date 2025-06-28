@@ -18,7 +18,7 @@ index b6ddfdb..0000000
 \ No newline at end of file
 diff --git a/cmake/install-config.cmake.in b/cmake/install-config.cmake.in
 new file mode 100644
-index 0000000..8616c76
+index 0000000..e24a71f
 --- /dev/null
 +++ b/cmake/install-config.cmake.in
 @@ -0,0 +1,172 @@
@@ -185,7 +185,7 @@ index 0000000..8616c76
 +         --enable-darwin-64bit
 +   ]]
 +
-+   if(NOT ${ERLANG_FOUND})
++   if(NOT ${Erlang_FOUND})
 +      message(
 +      FATAL_ERROR
 +      "Erlang is not found, while glaze was configured with glaze_EETF_FORMAT enabled. It seems you uninstalled Erlang, but then didn't reconfigured glaze with glaze_EETF_FORMAT=0 ."
