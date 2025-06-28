@@ -12,6 +12,7 @@ dev-cpp/boost-certify:examples - Build examples
 dev-cpp/corral:doc - Install related README.md and doc/ folder
 dev-cpp/corral:examples - Build examples (not install)
 dev-cpp/glaze:doc - Install README files
+dev-cpp/glaze:eetf-format - Link Erlang for erlang ettf format (and enable corresponsing tests)
 dev-cpp/glaze:examples - Build examples (not install)
 dev-cpp/glaze:fuzzing - Build fuzzers (not install)
 dev-cpp/kleidiai:benchmark - Build benchmarks (not install)
