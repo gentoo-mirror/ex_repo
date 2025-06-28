@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux ~arm64-macos ~ppc-macos ~x64-macos ~x64-solaris" # no mips s390 because of dev-cpp/asio::gentoo .
 
 IUSE="
+	eetf-format
 	test
 	fuzzing
 	examples
@@ -28,6 +29,9 @@ RESTRICT="!test? ( test )"
 # REQUIRED_USE=""
 
 DEPEND="
+	eetf-format? (
+		dev-lang/erlang
+	)
 	test? (
 		dev-cpp/ut2-glaze
 		dev-cpp/asio
@@ -45,8 +49,9 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/0000_fix_bundling_ut2-glaze.patch"
-	"${FILESDIR}/0002_fix_bundling_asio.patch"
 	"${FILESDIR}/0003_no_to_quiet_find_package.patch"
+	"${FILESDIR}/0004_fix_bundling_asio_and_add_tests_execution.patch"
+	"${FILESDIR}/0005_fix_erland_cmake_test_option_name.patch"
 )
 
 src_configure() {
@@ -56,6 +61,7 @@ src_configure() {
 		-Dglaze_ENABLE_FUZZING=$(usex fuzzing ON OFF)
 		-Dglaze_BUILD_EXAMPLES=$(usex examples ON OFF)
 		-DBUILD_TESTING=$(usex test ON OFF)
+		-Dglaze_EETF_FORMAT=$(usex eetf-format ON OFF)
 
 		# my default:
 		-DFETCHCONTENT_QUIET=OFF
