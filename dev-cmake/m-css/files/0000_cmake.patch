@@ -1,0 +1,99 @@
+diff --git a/.gitignore b/.gitignore
+index 5f65f0dc..1db71f7d 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,3 +1,6 @@
++build*/
++m.cssConfig.cmake
++m.cssConfigVersion.cmake
+ __pycache__
+ htmlcov/
+ coverage/
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+new file mode 100644
+index 00000000..b929c676
+--- /dev/null
++++ b/CMakeLists.txt
+@@ -0,0 +1,73 @@
++cmake_minimum_required(VERSION 3.31)
++
++project(m.css VERSION 1.0)
++
++include(GNUInstallDirs)
++
++install(
++  DIRECTORY artwork
++  DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/"
++  PATTERN "*.py" PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE
++                             WORLD_READ WORLD_EXECUTE)
++install(
++  DIRECTORY css
++  DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/"
++  PATTERN "*.py" PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE
++                             WORLD_READ WORLD_EXECUTE)
++install(
++  DIRECTORY doc
++  DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/"
++  PATTERN "*.py" PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE
++                             WORLD_READ WORLD_EXECUTE)
++install(
++  DIRECTORY documentation
++  DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/"
++  PATTERN "*.py" PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE
++                             WORLD_READ WORLD_EXECUTE)
++install(
++  DIRECTORY package
++  DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/"
++  PATTERN "*.py" PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE
++                             WORLD_READ WORLD_EXECUTE)
++install(
++  DIRECTORY pelican-theme
++  DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/"
++  PATTERN "*.py" PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE
++                             WORLD_READ WORLD_EXECUTE)
++install(
++  DIRECTORY plugins
++  DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/"
++  PATTERN "*.py" PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE
++                             WORLD_READ WORLD_EXECUTE)
++install(
++  DIRECTORY site
++  DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}/"
++  PATTERN "*.py" PERMISSIONS OWNER_READ OWNER_EXECUTE GROUP_READ GROUP_EXECUTE
++                             WORLD_READ WORLD_EXECUTE)
++
++include(CMakePackageConfigHelpers)
++
++configure_package_config_file(
++  ${CMAKE_CURRENT_LIST_DIR}/${PROJECT_NAME}Config.cmake.in
++  ${CMAKE_CURRENT_LIST_DIR}/${PROJECT_NAME}Config.cmake
++  INSTALL_DESTINATION ${CMAKE_INSTALL_DATADIR}/cmake/${PROJECT_NAME}Config.cmake
++)
++
++write_basic_package_version_file(
++  ${CMAKE_CURRENT_LIST_DIR}/${PROJECT_NAME}ConfigVersion.cmake
++  VERSION ${PROJECT_VERSION}
++  COMPATIBILITY AnyNewerVersion ARCH_INDEPENDENT)
++
++set(CMAKEDIR
++    ${CMAKE_INSTALL_DATADIR}/cmake/${PROJECT_NAME}/
++    CACHE PATH "Path to a folder to which install the script\
++      ${PROJECT_NAME}Config.cmake and related files. \
++      By default: ${CMAKE_INSTALL_DATADIR}/cmake/${PROJECT_NAME}/")
++
++install(FILES "${CMAKE_CURRENT_LIST_DIR}/${PROJECT_NAME}Config.cmake"
++        DESTINATION "${CMAKEDIR}")
++
++install(FILES "${CMAKE_CURRENT_LIST_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
++        DESTINATION "${CMAKEDIR}")
++message(
++  STATUS "Use `find_package(${PROJECT_NAME} ${PROJECT_VERSION})` to use it")
+diff --git a/m.cssConfig.cmake.in b/m.cssConfig.cmake.in
+new file mode 100644
+index 00000000..84a4cfcb
+--- /dev/null
++++ b/m.cssConfig.cmake.in
+@@ -0,0 +1,3 @@
++@PACKAGE_INIT@
++
++set(m.css_SOURCE_DIR @CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_DATADIR@/@PROJECT_NAME@ PARENT_SCOPE)
