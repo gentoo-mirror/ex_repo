@@ -5,6 +5,7 @@ dev-cmake/format-cmake 1.8.3: Yet another CMake script for formatting
 dev-cmake/m-css 1.0_pre20250615: m.css with patch to allow `find_package` from CMake via '${m.css_SOURCE_DIR}'
 dev-cmake/packageproject-cmake 13.0.5: Amazing script for installing your projects in CMake!
 dev-cpp/boost-certify 0.2.2: Boost.ASIO-based TLS certificate verification library.
+dev-cpp/boost-ut 2.3.1: C++20 μ(micro)/Unit Testing framework
 dev-cpp/constexpr-to-string 1.0: C++14 code to convert integers to strings at compile-time
 dev-cpp/corral 1.0_pre20250628: Lightweight structured concurrency for C++20
 dev-cpp/glaze 5.5.2-r1: Extremely fast, in memory, JSON and interface library for modern C++
