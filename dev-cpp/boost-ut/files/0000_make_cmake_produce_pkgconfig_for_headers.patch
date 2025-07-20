@@ -1,0 +1,22 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9f60c43..3cc48c3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -119,6 +119,17 @@ install(
+   DESTINATION lib/cmake/ut
+ )
+ 
++file(
++  GENERATE
++  OUTPUT "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pc"
++  CONTENT
++  "prefix=${CMAKE_INSTALL_PREFIX}\nincludedir=\$\{prefix\}/include\nName: ${PROJECT_NAME}\nDescription: C++20 μ(micro)/Unit Testing framework \nVersion: ${PROJECT_VERSION}\nCflags: -I\$\{includedir\} -DBOOST_UT_DISABLE_MODULE=1\n"
++)
++
++install(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pc"
++        DESTINATION ${CMAKE_INSTALL_DATADIR}/pkgconfig
++)
++
+ if(EMSCRIPTEN)
+   set(CMAKE_EXECUTABLE_SUFFIX ".js")
+   target_link_options(ut INTERFACE "SHELL:-s ALLOW_MEMORY_GROWTH=1" "SHELL:-s EXIT_RUNTIME=1" -fwasm-exceptions -g)
