@@ -10,6 +10,6 @@
 		Source code formatter for cmake listfiles.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">TheLartians/Format.cmake</remote-id>
+		<remote-id type="github">vancraar/cmake_format</remote-id>
 	</upstream>
 </pkgmetadata>
