@@ -18,3 +18,4 @@ dev-libs/boost 1.88.0: Famous Boost libraries for C++, but built via CMake, not 
 dev-libs/cppgenerate 0.2: A library for generating C++ code from C++
 dev-libs/libbacktrace 1.0_pre20250409: C library that may be linked into a C/C++ program to produce symbolic backtraces
 dev-libs/simdjson 3.12.2: SIMD accelerated C++ JSON library
+dev-util/cmake-format 1.0_pre20241125: Source code formatter for CMake files.
