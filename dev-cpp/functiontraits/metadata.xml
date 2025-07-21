@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="proxy">
+		<email>lg3dx6fd@gmail.com</email>
+		<name>Arniiiii</name>
+		<description>Just a guy that likes C++ and uses CMake.</description>
+	</maintainer>
+	<longdescription>
+		C++ function traits library (single header-only) for retrieving info about any function (arg types, arg count, return type, etc.). Clean and easy-to-use, the most "complete" implementation on the web. Go check their README.md : it's full of docs. (or install the package and `bzcat /usr/share/doc/functiontraits-1.0_pre20250511/README.md.bz2`).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">HexadigmSystems/FunctionTraits</remote-id>
+	</upstream>
+</pkgmetadata>

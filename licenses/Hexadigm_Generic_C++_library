@@ -1,0 +1,28 @@
+Generic C++ Library For Microsoft Windows or other platforms (By Hexadigm Systems)
+License Agreement
+
+Copyright (c) Hexadigm Systems
+
+This End User License Agreement ("EULA") is a legal agreement between you (either an individual or an entity) and Hexadigm Systems for the software product described below. By installing, copying, or otherwise using the software, you agree to be bound by the terms of this EULA. If you do not agree to the terms of this EULA, you must not install or use the software in any manner.
+
+This license agreement is for the "Generic C++ Library For Microsoft Windows" by Hexadigm Systems (also known as the "Generic Library", hereafter referred to as the "Software"), or any portion of this library that may have been made available for other non-MSFT platforms (such as the FunctionTraits library, a complete set of C++ function traits templates). Permission is hereby granted, free of charge, to any person obtaining a copy of this Software and associated documentation files, to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The following copyright notice must be included in all copies of the Software. This refers to all C++ source files included in the library (".h" and ".cpp" normally), or any other implementation file regardless of name. Note that all source files normally contain the notice below at the time the library or any portion of it is downloaded (from this or any other location), but if you modify any file then you must ensure that the notice is retained. The notice below must therefore be copied and pasted into a given source file if it's not already present.
+
+/////////////////////////////////////////////////////////////////////////////
+// LICENSE NOTICE
+// --------------
+// Copyright (c) Hexadigm Systems
+//
+// Permission to use this software is granted under the following license:
+// https://www.hexadigm.com/GenericLib/License.html
+//
+// This copyright notice must be included in this and all copies of the
+// software as described in the above license.
+/////////////////////////////////////////////////////////////////////////////
+
+By using the Software, you agree that you've read and will comply with the notice contained in this license.
+
+LIMITATION OF LIABILITY
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
