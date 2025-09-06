@@ -48,11 +48,7 @@ BDEPEND="
 # RESTRICT=""
 
 PATCHES=(
-	"${FILESDIR}/0000_fix_bundling_ut2-glaze.patch"
-	"${FILESDIR}/0003_no_to_quiet_find_package.patch"
-	"${FILESDIR}/0004_fix_bundling_asio_and_add_tests_execution.patch"
-	"${FILESDIR}/0005_fix_erland_cmake_test_option_name.patch"
-	"${FILESDIR}/0007_fix_using_installed_glaze_with_eetf-format_enabled.patch"
+	"${FILESDIR}/0008_fix_everything.patch"
 )
 
 src_configure() {
@@ -71,6 +67,15 @@ src_configure() {
 
 	cmake_src_configure
 
+}
+
+
+src_test() {
+	local CMAKE_SKIP_TESTS=(
+		cli_menu_test # it is not a test: it is an interactive CLI program.
+	)
+
+	cmake_src_test
 }
 
 src_install() {

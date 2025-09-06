@@ -1,5 +1,103 @@
+# I am tired of fixing patches. Now I will rebase, then fix conflicts, then squash commits, then put it here.
+commit 3b4a45efd22f39e591798ffc7ee9b36a4ed0d19d
+Author: Arniiiii <lg3dx6fd@gmail.com>
+Date:   Sat Sep 6 22:04:51 2025 +0000
+
+    tests: no bundling of asio + enabling tests that were not enabled
+    
+    tests: unbundle ut2 to ut2-glaze
+    
+    tests: eigen is required
+    
+    tests: erlang correct option
+    
+    more enabling tests
+    
+    test: openapi_test: unbundle asio
+
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 1bf1dc80..fae3d264 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -1,17 +1,9 @@
+ include(FetchContent)
+ 
+-FetchContent_Declare(
+-  ut
+-  GIT_REPOSITORY https://github.com/openalgz/ut
+-  GIT_TAG v1.0.0
+-  GIT_SHALLOW TRUE
+-)
++find_package(ut2-glaze REQUIRED)
+ 
+ message(STATUS "Fetching dependencies...")
+ set_directory_properties(PROPERTIES EXCLUDE_FROM_ALL TRUE)
+-set(CMAKE_SKIP_INSTALL_RULES ON CACHE BOOL "" FORCE)
+-FetchContent_MakeAvailable(ut)
+-set(CMAKE_SKIP_INSTALL_RULES OFF CACHE BOOL "" FORCE)
+ set_directory_properties(PROPERTIES EXCLUDE_FROM_ALL FALSE)
+ message(STATUS "...finished fetching dependencies.")
+ 
+@@ -20,7 +12,7 @@ add_code_coverage_all_targets()
+ 
+ add_library(glz_test_common INTERFACE)
+ target_compile_features(glz_test_common INTERFACE cxx_std_23)
+-target_link_libraries(glz_test_common INTERFACE ut::ut glaze::glaze)
++target_link_libraries(glz_test_common INTERFACE ut2-glaze::ut2-glaze glaze::glaze)
+ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+     target_compile_options(glz_test_common INTERFACE -fno-exceptions -fno-rtti)
+     if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+@@ -46,7 +38,7 @@ endif()
+ 
+ add_library(glz_test_exceptions INTERFACE)
+ target_compile_features(glz_test_exceptions INTERFACE cxx_std_23)
+-target_link_libraries(glz_test_exceptions INTERFACE ut::ut glaze::glaze)
++target_link_libraries(glz_test_exceptions INTERFACE ut2-glaze::ut2-glaze glaze::glaze)
+ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+     target_compile_options(glz_test_exceptions INTERFACE)
+     target_compile_options(glz_test_exceptions INTERFACE -Wall -Wextra -pedantic)
+diff --git a/tests/cli_menu_test/CMakeLists.txt b/tests/cli_menu_test/CMakeLists.txt
+index be93c00e..ae1e91d8 100644
+--- a/tests/cli_menu_test/CMakeLists.txt
++++ b/tests/cli_menu_test/CMakeLists.txt
+@@ -3,3 +3,5 @@ project(cli_menu_test)
+ add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
+ 
+ target_link_libraries(${PROJECT_NAME} PRIVATE glz_test_common)
++
++add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
+diff --git a/tests/eigen_test/CMakeLists.txt b/tests/eigen_test/CMakeLists.txt
+index ac81f833..e3061e36 100644
+--- a/tests/eigen_test/CMakeLists.txt
++++ b/tests/eigen_test/CMakeLists.txt
+@@ -2,7 +2,7 @@ project(eigen_test)
+ 
+ add_executable(${PROJECT_NAME} ${PROJECT_NAME}.cpp)
+ 
+-find_package (Eigen3 3.4 QUIET)
++find_package (Eigen3 3.4 REQUIRED)
+ if(NOT Eigen3_FOUND)
+   FetchContent_Declare(
+     Eigen3
+diff --git a/tests/find_package/CMakeLists.txt b/tests/find_package/CMakeLists.txt
+index fcaeace6..40b4b254 100644
+--- a/tests/find_package/CMakeLists.txt
++++ b/tests/find_package/CMakeLists.txt
+@@ -8,10 +8,10 @@ project(
+ 
+ file(GLOB srcs src/*.cpp include/*.hpp)
+ 
+-if(glaze_ERLANG_FORMAT)
++if(glaze_EETF_FORMAT)
+   list(APPEND CMAKE_MODULE_PATH "${EXTERNAL_MODULE_PATH}")
+   find_package(Erlang REQUIRED)
+-endif(glaze_ERLANG_FORMAT)
++endif(glaze_EETF_FORMAT)
+ 
+ find_package(glaze CONFIG REQUIRED)
+ 
 diff --git a/tests/networking_tests/CMakeLists.txt b/tests/networking_tests/CMakeLists.txt
-index 9df9718..064df4b 100644
+index 01d99cca..c7f03688 100644
 --- a/tests/networking_tests/CMakeLists.txt
 +++ b/tests/networking_tests/CMakeLists.txt
 @@ -1,10 +1,5 @@
@@ -15,15 +113,15 @@ index 9df9718..064df4b 100644
  
  # HTTP Examples
  add_subdirectory(http_examples)
-@@ -17,4 +12,4 @@ add_subdirectory(http_server_api_tests)
- add_subdirectory(https_test)
+@@ -18,4 +13,4 @@ add_subdirectory(https_test)
+ add_subdirectory(openapi_test)
  add_subdirectory(repe_test)
  add_subdirectory(rest_test)
 -add_subdirectory(websocket_test)
 \ No newline at end of file
 +add_subdirectory(websocket_test)
 diff --git a/tests/networking_tests/asio_repe/CMakeLists.txt b/tests/networking_tests/asio_repe/CMakeLists.txt
-index 1518b4e..1d5416e 100644
+index 1518b4e5..1d5416e8 100644
 --- a/tests/networking_tests/asio_repe/CMakeLists.txt
 +++ b/tests/networking_tests/asio_repe/CMakeLists.txt
 @@ -1,14 +1,9 @@
@@ -48,7 +146,7 @@ index 1518b4e..1d5416e 100644
 +
 +add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 diff --git a/tests/networking_tests/http_client_test/CMakeLists.txt b/tests/networking_tests/http_client_test/CMakeLists.txt
-index 7ed4e0f..a7674b4 100644
+index 7ed4e0fd..a7674b4e 100644
 --- a/tests/networking_tests/http_client_test/CMakeLists.txt
 +++ b/tests/networking_tests/http_client_test/CMakeLists.txt
 @@ -2,7 +2,8 @@ project(http_client_test)
@@ -64,7 +162,7 @@ index 7ed4e0f..a7674b4 100644
 \ No newline at end of file
 +add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 diff --git a/tests/networking_tests/http_examples/CMakeLists.txt b/tests/networking_tests/http_examples/CMakeLists.txt
-index 2d836f8..8d67649 100644
+index 2d836f8f..8d67649c 100644
 --- a/tests/networking_tests/http_examples/CMakeLists.txt
 +++ b/tests/networking_tests/http_examples/CMakeLists.txt
 @@ -2,7 +2,8 @@ project(http_examples)
@@ -80,7 +178,7 @@ index 2d836f8..8d67649 100644
 \ No newline at end of file
 +add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 diff --git a/tests/networking_tests/http_router_test/CMakeLists.txt b/tests/networking_tests/http_router_test/CMakeLists.txt
-index 5b1e58b..14d8156 100644
+index 5b1e58b3..14d81566 100644
 --- a/tests/networking_tests/http_router_test/CMakeLists.txt
 +++ b/tests/networking_tests/http_router_test/CMakeLists.txt
 @@ -2,7 +2,8 @@ project(http_router_test)
@@ -96,7 +194,7 @@ index 5b1e58b..14d8156 100644
 \ No newline at end of file
 +add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 diff --git a/tests/networking_tests/http_server_api_tests/CMakeLists.txt b/tests/networking_tests/http_server_api_tests/CMakeLists.txt
-index 62d93da..225a815 100644
+index 62d93da1..225a8159 100644
 --- a/tests/networking_tests/http_server_api_tests/CMakeLists.txt
 +++ b/tests/networking_tests/http_server_api_tests/CMakeLists.txt
 @@ -2,7 +2,8 @@ project(http_server_api_tests)
@@ -112,7 +210,7 @@ index 62d93da..225a815 100644
 \ No newline at end of file
 +add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 diff --git a/tests/networking_tests/https_test/CMakeLists.txt b/tests/networking_tests/https_test/CMakeLists.txt
-index 4f4670d..557f697 100644
+index 4f4670d9..4e56171a 100644
 --- a/tests/networking_tests/https_test/CMakeLists.txt
 +++ b/tests/networking_tests/https_test/CMakeLists.txt
 @@ -5,14 +5,6 @@ project(https_test)
@@ -130,20 +228,18 @@ index 4f4670d..557f697 100644
  # Test if we can actually compile with OpenSSL headers
  include(CheckCXXSourceCompiles)
  set(CMAKE_REQUIRED_LIBRARIES OpenSSL::SSL OpenSSL::Crypto)
-@@ -33,15 +25,19 @@ if(OPENSSL_HEADERS_AVAILABLE)
-         OpenSSL::SSL
+@@ -34,14 +26,17 @@ if(OPENSSL_HEADERS_AVAILABLE)
          OpenSSL::Crypto
      )
-+    target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
      target_compile_definitions(${PROJECT_NAME} PRIVATE GLZ_ENABLE_SSL)
 -    target_include_directories(${PROJECT_NAME} PRIVATE include ${asio_SOURCE_DIR}/asio/include)
 +    target_include_directories(${PROJECT_NAME} PRIVATE include )
      target_compile_definitions(${PROJECT_NAME} PRIVATE SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
  
++    target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
      # Set C++ standard
      target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_23)
 -    
-+
 +
 +    add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 +
@@ -154,8 +250,29 @@ index 4f4670d..557f697 100644
 -endif()
 \ No newline at end of file
 +endif()
+diff --git a/tests/networking_tests/openapi_test/CMakeLists.txt b/tests/networking_tests/openapi_test/CMakeLists.txt
+index fa9363c9..a7f9af28 100644
+--- a/tests/networking_tests/openapi_test/CMakeLists.txt
++++ b/tests/networking_tests/openapi_test/CMakeLists.txt
+@@ -1,13 +1,7 @@
+ project(openapi_test)
+ 
+-FetchContent_Declare(
+-    asio
+-    GIT_REPOSITORY https://github.com/chriskohlhoff/asio.git
+-    GIT_TAG asio-1-32-0
+-    GIT_SHALLOW TRUE
+-)
+-FetchContent_MakeAvailable(asio)
+-
+ add_executable(openapi_test openapi_test.cpp)
+-target_include_directories(openapi_test PRIVATE include ${asio_SOURCE_DIR}/asio/include)
++target_include_directories(openapi_test PRIVATE include)
++target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
+ target_link_libraries(openapi_test PRIVATE glz_test_exceptions)
++add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 diff --git a/tests/networking_tests/repe_test/CMakeLists.txt b/tests/networking_tests/repe_test/CMakeLists.txt
-index 0575ba7..b2d3974 100644
+index 0575ba71..b2d39745 100644
 --- a/tests/networking_tests/repe_test/CMakeLists.txt
 +++ b/tests/networking_tests/repe_test/CMakeLists.txt
 @@ -1,16 +1,9 @@
@@ -178,10 +295,10 @@ index 0575ba7..b2d3974 100644
  
  add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 diff --git a/tests/networking_tests/rest_test/CMakeLists.txt b/tests/networking_tests/rest_test/CMakeLists.txt
-index 4d5bd58..e71d809 100644
+index 71edf17a..93d9d94c 100644
 --- a/tests/networking_tests/rest_test/CMakeLists.txt
 +++ b/tests/networking_tests/rest_test/CMakeLists.txt
-@@ -1,23 +1,19 @@
+@@ -1,21 +1,21 @@
  project(rest_test)
  
 -FetchContent_Declare(
@@ -196,25 +313,27 @@ index 4d5bd58..e71d809 100644
  
 -target_include_directories(${PROJECT_NAME} PRIVATE include ${asio_SOURCE_DIR}/asio/include)
 +target_include_directories(${PROJECT_NAME} PRIVATE include)
++
  target_link_libraries(${PROJECT_NAME} PRIVATE glz_test_exceptions)
+ 
 +target_link_libraries(${PROJECT_NAME} PRIVATE PkgConfig::asio)
- 
- add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
- 
++
  add_executable(rest_registry_test rest_registry_test.cpp)
  
 -target_include_directories(rest_registry_test PRIVATE include ${asio_SOURCE_DIR}/asio/include)
 +target_include_directories(rest_registry_test PRIVATE include)
- target_link_libraries(rest_registry_test PRIVATE glz_test_exceptions)
-+target_link_libraries(rest_registry_test PRIVATE PkgConfig::asio)
 +
-+add_test(NAME rest_registry_test COMMAND rest_registry_test)
+ target_link_libraries(rest_registry_test PRIVATE glz_test_exceptions)
  
 -add_subdirectory(rest_server)
 \ No newline at end of file
++target_link_libraries(rest_registry_test PRIVATE PkgConfig::asio)
++
++add_test(NAME rest_registry_test COMMAND rest_registry_test)
++
 +add_subdirectory(rest_server)
 diff --git a/tests/networking_tests/rest_test/rest_server/CMakeLists.txt b/tests/networking_tests/rest_test/rest_server/CMakeLists.txt
-index 3f77da7..ba867b9 100755
+index 3f77da70..ba867b9e 100755
 --- a/tests/networking_tests/rest_test/rest_server/CMakeLists.txt
 +++ b/tests/networking_tests/rest_test/rest_server/CMakeLists.txt
 @@ -2,8 +2,10 @@ project(rest_server VERSION 1.0 LANGUAGES CXX)
@@ -233,7 +352,7 @@ index 3f77da7..ba867b9 100755
 +
 +add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 diff --git a/tests/networking_tests/websocket_test/CMakeLists.txt b/tests/networking_tests/websocket_test/CMakeLists.txt
-index 322423c..20a618a 100644
+index 322423c7..36fe409c 100644
 --- a/tests/networking_tests/websocket_test/CMakeLists.txt
 +++ b/tests/networking_tests/websocket_test/CMakeLists.txt
 @@ -2,8 +2,11 @@ project(websocket_server)
@@ -248,7 +367,7 @@ index 322423c..20a618a 100644
 -target_compile_definitions(${PROJECT_NAME} PRIVATE 
 -    SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 \ No newline at end of file
-+target_compile_definitions(${PROJECT_NAME} PRIVATE
-+    SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
++target_compile_definitions(${PROJECT_NAME}
++                           PRIVATE SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 +
 +add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
