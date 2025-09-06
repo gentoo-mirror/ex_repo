@@ -48,7 +48,7 @@ BDEPEND="
 # RESTRICT=""
 
 PATCHES=(
-	"${FILESDIR}/0008_fix_everything.patch"
+	"${FILESDIR}/0009_fix_everything.patch"
 )
 
 src_configure() {
