@@ -40,6 +40,10 @@ dev-cmake/addboost-cmake
 dev-cmake/packageproject-cmake
 "
 
+PATCHES=(
+	"${FILESDIR}/patch.patch"
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-Dcertify_BUILD_EXAMPLES=$(usex examples ON OFF)
