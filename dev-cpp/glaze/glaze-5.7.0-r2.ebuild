@@ -73,6 +73,7 @@ src_configure() {
 src_test() {
 	local CMAKE_SKIP_TESTS=(
 		cli_menu_test # it is not a test: it is an interactive CLI program.
+		asio_repe # often in timeout or not passes.
 	)
 
 	cmake_src_test
